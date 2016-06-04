@@ -86,8 +86,8 @@
         </div>
 
         <p class="text-center rodape">
-            ©2014 - SGP Sistema de gerenciamento e prestação de contas de pipeiros<br />
-            Idealizado, projetado e construído por <a href="http://alvarobacelar.com" target="_blank">Álvaro Bacelar</a><br />
+            ©2016 - Sistema de Gerenciamento de Deploys<br />
+            Desenvolvido por <a href="http://alvarobacelar.com" target="_blank">Álvaro Bacelar</a><br />
             Versão {$versao}
         </p>
 

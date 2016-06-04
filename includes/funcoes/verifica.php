@@ -34,7 +34,7 @@ if (! isset ( $_SESSION ["idSession"] )) {
 	$smarty->assign ( "posto", $_SESSION ["posto"] );
 	$smarty->assign ( "nivel", $nivel );
 	$smarty->assign ( "funcao", $funcao );
-	$smarty->assign ( "versao", "2.0.2" );
+	$smarty->assign ( "versao", "0.1" );
 	$estaLogado = "SIM";
 }
 
@@ -49,7 +49,7 @@ if ($estaLogado == "NAO") {
 	unset ( $_SESSION ["erro"] ); // destroi a session do erro
 	                          // chama a tela de login caso não houver session estartada
 	$smarty->assign ( "titulo", " - Login" );
-	$smarty->assign ( "versao", "2.0.2" );
+	$smarty->assign ( "versao", "0.1" );
 	$smarty->assign ( "conteudoLogin", "login/login.tpl" );
 	$smarty->display ( "HTMLogin.tpl" );
 }
