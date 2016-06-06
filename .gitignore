@@ -4,3 +4,4 @@ lib/smarty/cache/*
 .buildpath
 .project/*
 nbproject/*
+Release.key
