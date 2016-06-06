@@ -8,7 +8,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
 
-        <title>SGP - Sistema de Gerenciamento de pipeiro</title>
+        <title>SisDeploy - Sistema de Deploy</title>
 
         <!-- Bootstrap core CSS -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +35,8 @@
         <div class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><strong>SGP</strong></a>
-                    <p class="navbar-text">Sistema de Gerenciamento de Pipeiros</p>   
+                    <a class="navbar-brand" href="#"><strong><span class="glyphicon glyphicon-console" aria-hidden="true"></span> SisDeploy</strong></a>
+                    <p class="navbar-text">Sistema de Gerenciamento de Deploy</p>   
                 </div>
 
             </div><!--/.nav-collapse -->
@@ -54,28 +54,20 @@
                     <form action="logSistem.php" method="post" name="logar" class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="inputLogin" class="col-sm-2 control-label">Usuário</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control" id="inputLogin" name="inputLogin" autofocus value="" placeholder="Usuário" required="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-8">
                                 <input type="password" class="form-control" id="inputSenha" name="inputSenha" value="" placeholder="Senha" required="">
                             </div>
                         </div>
+                        <br>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Lembre-me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Entrar</button>
+                                <button type="submit" class="btn btn-primary btn-lg"> Entrar</button>
                             </div>
                         </div>
                     </form>

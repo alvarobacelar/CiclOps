@@ -8,7 +8,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
 
-        <title>SGP - Sistema de Gerenciamento de Pipeiro</title>
+        <title>SisDeploy - Sistema de Gerenciamento de Deploy</title>
 
         <!-- Bootstrap core CSS -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home"></span> <strong>SGP</strong></a>
+                    <a class="navbar-brand" href="./"><strong><span class="glyphicon glyphicon-console" aria-hidden="true"></span> SisDeploy</strong></a>
                 </div>
                 <div class="navbar-collapse collapse">
 
@@ -203,8 +203,8 @@
 
 
         <p class="text-center rodape">
-            ©2014 - SGP Sistema de gerenciamento e prestação de contas de pipeiros<br />
-            Idealizado, projetado e construído por <a href="http://alvarobacelar.com" target="_blank">Álvaro Bacelar</a><br />
+            ©2016 - Sistema de Gerenciamento de Deploy<br />
+            Desenvolvido por <a href="http://alvarobacelar.com" target="_blank">Álvaro Bacelar</a><br />
             Versão {$versao}
         </p>
 
