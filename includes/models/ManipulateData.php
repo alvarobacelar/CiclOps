@@ -90,13 +90,6 @@ class ManipulateData extends MysqlConn {
         $this->execSQL($this->sql);
     }
 
-    public function selectCarroCadastrado() {
-        $this->sql = "SELECT veiculo.id_veiculo FROM pipeiro INNER JOIN veiculo 
-                        ON pipeiro.id_veiculo = veiculo.id_veiculo 
-                        AND veiculo.id_veiculo = '$this->valueId'";
-        $this->execSQL($this->sql);
-    }
-
     /**
      * Metodo para selecionar por ordem do parâmetro que definir 
      * @access public
@@ -110,10 +103,10 @@ class ManipulateData extends MysqlConn {
         $this->execSQL($this->sql);
     }
 
-    public function selectPipeirosDesativados() {
-        $this->sql = "SELECT * FROM $this->table WHERE id_cidade_atuante = '10' ORDER BY $this->orderTable";
-        $this->execSQL($this->sql);
-    }
+//    public function selectPipeirosDesativados() {
+//        $this->sql = "SELECT * FROM $this->table WHERE id_cidade_atuante = '10' ORDER BY $this->orderTable";
+//        $this->execSQL($this->sql);
+//    }
 
     public function selectLogAcesso() {
         $this->sql = "SELECT * FROM $this->table WHERE acesso_usuario.usuario_id_usuario = usuario.id_usuario ORDER BY $this->orderTable";
@@ -128,100 +121,65 @@ class ManipulateData extends MysqlConn {
      * @ParamType ordemTable 
      * @ReturnType string
      */
-    public function selectPipeiro() {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                AND pipeiro.id_pipeiro = '$this->valueId'";
-        $this->execSQL($this->sql);
-    }
+//    public function selectPipeiro() {
+//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                AND pipeiro.id_pipeiro = '$this->valueId'";
+//        $this->execSQL($this->sql);
+//    }
+//
+//    public function selectPipeiroContrato() {
+//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                AND $this->fieldId = '$this->valueId'";
+//        $this->execSQL($this->sql);
+//    }
+//
+//    public function selectPipeiroTodos() {
+//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                ORDER BY $this->orderTable";
+//
+//        $this->execSQL($this->sql);
+//    }
+//
+//    public function selectPipeiroAtivo() {
+//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                AND pipeiro.id_cidade_atuante != '10'
+//                                                ORDER BY $this->orderTable";
+//        $this->execSQL($this->sql);
+//    }
 
-    public function selectPipeiroContrato() {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                AND $this->fieldId = '$this->valueId'";
-        $this->execSQL($this->sql);
-    }
-
-    public function selectPipeiroTodos() {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                ORDER BY $this->orderTable";
-
-        $this->execSQL($this->sql);
-    }
-
-    public function selectPipeiroAtivo() {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                AND pipeiro.id_cidade_atuante != '10'
-                                                ORDER BY $this->orderTable";
-        $this->execSQL($this->sql);
-    }
-
-    public function selectPipeiroDesativado() {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                AND pipeiro.id_cidade_atuante = '10'
-                                                ORDER BY $this->orderTable";
-        $this->execSQL($this->sql);
-    }
-
-    public function selectRPSTodas($dataInicio, $dataFim) {
-        $this->sql = "SELECT * FROM $this->table WHERE $this->orderTable rps.data_pesquisa BETWEEN ('$dataInicio') AND ('$dataFim') ORDER BY cidade_atuante.nome_cidade_atuante";
-        $this->execSQL($this->sql);
-    }
-
-    public function selectSomaRPS($dataInicio, $dataFim) {
-        $this->sql = "SELECT rps.valor_liquido_rps FROM $this->table WHERE $this->orderTable rps.data_pesquisa BETWEEN ('$dataInicio') AND ('$dataFim')";
-        $this->execSQL($this->sql);
-    }
-
-    public function CountPipeiroAtivo() {
-        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                AND pipeiro.id_cidade_atuante != 10
-                                                ORDER BY nome_pipeiro";
-        $this->execSQL($this->sql);
-        $total = $this->fetch_object();
-        $cont = $total->total;
-        return $cont;
-    }
-
-    public function CountRpsExcluida() {
-        $this->sql = "SELECT count(*) as total FROM $this->table WHERE rps.pipeiro_id_pipeiro = pipeiro.id_pipeiro
-                             AND status_remove='1'";
-        $this->execSQL($this->sql);
-        $total = $this->fetch_object();
-        $cont = $total->total;
-        return $cont;
-    }
-
-    public function CountPipeiroDesativado() {
-        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                AND pipeiro.id_cidade_atuante = 10
-                                                ORDER BY nome_pipeiro";
-        $this->execSQL($this->sql);
-        $total = $this->fetch_object();
-        $cont = $total->total;
-        return $cont;
-    }
-
-    public function CountPipeiroTodos() {
-        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                                ORDER BY nome_pipeiro";
-        $this->execSQL($this->sql);
-        $total = $this->fetch_object();
-        $cont = $total->total;
-        return $cont;
-    }
-
-    public function selectRPS() {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-                                                AND pipeiro.cpf_pipeiro = '$this->valueId'";
-        $this->execSQL($this->sql);
-    }
+//    public function selectPipeiroDesativado() {
+//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                AND pipeiro.id_cidade_atuante = '10'
+//                                                ORDER BY $this->orderTable";
+//        $this->execSQL($this->sql);
+//    }
+//
+//    public function CountPipeiroAtivo() {
+//        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                AND pipeiro.id_cidade_atuante != 10
+//                                                ORDER BY nome_pipeiro";
+//        $this->execSQL($this->sql);
+//        $total = $this->fetch_object();
+//        $cont = $total->total;
+//        return $cont;
+//    }
+//
+//    public function CountPipeiroDesativado() {
+//        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
+//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                                AND pipeiro.id_cidade_atuante = 10
+//                                                ORDER BY nome_pipeiro";
+//        $this->execSQL($this->sql);
+//        $total = $this->fetch_object();
+//        $cont = $total->total;
+//        return $cont;
+//    }
 
     /**
      * Metodo para contar o total de registro de uma query
@@ -237,22 +195,22 @@ class ManipulateData extends MysqlConn {
         return $cont;
     }
 
-    /**
-     * Metodo para selecionar cidade e ver quais pipeiros estão trabalhando nesta
-     * @access public
-     * @param setDados
-     * @return string
-     * @ParamType setDados
-     * @ReturnType string
-     */
-    public function selectCidadeAtuacao() {
-        $this->sql = "SELECT * FROM pipeiro, cidade_atuante, veiculo 
-                                WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante
-                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-                                AND $this->camposBanco = '$this->dados'
-                                ORDER BY pipeiro.nome_pipeiro";
-        $this->execSQL($this->sql);
-    }
+//    /**
+//     * Metodo para selecionar cidade e ver quais pipeiros estão trabalhando nesta
+//     * @access public
+//     * @param setDados
+//     * @return string
+//     * @ParamType setDados
+//     * @ReturnType string
+//     */
+//    public function selectCidadeAtuacao() {
+//        $this->sql = "SELECT * FROM pipeiro, cidade_atuante, veiculo 
+//                                WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante
+//                                AND pipeiro.id_veiculo = veiculo.id_veiculo
+//                                AND $this->camposBanco = '$this->dados'
+//                                ORDER BY pipeiro.nome_pipeiro";
+//        $this->execSQL($this->sql);
+//    }
 
     public function selectAlterar() {
         $this->sql = "SELECT * FROM $this->table WHERE $this->fieldId = '$this->valueId' $this->orderTable";
@@ -261,38 +219,6 @@ class ManipulateData extends MysqlConn {
 
     public function selectNome() {
         $this->sql = "SELECT * FROM $this->table WHERE $this->fieldId like '%$this->valueId%'";
-        $this->execSQL($this->sql);
-    }
-
-    public function pesquisarPipeiro($a) {
-        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante "
-                . "AND pipeiro.id_cidade_atuante $a "
-                . "AND nome_pipeiro like '%$this->valueId%'";
-        $this->execSQL($this->sql);
-    }
-
-    /**
-     * Metodo para pesquisar rps feita por nome
-     * @access public
-     * @param String $name nome do pipeiro
-     * @return String Retorna a pesquisa feita em um determinado nome
-     */
-    public function pesquisaRPS() {
-        $this->sql = "SELECT * FROM rps,pipeiro WHERE rps.pipeiro_id_pipeiro = pipeiro.id_pipeiro
-                            AND $this->fieldId like '%$this->valueId%' $this->orderTable AND status_remove='0' ORDER BY id_rps DESC";
-        $this->execSQL($this->sql);
-    }
-
-    public function pesquisaRPSexcluido() {
-        $this->sql = "SELECT * FROM rps,pipeiro WHERE rps.pipeiro_id_pipeiro = pipeiro.id_pipeiro
-                             AND status_remove='1' $this->orderTable";
-        $this->execSQL($this->sql);
-    }
-
-    public function pesquisaRPS2via() {
-        $this->sql = "SELECT * FROM rps,pipeiro,cidade_atuante WHERE rps.pipeiro_id_pipeiro = pipeiro.id_pipeiro
-                            AND pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante
-                            AND $this->fieldId = '$this->valueId' AND status_remove='0'";
         $this->execSQL($this->sql);
     }
 

@@ -25,10 +25,10 @@ abstract class MysqlConn {
      */
     public function __construct() {
 
-        $this->host = "127.0.0.1";
+        $this->host = "localhost";
         $this->usuario = "root";
         $this->senha = "258276";
-        $this->db = "sgp";
+        $this->db = "deploy";
         self::conectar();
     }
 
