@@ -25,6 +25,13 @@ if (isset($_SESSION["erro"])) {
     $smarty->assign("erroCadastro", "");
 }
 
+$buscaGrupo = new ManipulateData();
+$buscaGrupo->setTable("grupo_servidor");
+$buscaGrupo->select();
+while ($resultado[] = $buscaGrupo->fetch_object()){
+    $smarty->assign("grupo", $resultado);
+}
+
 $smarty->assign("conteudo", "paginas/cadastrarUsuario.tpl");
 $smarty->display("HTML.tpl");
 

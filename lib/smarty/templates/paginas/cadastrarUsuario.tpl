@@ -14,8 +14,8 @@
                     <input class="form-control" type="text" id="inputNome" name="inputNome" required="" placeholder="Nome do Usuário">
                 </div>
             </div>            
-            
-             
+
+
             <div class="row form-group">
                 <label class="col-sm-2 control-label" for="inputLogin">Login</label>
                 <div class="col-sm-3">
@@ -44,7 +44,7 @@
                     <input class="form-control" type="password" id="inputSenha2" value="" name="inputSenha2" required="" onblur="verificaSenha()" placeholder="Repitir senha">
                     <span id="erro-senha"></span>
                 </div>
-                 <div class="col-sm-3">
+                <div class="col-sm-3">
                     <select class="form-control" id="inputFuncao" name="inputFuncao" required="">
                         <option value="">Função do usuário</option>
                         <option value="D">Desenvolvedor Dolphin</option>
@@ -53,21 +53,23 @@
                         <option value="Infra">Infraestrutura</option>
                         <option value="SD">Suporte Dolphin</option>
                         <option value="SI">Suporte Ihealth</option>
-                        
+
                     </select>
                 </div>
             </div>
-            
+
             <div class="form-group ">
                 <label class="col-sm-2 control-label" for="selectGrupo">Grupo</label>
                 <div class="col-sm-3">
                     <select class="form-control" id="selectPosto" name="selectPosto" required="">
                         <option value="" selected="">Escolha o grupo do usuário</option>                        
-                        <option value="">Grupo 1</option>
+                        {foreach $grupo as $g}
+                            <option value="{$g->nome_grupo_servidor}">{$g->nome_grupo_servidor}</option>
+                        {/foreach}
                     </select>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Cadastrar</button>
@@ -75,7 +77,7 @@
             </div>
         </form>
         <br />
-        
+
     </div>
 </div>
-        <center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center> 
+<center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center> 

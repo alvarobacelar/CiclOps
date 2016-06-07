@@ -10,5 +10,4 @@ require_once './includes/funcoes/exeCmdShel.php';
 //}
 
 $smarty->assign("conteudo", "paginas/home.tpl");
-$smarty->assign();
 $smarty->display("HTML.tpl");
