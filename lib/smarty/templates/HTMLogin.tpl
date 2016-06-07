@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="icon" href="img/infra.ico">
 
         <title>SisDeploy - Sistema de Deploy</title>
 
@@ -79,7 +79,7 @@
 
         <p class="text-center rodape">
             ©2016 - Sistema de Gerenciamento de Deploys<br />
-            Desenvolvido por <a href="http://alvarobacelar.com" target="_blank">Álvaro Bacelar</a><br />
+            Desenvolvido por <strong>Álvaro Bacelar</strong>><br />
             Versão {$versao}
         </p>
 

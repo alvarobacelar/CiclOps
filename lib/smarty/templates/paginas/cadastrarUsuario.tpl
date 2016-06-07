@@ -1,8 +1,8 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
 
     <div class="panel-heading">
 
-        <h2 class="panel-title">Cadastrar novo usuário</h2>
+        <h2 class="panel-title">Cadastrar Usuário</h2>
     </div>
     <div class="panel-body">
 
@@ -14,18 +14,8 @@
                     <input class="form-control" type="text" id="inputNome" name="inputNome" required="" placeholder="Nome do Usuário">
                 </div>
             </div>            
-            <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="inputNomeGerra">Nome de guerra</label>
-                <div class="col-sm-3">
-                    <input class="form-control" type="text" id="inputNomeGerra" name="inputNomeGerra" required="" placeholder="Nome de Guerra">
-                </div>
-            </div>
-            <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="inputCpf">Cpf </label>
-                <div class="col-sm-2">
-                    <input class="form-control" type="text" id="inputCpf" name="inputCpf" title="O cadastro do cpf serve preencher automaticamente na declaração de recebimento de tickets" placeholder="Cpf do usuário">
-                </div>
-            </div> 
+            
+             
             <div class="row form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="inputLogin">Login</label>
                 <div class="col-sm-3">
@@ -35,10 +25,10 @@
                 <div class="col-sm-3">
                     <select class="form-control" id="selectNivel" name="selectNivel" required="">
                         <option value="">Nivel do usuário</option>
-                        <option value="0">Administrador (Sec Infor)</option>
-                        <option value="1">Supervisor (Ch Prest. Contas)</option>
-                        <option value="3">Usuário Financeiro (Tesouraria-SALC)</option>
-                        <option value="2">Usuário Básico (RPS)</option>
+                        <option value="0">Administrador</option>
+                        <option value="1">Desenvolvedor</option>
+                        <option value="3">Coordenador</option>
+                        <option value="2">Suporte</option>
                     </select>
                 </div>
             </div>
@@ -46,21 +36,7 @@
                 <label class="col-sm-2 control-label" for="inputSenha">Senha</label>
                 <div class="col-sm-3">
                     <input class="form-control" type="password" id="inputSenha" value="" name="inputSenha" required="" placeholder="Senha">
-                </div>
-                
-                <div class="col-sm-3">
-                    <select class="form-control" id="inputFuncao" name="inputFuncao" required="">
-                        <option value="">Função do usuário</option>
-                        <option value="Administrador do Sistema">Administrador do Sistema</option>
-                        <option value="Chefe da prestação de contas">Chefe da prestação de contas</option>
-                        <option value="Prestação de conta">Prestação de conta</option>
-                        <option value="Financeiro">Financeiro</option>
-                        <option value="GCDA">GCDA</option>
-                        <option value="Aux Operação Pipa">Aux Operação Pipa</option>
-                        <option value="Credenciamento">Credenciamento</option>
-                        <option value="SALC">SALC</option>
-                    </select>
-                </div>
+                </div>                               
             </div>
             <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="inputSenha2">Repita a senha</label>
@@ -68,7 +44,20 @@
                     <input class="form-control" type="password" id="inputSenha2" value="" name="inputSenha2" required="" onblur="verificaSenha()" placeholder="Repitir senha">
                     <span id="erro-senha"></span>
                 </div>
+                 <div class="col-sm-3">
+                    <select class="form-control" id="inputFuncao" name="inputFuncao" required="">
+                        <option value="">Função do usuário</option>
+                        <option value="D">Desenvolvedor Dolphin</option>
+                        <option value="I">Desenvolvedor Ihealth</option>
+                        <option value="S">Desenvolvedor Sense</option>
+                        <option value="Infra">Infraestrutura</option>
+                        <option value="SD">Suporte Dolphin</option>
+                        <option value="SI">Suporte Ihealth</option>
+                        
+                    </select>
+                </div>
             </div>
+            <!--
             <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="selectPosto">Posto/Graduação</label>
                 <div class="col-sm-2">
@@ -91,6 +80,7 @@
                     </select>
                 </div>
             </div>
+            -->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Cadastrar</button>

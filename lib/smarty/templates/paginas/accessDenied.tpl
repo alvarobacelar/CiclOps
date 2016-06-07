@@ -1,4 +1,4 @@
-<img src="imagens/erro404.png" align="left" alt="erro" />
+<img src="img/403.jpg" align="left" alt="erro" />
 <br /><br /><br />
 
 <h1><strong>Oops!</strong></h1>

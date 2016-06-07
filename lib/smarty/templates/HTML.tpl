@@ -6,10 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
-
+        <link rel="icon" href="img/infra.ico">
         <title>SisDeploy - Sistema de Gerenciamento de Deploy</title>
-
         <!-- Bootstrap core CSS -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,7 +18,6 @@
         <link href="lib/bootstrap/css/navbar-static-top.css" rel="stylesheet">
 
         <script src="js/valida.js" type="text/javascript"></script>
-
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -51,129 +48,61 @@
 
                     <ul class="nav navbar-nav">
 
-                        {if $nivel == "admin" || $nivel == "gerente"}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pipeiros <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    {if $funcao == "Credenciamento" || $funcao == "Administrador do Sistema" || $funcao == "Chefe da prestação de contas"}
-                                        <li role="presentation" class="dropdown-header">Novo Cadastro</li>
-                                        <li><a href="cadastrarCidade.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Nova Cidade</a></li>
-                                        <li><a href="cadastrarCarro.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Novo Carro</a></li>
-                                        <li><a href="cadastrarPipeiro.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Novo Pipeiro</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opção <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">                                   
+                                <li role="presentation" class="dropdown-header">Opção 1</li>
+                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>
 
-                                        {*  {if $nivel == "admin"}
-                                        <li class="divider"></li>
-                                        <li><a href="importarDados.php"><span class="glyphicon glyphicon-import"></span> Importar do Excel</a></li>
-                                        {/if} *}
+                                <li class="divider"></li>
 
-                                        <li class="divider"></li>
-                                        {/if}
-                                    <li role="presentation" class="dropdown-header">Cadastrados no Sistema</li>
-                                    <li><a href="cidadesCadastradas.php"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Cidades Cadastradas</a></li>
-                                    <li><a href="veiculosCadastrados.php"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Carros Cadastrados</a></li>
+                                <li role="presentation" class="dropdown-header">Opção 2</li>
+                                <li><a href=""><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Opção 2</a></li>
 
-                                    <li><a href="pipeirosCadastrados.php"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Todos Pipeiros</a></li>
-                                    <li><a href="pipeirosDesativados.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Pipeiros Desativados</a></li>
-                                    <li><a href="pipeirosAtivos.php"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Pipeiros Ativos</a></li>
-                                    <li class="divider"></li>
-                                    <li role="presentation" class="dropdown-header">Gerar ...</li>
-                                    <li><a href="gerarContrato.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Contrato</a></li>
-                                    <!--<li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Ficha Cadastro</a></li>-->
-                                    <!--<li><a href="gerarEntradaPipeiros.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Rel. entrada de pipeiros</a></li>-->                                    
-                                    <li><a href="gerarTabelaGfip.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> GFIP</a></li>
-                                </ul>
-                            </li>
-                        {/if}
+                                <li class="divider"></li>
 
-                        {*esses menu abaixo so irão aparecer para o usuário Administrador*}
-                        {if $nivel == "admin"}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuários Cadastrados</a></li>
-                                    <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Usuários</a></li>
-                                    <li><a href="logAcesso.php">Log de Acessos</a></li>
-                                </ul>
-                            </li>
-                        {/if}
-                        {* fim da condição do menu do administrador *}
-                        {if $nivel != "vis"}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">RPS e Declaração <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    {if $funcao == "Administrador do Sistema" || $funcao == "Chefe da prestação de contas" || $funcao == "Prestação de conta"}
-                                        <li><a href="pesquisarPipeiro.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Gerar RPS</a></li>
-                                        <li><a href="pesquisarPipeiroDeclaracao.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Gerar Declaração</a></li>
-                                        <li class="divider"></li>
-                                        {/if}
-                                        {if $nivel == "user"}
-                                        <li><a href="informeAlteracoes.php"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Informar Alterações</a></li>
-                                        {/if}
+                                <li role="presentation" class="dropdown-header">Opção 2 </li>
+                                <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Opção 2</a></li>
+                                <!--<li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Ficha Cadastro</a></li>-->
+                                <!--<li><a href="gerarEntradaPipeiros.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Rel. entrada de pipeiros</a></li>-->                                    
+                                <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Opção 2</a></li>
+                            </ul>
+                        </li>
 
-                                    <li><a href="pesquisarRPS.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Pesquisar RPS</a></li>
-                                    <li><a href="pesquisarDeclaracao.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Alterações Declaração</a></li>
-                                        {if $nivel == "admin" || $nivel == "gerente"}
-                                            {if $funcao == "Chefe da prestação de contas" || $funcao == "Administrador do Sistema"}
-                                            <li class="divider"></li>
-                                            <li role="presentation" class="dropdown-header">Gerar ...</li>
-                                            <li><a href="gerarRelDiarioRPS.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Relatório diário</a></li>
-                                            <li><a href="gerarTabelaGfip.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Relatório por data</a></li>
-                                            {/if}
-                                        {/if}
-                                        {if $nivel == "admin"}
-                                        <li class="divider"></li>
-                                        <li role="presentation" class="dropdown-header">Ver ...</li>
-                                        <li><a href="rpsExcluidas.php"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Excluidas</a></li>
-                                        {/if}
-                                </ul>
-                            </li>
-                        {/if}
-                        {if $nivel != "user" && $nivel != "gerente"}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerenciamento financeiro<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="empenho.php"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Lançar empenho</a></li>
-                                    <li><a href="liquidacao.php"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> Liquidar empenho</a></li>
-                                </ul>
-                            </li>
-                        {/if}
-                        {if $nivel == "admin"}
-                            <li><a href="cadastrarOM.php">Cadastrar OM</a></li>
-                            {/if}
-                            {* mostra barra de busca somente para usuario comum e gerente *}
-                            {if $nivel == "user" || $nivel == "vis"}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pipeiros e Cidades <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="cidadesCadastradas.php"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Cidades Cadastradas</a></li>
-                                    <li class="divider"></li>
-                                    <li role="presentation" class="dropdown-header">Todos Pipeiros</li>
-                                    <li><a href="pipeirosCadastrados.php"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Pipeiros Credenciados</a></li>
-                                    <li><a href="pipeirosDesativados.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Pipeiros Desativados</a></li>
-                                    <li><a href="pipeirosAtivos.php"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Pipeiros Ativos</a></li>
-                                        {if $nivel == "vis"}
-                                        <li class="divider"></li>
-                                        <li role="presentation" class="dropdown-header">Gerar ...</li>
-                                        <li><a href="gerarTabelaGfip.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> GFIP</a></li>
-                                        {/if}
-                                </ul>
-                            </li>
-                        {/if}
-                        {if $nivel == "vis"}
-                            <li><a href="pesquisarRPS.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Pesquisar RPS</a></li>
-                            {/if}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuários Cadastrados</a></li>
+                                <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Usuários</a></li>
+                                <li><a href="logAcesso.php">Log de Acessos</a></li>
+                            </ul>
+                        </li>                    
 
-                        {if $nivel != "admin"}
-                            <form action="pipeirosCadastrados.php" method="get" class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="busca" name="busca" placeholder="Pesquisar pipeiro">
-                                </div>
-                                <button type="submit" class="btn btn-default">Pesquisar</button>
-                            </form>
-                        {/if}
+                        <li><a href="cadastrarOM.php">Opção 2</a></li>
 
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opção 2 <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu"> 
+                                <li><a href=""><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Opção 2</a></li>
+                                <li class="divider"></li>
+                                <li role="presentation" class="dropdown-header">Opção 2</li>
+                                <li><a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Opção 2</a></li>
+
+                                <li class="divider"></li>
+                                <li role="presentation" class="dropdown-header">Gerar ...</li>
+                                <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Iprimir</a></li>
+
+                            </ul>
+                        </li>                       
                     </ul>
-
 
                     <ul class="nav navbar-nav navbar-right">
                         {* <li><a href="../navbar/">Default</a></li> *}
@@ -191,28 +120,23 @@
         </div>
 
         <div class="container">
-
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">
 
                 {include file=$conteudo} {*Conteúdo principal do sistema*}
 
             </div>
-
         </div> <!-- /container -->
-
 
         <p class="text-center rodape">
             ©2016 - Sistema de Gerenciamento de Deploy<br />
-            Desenvolvido por <a href="http://alvarobacelar.com" target="_blank">Álvaro Bacelar</a><br />
+            Desenvolvido por <strong>Álvaro Bacelar</strong><br />
             Versão {$versao}
         </p>
-
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-
         <script src="js/jQuery/jquery-1.8.3.min.js"></script>
         <script src="js/jQuery/jquery.min.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
