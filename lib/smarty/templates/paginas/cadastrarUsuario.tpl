@@ -8,15 +8,15 @@
 
         {$erroCadastro} 
         <form action="includes/controllers/cadastraUsuarioNovo.php" method="post" name="cadastrar" class="form-horizontal" role="form" onSubmit="return verificaSenha()">
-            <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="inputNome">Nome Completo</label>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="inputNome">Nome do Usuário</label>
                 <div class="col-sm-6">
                     <input class="form-control" type="text" id="inputNome" name="inputNome" required="" placeholder="Nome do Usuário">
                 </div>
             </div>            
             
              
-            <div class="row form-group form-group-sm">
+            <div class="row form-group">
                 <label class="col-sm-2 control-label" for="inputLogin">Login</label>
                 <div class="col-sm-3">
                     <input class="form-control" type="text" id="inputLogin" name="inputLogin" required="" placeholder="Login do usuário">
@@ -27,18 +27,18 @@
                         <option value="">Nivel do usuário</option>
                         <option value="0">Administrador</option>
                         <option value="1">Desenvolvedor</option>
-                        <option value="3">Coordenador</option>
-                        <option value="2">Suporte</option>
+                        <option value="2">Coordenador</option>
+                        <option value="3">Suporte</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group form-group-sm">
+            <div class="form-group">
                 <label class="col-sm-2 control-label" for="inputSenha">Senha</label>
                 <div class="col-sm-3">
                     <input class="form-control" type="password" id="inputSenha" value="" name="inputSenha" required="" placeholder="Senha">
                 </div>                               
             </div>
-            <div class="form-group form-group-sm">
+            <div class="form-group ">
                 <label class="col-sm-2 control-label" for="inputSenha2">Repita a senha</label>
                 <div class="col-sm-3">
                     <input class="form-control" type="password" id="inputSenha2" value="" name="inputSenha2" required="" onblur="verificaSenha()" placeholder="Repitir senha">
@@ -57,33 +57,20 @@
                     </select>
                 </div>
             </div>
-            <!--
-            <div class="form-group form-group-sm">
-                <label class="col-sm-2 control-label" for="selectPosto">Posto/Graduação</label>
-                <div class="col-sm-2">
+            
+            <div class="form-group ">
+                <label class="col-sm-2 control-label" for="selectGrupo">Grupo</label>
+                <div class="col-sm-3">
                     <select class="form-control" id="selectPosto" name="selectPosto" required="">
-                        <option value="" selected="">Posto/Graduação</option>
-                        <option value="Gal">General</option>
-                        <option value="Cel">Coronel</option>
-                        <option value="TC">Tenete Coronel</option>
-                        <option value="Maj">Major</option>
-                        <option value="Cap">Capitão</option>
-                        <option value="1º Ten">1º Tenente</option>
-                        <option value="2º Ten">2º Tenente</option>
-                        <option value="Asp">Aspirante</option>
-                        <option value="S Ten">Sub-Tenente</option>
-                        <option value="1º Sgt">1º Sargento</option>
-                        <option value="2º Sgt">2º Sargento</option>
-                        <option value="3º Sgt">3º Sargento</option>
-                        <option value="Cb">Cabo</option>
-                        <option value="Sd">Soldado</option>
+                        <option value="" selected="">Escolha o grupo do usuário</option>                        
+                        <option value="">Grupo 1</option>
                     </select>
                 </div>
             </div>
-            -->
+            
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Cadastrar</button>
                 </div>
             </div>
         </form>
