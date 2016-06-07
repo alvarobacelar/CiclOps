@@ -74,13 +74,27 @@
                                 <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Opção 2</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Servidores Cadastrados</a></li>
+                                <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Servidor</a></li>
+                                <li><a href="logAcesso.php">Log de Acessos</a></li>
+                            </ul>
+                        </li> 
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuários Cadastrados</a></li>
+                            <ul class="dropdown-menu" role="menu">                               
+                                <li role="presentation" class="dropdown-header">Grupos</li>
+                                <li><a href="cadastrarGrupo.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Grupo</a></li>
+                                <li><a href="gruposCadastrados.php"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Grupos Cadastrados</a></li>
+                                <li class="divider"></li>
+                                <li role="presentation" class="dropdown-header">Usuários</li>
                                 <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Usuários</a></li>
-                                <li><a href="logAcesso.php">Log de Acessos</a></li>
+                                <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuários Cadastrados</a></li>                                
+                                <li class="divider"></li>
+                                <li><a href="logAcesso.php"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Log de Acessos</a></li>                                
                             </ul>
                         </li>                    
 
@@ -107,7 +121,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         {* <li><a href="../navbar/">Default</a></li> *}
                         <li class="dropdown">                        
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <small>{$nomeUser}</small> <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <small>{* $nomeUser *}</small> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="usuario.php"><span class="glyphicon glyphicon-edit"></span> Alterar Senha</a></li>
                                 <li><a href="logOUT.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
