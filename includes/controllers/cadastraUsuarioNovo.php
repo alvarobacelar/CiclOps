@@ -12,14 +12,18 @@ $nivel = addslashes($_POST["selectNivel"]);
 $senha = addslashes($_POST["inputSenha"]);
 $senha2 = addslashes($_POST["inputSenha2"]);
 $funcao = addslashes($_POST["inputFuncao"]);
-$nomeGuerra = addslashes($_POST["inputNomeGerra"]);
-$idGrupo = addslashes($_POST["inputGrupo"]);
-$data = date("Y-m-d") . " " . date("H:i:s");
+$idGrupo = addslashes($_POST["selectGrupo"]);
+$obsUser = addslashes($_POST["textObsUser"]);
+$data = date("Y-m-d");
+$status = 1; // status igual a 1 significa que o usuário está ativo, quando é igual a 0 desativo. 
 
 session_start();
 //if ($_SESSION["nivel"] == "admin") {
 
-    if ($senha == $senha2) {
+if ($senha == $senha2) {
+
+    // SE NÃO FOR PASSADO NOME E LOGIN NÃO SERÁ FEITO O CADASTRO.
+    if (!empty($nome) && !empty($login)) {
 
         $senhaCript = md5($senha);
         //INSTACIANDO O OBJETO DE CADASTRO
@@ -33,15 +37,19 @@ session_start();
             header("Location: ../../cadastrarUsuario.php");
         } else {
             $cad->setCamposBanco("id_grupo_servidor,nome_usuario,login_usuario,senha_usuario,status_usuario,data_cadastro_usuario,obs_usuario,nivel_usuario,funcao_usuario"); //CAMPOS DO BANCO DE DADOS
-            $cad->setDados("'$idGrupo',$nome', '$login', '$senhaCript', '$status', '$data', '$obsUser', '$nivel', '$funcao'"); //DADOS DO FORMULARIOS
+            $cad->setDados("'$idGrupo','$nome', '$login', '$senhaCript', '$status', '$data', '$obsUser', '$nivel', '$funcao'"); //DADOS DO FORMULARIOS
             $cad->insert(); //EFETUANDO CADASTRO
             $_SESSION["erro"] = $cad->getStatus();
             header("location: ../../cadastrarUsuario.php");
         }
     } else {
-        $_SESSION["erro"] = "ERRO";
+        $_SESSION["erro"] = "vazio";
         header("location: ../../cadastrarUsuario.php");
     }
+} else {
+    $_SESSION["erro"] = "ERRO";
+    header("location: ../../cadastrarUsuario.php");
+}
 //} else {
 //    header("location: ../../accessDenied.php");
 //}

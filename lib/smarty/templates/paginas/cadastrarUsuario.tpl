@@ -47,9 +47,9 @@
                 <div class="col-sm-3">
                     <select class="form-control" id="inputFuncao" name="inputFuncao" required="">
                         <option value="">Função do usuário</option>
-                        <option value="D">Desenvolvedor Dolphin</option>
-                        <option value="I">Desenvolvedor Ihealth</option>
-                        <option value="S">Desenvolvedor Sense</option>
+                        <option value="DD">Desenvolvedor Dolphin</option>
+                        <option value="DI">Desenvolvedor Ihealth</option>
+                        <option value="DS">Desenvolvedor Sense</option>
                         <option value="Infra">Infraestrutura</option>
                         <option value="SD">Suporte Dolphin</option>
                         <option value="SI">Suporte Ihealth</option>
@@ -61,14 +61,20 @@
             <div class="form-group ">
                 <label class="col-sm-2 control-label" for="selectGrupo">Grupo</label>
                 <div class="col-sm-3">
-                    <select class="form-control" id="selectPosto" name="selectPosto" required="">
+                    <select class="form-control" id="selectGrupo" name="selectGrupo" required="">
                         <option value="" selected="">Escolha o grupo do usuário</option>                        
                         {foreach $grupo as $g}
-                            <option value="{$g->nome_grupo_servidor}">{$g->nome_grupo_servidor}</option>
+                            <option value="{$g->id_grupo_servidor}">{$g->nome_grupo_servidor}</option>
                         {/foreach}
                     </select>
                 </div>
             </div>
+            <div class="row form-group">
+                <label class="col-sm-2 control-label" for="textObsUser"> Descrição</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" id="textObsUser" name="textObsUser" placeholder="Observações do usuário (opcional)" rows="3"></textarea>
+                </div>                
+            </div> 
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
