@@ -13,7 +13,7 @@ require_once 'MysqlConn_MYSLQ.php';
  */
 class ManipulateData extends MysqlConn {
 
-    private $sql, $table, $camposBanco, $dados, $status, $campoTable, $valueId, $fieldId, $orderTable = "", $campoBancoSelect = "*";
+    private $sql, $table, $camposBanco, $dados, $status, $campoTable, $valueId, $fieldId, $orderTable = "", $campoBancoSelect = "*",$estado;
 
     //ENVIA O NOME DA TABELA A SER USADA NA CLASSE
     public function setTable($t) {
@@ -33,6 +33,10 @@ class ManipulateData extends MysqlConn {
     //ENVIA OS DADOS A SEREM USADOS NA CLASSE
     public function setDados($d) {
         $this->dados = $d;
+    }
+    
+    public function setEstado($e) {
+        $this->estado = $e;
     }
 
     //ENVIA O CAMPO DE PESQUISA, NORMALMENTE O CAMPO CODIGO
@@ -86,7 +90,7 @@ class ManipulateData extends MysqlConn {
     }
 
     public function selectAtivo() {
-        $this->sql = "SELECT * FROM $this->table WHERE status = '1' $this->orderTable";
+        $this->sql = "SELECT * FROM $this->table WHERE $this->estado = '1' $this->orderTable";
         $this->execSQL($this->sql);
     }
 
