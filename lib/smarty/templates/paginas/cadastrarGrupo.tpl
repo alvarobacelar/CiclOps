@@ -18,7 +18,7 @@
             <div class="row form-group">
                 <label class="col-sm-2 control-label" for="textObservacaoGrupo"> Descrição</label>
                 <div class="col-sm-6">
-                    <textarea class="form-control" id="textObservacaoGrupo" name="textObservacaoGrupo" required="" placeholder="Descrição do grupo" rows="3"></textarea>
+                    <textarea class="form-control" id="textObservacaoGrupo" name="textObservacaoGrupo" placeholder="Descrição do grupo" rows="3"></textarea>
                 </div>                
             </div>            
 
