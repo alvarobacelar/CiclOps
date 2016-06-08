@@ -60,32 +60,6 @@ function excluirRPS(id) {
     }
 }
 
-function delEmpenho(id, cidade){
-    var exclui = confirm("Desenja realmente excluir o empenho?");
-    if (exclui){
-        location.href="includes/controllers/excluiEmpenho.php?idEmp="+id+"&cidade="+cidade;
-    }
-}
-
-function restaurarRPS(id) {
-
-    var excluir = confirm("Deseja realmente RESTAURAR essa RPS??");
-
-    if (excluir) {
-        location.href = "includes/controllers/restaurarRPS.php?idExcluirRPS=" + id;
-    }
-}
-
-function desativarPipeiro(id, idCidade) {
-
-    var excluir = confirm("Deseja realmente desativar PIPEIRO para esta cidade??");
-
-    if (excluir) {
-        location.href = "includes/controllers/desativarPipeiro.php?id=" + id + "&idCidade=" + idCidade;
-    }
-}
-
-
 function desativarCidade(id) {
 
     var excluir = confirm("TEM CERTEZA QUE DESEJA DESATIVAR ESTA CIDADE?");

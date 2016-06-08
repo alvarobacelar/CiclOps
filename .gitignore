@@ -3,5 +3,6 @@ lib/smarty/templates_c/*
 lib/smarty/cache/*
 .buildpath
 .project/*
+.project
 nbproject/*
 Release.key
