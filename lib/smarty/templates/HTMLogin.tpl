@@ -79,7 +79,7 @@
 
         <p class="text-center rodape">
             ©2016 - Sistema de Gerenciamento de Deploys<br />
-            Desenvolvido por <strong>Álvaro Bacelar</strong>><br />
+            Desenvolvido por <strong>Álvaro Bacelar</strong><br />
             Versão {$versao}
         </p>
 

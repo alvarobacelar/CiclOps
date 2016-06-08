@@ -77,9 +77,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Servidores Cadastrados</a></li>
-                                <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Servidor</a></li>
-                                <li><a href="logAcesso.php">Log de Acessos</a></li>
+                                <li role="presentation" class="dropdown-header">Servidores</li>
+                                <li><a href="cadastrarServidor.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Novo Servidor</a></li>
+                                <li><a href="servidoresCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Servidores Cadastrados</a></li>                                
+                                <li class="divider"></li>
+                                <li role="presentation" class="dropdown-header">Usuários de servidores</li>
+                                <li><a href="cadastrarUserServidor.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Cadastrar Novo</a></li>
+                                <li><a href="userServidorCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
                             </ul>
                         </li> 
 
