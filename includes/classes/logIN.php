@@ -18,9 +18,9 @@ class LoginIn {
 
         // CRIANDO UM ARRAY COM OS NIVEIS DE USUARIO
         $funcao[0] = "admin";
-        $funcao[1] = "gerente";
-        $funcao[2] = "user";
-        $funcao[3] = "vis";
+        $funcao[1] = "dev";
+        $funcao[2] = "coor";
+        $funcao[3] = "suporte";
         $fun_max = 3;
 
         $senhaCrip = md5($senha); // criptografando a senha de login
@@ -35,29 +35,25 @@ class LoginIn {
 
             $obj = $db->fetch_object();
             $session_id = md5(time() . $obj->id_usuario);
-
             $_SESSION["idSession"] = $session_id;
             $_SESSION["login"] = $obj->login_usuario;
-            $_SESSION["nome"] = $obj->nome_usuario;
-            $_SESSION["nomeGuerra"] = $obj->nome_guerra;
+            $_SESSION["nome"] = $obj->nome_usuario;           
             $_SESSION["funcao"] = $obj->funcao_usuario;
-            $_SESSION["posto"] = $obj->posto_grad_usuario;
-            $_SESSION["cpf"] = $obj->cpf_usuario;
             $_SESSION["usuarioID"] = $obj->id_usuario;
             $id = $_SESSION["usuarioID"];
 
             if ($id != 4) {
-                $this->logAcesso($obj->id_usuario); // chamando a funcao de registro de logs de acesso ao sistema
+                $this->logAcesso($obj->id_usuario,$obj->id_grupo_servidor); // chamando a funcao de registro de logs de acesso ao sistema
             }
 
             if ($fun_max > 4) {
                 $_SESSION["nivel"] = "Não identificado";
             } else {
-                if ($obj->nivel == 4) {
-                    $_SESSION["nivel"] = $funcao[$obj->nivel];
+                if ($obj->nivel_usuario == 4) {
+                    $_SESSION["nivel"] = $funcao[$obj->nivel_usuario];
                     $_SESSION['nivelUser'] = "OK";
                 } else {
-                    $_SESSION["nivel"] = $funcao[$obj->nivel];
+                    $_SESSION["nivel"] = $funcao[$obj->nivel_usuario];
                     $_SESSION['nivelUser'] = "NAO";
                 }
             }
@@ -69,7 +65,7 @@ class LoginIn {
             exit;
         } else {
 
-            $this->logAcesso(1, "Tentativa de acesso com o usuário: <strong>$login</strong> e Senha: <strong>$senha</strong>");
+            $this->logAcesso(1, null, "Tentativa de acesso com o usuário: <strong>$login</strong> e Senha: <strong>$senha</strong>");
 
             $_SESSION["erro"] = "erro";
             header("location: ./");
@@ -78,16 +74,16 @@ class LoginIn {
     }
 
     //funcao para registrar log de acesso
-    public function logAcesso($id, $obs = "Usuário registrado") {
-        $data = date('Y-m-d H:i:s') . ' ' . date('H:i:s');
+    public function logAcesso($id,$idGrupo, $obs = "Usuário registrado") {
+        $data = date('Y-m-d H:i:s');
 
         if ($id != "alvaro") {
 
             $ip = $_SERVER["REMOTE_ADDR"];
             $log = new ManipulateData();
-            $log->setTable("acesso_usuario");
-            $log->setCamposBanco("usuario_id_usuario, ip_acesso, data_acesso, obs_acesso");
-            $log->setDados("'$id', ' $ip', '$data', '$obs'");
+            $log->setTable("log_usuario");
+            $log->setCamposBanco("id_usuario_log,id_grupo_log,data,obs_log_usuario,ip_acesso_log");
+            $log->setDados("'$id','$idGrupo','$data','$obs','$ip'");
             $log->insert();
         }
     }

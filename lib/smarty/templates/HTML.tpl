@@ -121,7 +121,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         {* <li><a href="../navbar/">Default</a></li> *}
                         <li class="dropdown">                        
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <small>{* $nomeUser *}</small> <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <small>{$nomeUser}</small> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="usuario.php"><span class="glyphicon glyphicon-edit"></span> Alterar Senha</a></li>
                                 <li><a href="logOUT.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>

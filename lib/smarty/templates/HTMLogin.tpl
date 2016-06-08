@@ -51,7 +51,7 @@
                 <div class="jumbotron">
                     <p class="lead text-center">Realize o login para ter acesso ao sistema</p><br />
                     {$erro}
-                    <form action="logSistem.php" method="post" name="logar" class="form-horizontal" role="form">
+                    <form action="loginSistema.php" method="post" name="logar" class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="inputLogin" class="col-sm-2 control-label">Usuário</label>
                             <div class="col-sm-8">

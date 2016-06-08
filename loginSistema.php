@@ -1,6 +1,5 @@
 <?php
 
-require_once './smarty/config/config.php';
 require_once './includes/models/ManipulateData.php';
 require_once './includes/classes/logIN.php';
 /* * ************************************************

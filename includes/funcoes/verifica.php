@@ -26,12 +26,10 @@ if (! isset ( $_SESSION ["idSession"] )) {
 	$smarty->assign ( 'nivel', 'NI' );
 	$local = 0;
 } else {
-	// autentica o usuario
-	
+	// autentica o usuario	
 	$nivel = $_SESSION ['nivel'];
 	$funcao = $_SESSION ['funcao'];
-	$smarty->assign ( "nomeUser", $_SESSION ["posto"] . " " . $_SESSION ["nomeGuerra"] );
-	$smarty->assign ( "posto", $_SESSION ["posto"] );
+	$smarty->assign ( "nomeUser", $_SESSION ["nome"]);
 	$smarty->assign ( "nivel", $nivel );
 	$smarty->assign ( "funcao", $funcao );
 	$smarty->assign ( "versao", "0.1" );
