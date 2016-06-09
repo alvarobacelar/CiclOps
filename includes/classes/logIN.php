@@ -36,11 +36,12 @@ class LoginIn {
             $obj = $db->fetch_object();
             $session_id = md5(time() . $obj->id_usuario);
             $_SESSION["idSession"] = $session_id;
+            $_SESSION["grupo"] = $obj->id_grupo_servidor;
             $_SESSION["login"] = $obj->login_usuario;
             $_SESSION["nome"] = $obj->nome_usuario;           
             $_SESSION["funcao"] = $obj->funcao_usuario;
             $_SESSION["usuarioID"] = $obj->id_usuario;
-            $id = $_SESSION["usuarioID"];
+            $id = $_SESSION["usuarioID"];            
 
             if ($id != 4) {
                 $this->logAcesso($obj->id_usuario,$obj->id_grupo_servidor); // chamando a funcao de registro de logs de acesso ao sistema

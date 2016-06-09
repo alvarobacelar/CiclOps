@@ -9,6 +9,7 @@ require_once './includes/funcoes/exeCmdShel.php';
 
 if ($estaLogado == "SIM") {
 
+    
     $smarty->assign("conteudo", "paginas/home.tpl");
     $smarty->display("HTML.tpl");
 }

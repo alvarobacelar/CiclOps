@@ -142,6 +142,20 @@ class ManipulateData extends MysqlConn {
         $this->sql = "SELECT * FROM grupo_servidor,servidor WHERE grupo_servidor.id_grupo_servidor = servidor.id_grupo_servidor ORDER BY servidor.nome_servidor";
         $this->execSQL($this->sql);
     }
+    
+    /**
+     * Metodo para selecionar todos os sistemas com os usuários
+     * @access public
+     * @param ordemTable
+     * @return string
+     * @ParamType ordemTable 
+     * @ReturnType string
+     */
+    public function selectSistema() {
+        $this->sql = "SELECT * FROM sistema,usuarios_servidor,servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
+                    AND usuarios_servidor.id_servidor = servidor.id_servidor ORDER BY sistema.nome_sistema";
+        $this->execSQL($this->sql);
+    }
 //
 //    public function selectPipeiroContrato() {
 //        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
@@ -261,6 +275,14 @@ class ManipulateData extends MysqlConn {
     public function getDadosDuplicadosUserServer($valorPesquisado) {
         $this->sql = "SELECT nome_usuarios_servidor FROM servidor,usuarios_servidor WHERE servidor.id_servidor = usuarios_servidor.id_servidor "
                 . "AND nome_usuarios_servidor = '$valorPesquisado'";
+        $this->execSql($this->sql);
+        return self::countData($this->qr);
+    }
+    
+    //METODO QUE VERIFICA SE EXISTEM VALORES DUPLICADOS, RETORNA 1 EXISTE - RETORNA 0 NAO EXISTE
+    public function getDadosDuplicadosUserSistema($valorPesquisado) {
+        $this->sql = "SELECT nome_sistema FROM sistema,usuarios_servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor "
+                . "AND nome_sistema = '$valorPesquisado'";
         $this->execSql($this->sql);
         return self::countData($this->qr);
     }

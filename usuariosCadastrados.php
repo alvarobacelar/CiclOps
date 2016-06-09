@@ -14,22 +14,28 @@ require_once './includes/funcoes/exeCmdShel.php';
  * Verificando se usuário está logado
  */
 if ($estaLogado == "SIM") {
+    // SO PERMITE ACESSO DE USUÁRIOS ADMINISTRADORES
+    if ($nivel == "admin") {
+        // CONDIÇÃO DE MOSTRAGEM DE FEEDBACK PARA USUÁRIOS
+        if (isset($_SESSION["excluirUser"])) {
+            
+        } else {
+            $smarty->assign("excluirUsuario", "");
+        }
 
-    if (isset($_SESSION["excluirUser"])) {
-        
+        // REALIZANDO BUSCA NO BANCO DE DADOS DE TODOS OS USUÁRIOS CADASTRADOS
+        $buscaUser = new ManipulateData();
+        $buscaUser->setTable("usuario");
+        $buscaUser->setEstado("status_usuario");
+        $buscaUser->setOrderTable("ORDER BY nome_usuario");
+        $buscaUser->selectAtivo();
+        while ($resultadoUsuarios[] = $buscaUser->fetch_object()) {
+            $smarty->assign("usuariosR", $resultadoUsuarios);
+        }
+
+        $smarty->assign("conteudo", "paginas/usuariosCadastrados.tpl");
+        $smarty->display("HTML.tpl");
     } else {
-        $smarty->assign("excluirUsuario", "");
+        header("Location: accessDenied.php");
     }
-
-    $buscaUser = new ManipulateData();
-    $buscaUser->setTable("usuario");
-    $buscaUser->setEstado("status_usuario");
-    $buscaUser->setOrderTable("ORDER BY nome_usuario");
-    $buscaUser->selectAtivo();
-    while ($resultadoUsuarios[] = $buscaUser->fetch_object()) {
-        $smarty->assign("usuariosR", $resultadoUsuarios);
-    }
-
-    $smarty->assign("conteudo", "paginas/usuariosCadastrados.tpl");
-    $smarty->display("HTML.tpl");
 }
