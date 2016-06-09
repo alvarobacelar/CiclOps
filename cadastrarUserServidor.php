@@ -13,18 +13,25 @@ require_once './includes/funcoes/exeCmdShel.php';
 if ($estaLogado == "SIM") {
 
 // verificação de erro de senhas ou de duplicação de usuário no cadastro (feedback para o usuário)
-    if (isset($_SESSION["erroUserServer"])) {
-        if ($_SESSION["erroUserServer"] == "duplicado") {
-            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Grupo já cadastrado</div>");
-        } else if ($_SESSION["erroUserServer"] == "Cadastrado") {
-            $smarty->assign("erroServidor", "<div class='alert alert-success' role='alert'>Grupo cadastrado com sucesso!</div>");
-        } else if ($_SESSION["erroUserServer"] == "vazio") {
-            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Erro ao cadastrar novo grupo, não foi informado o nome do grupo!</div>");
+    if (isset($_SESSION["erroUser"])) {
+        if ($_SESSION["erroUser"] == "duplicado") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Usuário já cadastrado no servidor selecionado</div>");
+        } else if ($_SESSION["erroUser"] == "Cadastrado") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-success' role='alert'>Usuário cadastrado com sucesso!</div>");
+        } else if ($_SESSION["erroUser"] == "vazio") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Erro ao cadastrar novo usuário, não foi informado nenhum parâmetro!</div>");
         }
     } else {
         $smarty->assign("erroCadastro", "");
     }
-    unset($_SESSION["erroUserServer"]);
+    unset($_SESSION["erroUser"]);
+
+    $buscaGrupo = new ManipulateData();
+    $buscaGrupo->setTable("servidor");
+    $buscaGrupo->select();
+    while ($resultado[] = $buscaGrupo->fetch_object()) {
+        $smarty->assign("grupo", $resultado);
+    }
 
     $smarty->assign("conteudo", "paginas/cadastrarUserServidor.tpl");
     $smarty->display("HTML.tpl");

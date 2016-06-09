@@ -15,11 +15,13 @@ if ($estaLogado == "SIM") {
 // verificação de erro de senhas ou de duplicação de usuário no cadastro (feedback para o usuário)
     if (isset($_SESSION["erroServidor"])) {
         if ($_SESSION["erroServidor"] == "duplicado") {
-            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Grupo já cadastrado</div>");
+            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Já existe um servidor com este nome, tente por outro nome</div>");
         } else if ($_SESSION["erroServidor"] == "Cadastrado") {
-            $smarty->assign("erroServidor", "<div class='alert alert-success' role='alert'>Grupo cadastrado com sucesso!</div>");
-        } else if ($_SESSION["erro"] == "vazio") {
-            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Erro ao cadastrar novo grupo, não foi informado o nome do grupo!</div>");
+            $smarty->assign("erroCadastro", "<div class='alert alert-success' role='alert'>Servidor cadastrado com sucesso!</div>");
+        } else if ($_SESSION["erroServidor"] == "duplicadoIP") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Já existe um servidor cadastrado com esse endereço de IP</div>");
+        } else if ($_SESSION["erroServidor"] == "vazio") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Erro ao cadastrar novo servidor, não foi informado o nome do servidor!</div>");
         }
     } else {
         $smarty->assign("erroCadastro", "");
