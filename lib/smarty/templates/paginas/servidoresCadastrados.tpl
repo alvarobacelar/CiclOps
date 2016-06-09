@@ -23,7 +23,7 @@
                         <td class="active"> {$u->obs_servidor} </td>
                         <td class="active"> {$u->data_cadastro_servidor|date_format:"%d/%m/%Y"} </td>
                         <td class="active">
-                            <a href="editarUsuario.php?id={$u->id_servidor}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
+                            <a href="editarServidor.php?idServer={$u->id_servidor}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
                             <button type="button" onclick="excluirServidor({$u->id_servidor})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-warning-sign"></span> Excluir</button>
                         </td>
                     </tr>
