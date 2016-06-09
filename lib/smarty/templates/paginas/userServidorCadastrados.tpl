@@ -24,7 +24,7 @@
                         <td class="active"> {$u->data_usuarios_servidor|date_format:"%d/%m/%Y"} </td>
                         <td class="active">
                             <a href="editarUsuario.php?id={$u->id_usuarios_servidor}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
-                            <button type="button" onclick="excluirServidor({$u->id_usuarios_servidor})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-warning-sign"></span> Excluir</button>
+                            <button type="button" onclick="excluirServidor({$u->id_usuarios_servidor})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-warning-sign"></span> Desativar</button>
                         </td>
                     </tr>
                 {/foreach}

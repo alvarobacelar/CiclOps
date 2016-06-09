@@ -49,21 +49,11 @@
                     <ul class="nav navbar-nav">
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opção <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Deploy <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">                                   
-                                <li role="presentation" class="dropdown-header">Opção 1</li>
-                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>
-
-                                <li class="divider"></li>
-
-                                <li role="presentation" class="dropdown-header">Opção 2</li>
-                                <li><a href=""><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Opção 2</a></li>
+                                <li><a href="realizarDeploy.php"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Realizar Deploy</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reverter Deploy</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>                          
 
                                 <li class="divider"></li>
 
@@ -78,12 +68,16 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li role="presentation" class="dropdown-header">Servidores</li>
-                                <li><a href="cadastrarServidor.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Novo Servidor</a></li>
-                                <li><a href="servidoresCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Servidores Cadastrados</a></li>                                
+                                <li><a href="cadastrarServidor.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Servidor Novo</a></li>
+                                <li><a href="servidoresCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>                                
                                 <li class="divider"></li>
                                 <li role="presentation" class="dropdown-header">Usuários de servidores</li>
-                                <li><a href="cadastrarUserServidor.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Cadastrar Novo</a></li>
+                                <li><a href="cadastrarUserServidor.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuário Novo</a></li>
                                 <li><a href="userServidorCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
+                                <li class="divider"></li>
+                                <li role="presentation" class="dropdown-header">Sistemas</li>
+                                <li><a href="cadastrarSistema.php"><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Sistema Novo</a></li>
+                                <li><a href="sistemasCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
                             </ul>
                         </li> 
 
