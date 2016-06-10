@@ -18,6 +18,10 @@ if ($estaLogado == "SIM") {
             $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Já existe um servidor com este nome, tente por outro nome</div>");
         } else if ($_SESSION["erroServidor"] == "Cadastrado") {
             $smarty->assign("erroCadastro", "<div class='alert alert-success' role='alert'>Servidor cadastrado com sucesso!</div>");
+        } else if ($_SESSION["erroServidor"] == "editado") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-success' role='alert'>Servidor editado com sucesso!</div>");
+        } else if ($_SESSION["erroServidor"] == "erroEditar") {
+            $smarty->assign("erroCadastro", "<div class='alert alert-success' role='alert'>Erro ao editar o servdior, você não passou dados sificiente para a edição</div>");
         } else if ($_SESSION["erroServidor"] == "duplicadoIP") {
             $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Já existe um servidor cadastrado com esse endereço de IP</div>");
         } else if ($_SESSION["erroServidor"] == "vazio") {

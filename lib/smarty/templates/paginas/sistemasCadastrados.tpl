@@ -2,8 +2,8 @@
     <div class="panel-heading">
         <h2 class="panel-title">Sistemas Cadastrados <a href="cadastrarSistema.php" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Cadastrar Novo</a></h2>
     </div>
-
-    {$excluirSistema}
+    <br>
+    {$erroCadastro}
     <div class="table-responsive table-bordered">
         <table class="table">
 
@@ -23,7 +23,7 @@
                         <td class="alert-info"> {$u->nome_servidor} <br> <small>(IP - {$u->ip_servidor})</small> </td>
                         <td class="active"> {$u->data_cadastro_servidor|date_format:"%d/%m/%Y"} </td>
                         <td class="active">
-                            <a href="editarUsuario.php?id={$u->id_sistema}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
+                            <a href="editarSistemasCadastrados.php?idSistema={$u->id_sistema}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
                             <button type="button" onclick="excluirServidor({$u->id_sistema})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-warning-sign"></span> Excluir</button>
                         </td>
                     </tr>

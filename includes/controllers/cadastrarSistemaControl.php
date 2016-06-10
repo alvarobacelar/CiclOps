@@ -2,9 +2,9 @@
 
 require_once '../models/ManipulateData.php';
 
-/* * ******************************************************
+/* *********************************************************
  * ** CADASTRO SISTEMA 
- * ******************************************************* */
+ * *********************************************************/
 //CAPTANDO DADOS DO FORMULARIO
 $nomeSistema = addslashes($_POST["inputNomeSistema"]);
 $pathUser = addslashes($_POST["inputPathSistema"]);

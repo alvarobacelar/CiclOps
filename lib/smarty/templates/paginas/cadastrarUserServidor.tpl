@@ -7,7 +7,7 @@
     <div class="panel-body">
 
         {$erroCadastro} 
-        <form action="includes/controllers/cadastrarUserServidorControl.php" method="post" name="cadastrar" class="form-horizontal" role="form" onSubmit="return verificaSenha()">
+        <form action="includes/controllers/cadastrarUserServidorControl.php" method="post" name="cadastrar" class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="inputNomeUser">Nome do usuário servidor</label>
                 <div class="col-sm-3">

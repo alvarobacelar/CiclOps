@@ -9,12 +9,7 @@ $idCidade = addslashes($_POST["inputIdEditarCidade"]);
 $cidadeNome = addslashes($_POST["inputNomeCidade"]);
 $ufCidade = addslashes($_POST["inputUf"]);
 $obs = addslashes($_POST["textAreaObs"]);
-$qntCarradasCidade = addslashes($_POST["inputQntCarradas"]);
-$numeroRotasCidade = addslashes($_POST["inputNrRotas"]);
-$valorEstimadoCidade = addslashes($_POST["inputValorRotas"]);
-$ValorAnualCidade = addslashes($_POST["inputValorAnual"]);
-$usuarioEdicao = $_SESSION["posto"] . " " . $_SESSION["nome"];
-$dataEdicao = date("Y-m-d") . " " . date("H:i:s");
+$dataEdicao = date("Y-m-d");
 
 if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "gerente") {
 
