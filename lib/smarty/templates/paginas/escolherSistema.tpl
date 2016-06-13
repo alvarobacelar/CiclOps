@@ -28,7 +28,7 @@
                         <td class="active">{$u->nome_sistema}</td>                        
                         <td class="active">{$u->path_sistema}</td>
                         <td class="active">
-                            <a href="realizarDeploy.php?servidor={$u->id_servidor}&sistema={$u->id_sistema}" class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-search"></span> Escolher sistema</a>
+                            <a href="enviarArquivoServidor.php?servidor={$u->id_servidor}&sistema={$u->id_sistema}" class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-search"></span> Escolher sistema</a>
                         </td>
                     </tr>
                 {/foreach}
