@@ -15,9 +15,9 @@ if ($estaLogado == "SIM"){
     
     if ($nivel == "admin" || $nivel == "dev"){
         
-        die(mysql_insert_id()); 
         
-        $smarty->assign("conteudo", "paginas/enviarArquivoServidor.tpl");
+        
+        $smarty->assign("conteudo", "paginas/iniciarDeploy.tpl");
         $smarty->display("HTML.tpl");
     }
     

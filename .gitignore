@@ -6,3 +6,4 @@ lib/smarty/cache/*
 .project
 nbproject/*
 Release.key
+arquivos/*

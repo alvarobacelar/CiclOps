@@ -39,7 +39,7 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
         $_UP['erros'][2] = 'O arquivo ultrapassa o limite de tamanho especifiado no HTML';
         $_UP['erros'][3] = 'O upload do arquivo foi feito parcialmente';
         $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
-        
+   
 
         // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
         if ($_FILES['fileWar']['error'] != 0) {
@@ -91,8 +91,6 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 ######################## FIM DA FUNÇÃO DE UPLOAD #######################
 ########################################################################
     }
-    
-    die ($fileWar);
 
     if (!empty($fileWar)) {
 
