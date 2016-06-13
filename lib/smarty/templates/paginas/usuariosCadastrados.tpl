@@ -3,7 +3,7 @@
         <h2 class="panel-title">Usuários Cadastrados <a href="cadastrarUsuario.php" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Cadastrar Novo</a></h2>
     </div>
 
-    {$excluirUsuario}
+    {$erroCadastro}
     <div class="table-responsive table-bordered">
         <table class="table">
 
