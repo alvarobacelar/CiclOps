@@ -242,7 +242,7 @@ class ManipulateData extends MysqlConn {
 //    }
 
     public function selectAlterar() {
-        $this->sql = "SELECT * FROM $this->table WHERE $this->fieldId = '$this->valueId' $this->orderTable";
+        $this->sql = "SELECT $this->campoBancoSelect FROM $this->table WHERE $this->fieldId = '$this->valueId' $this->orderTable";
         $this->execSQL($this->sql);
     }
 
