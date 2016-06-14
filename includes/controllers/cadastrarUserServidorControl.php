@@ -19,7 +19,7 @@ if (!empty($nomeUser) && !empty($pathTomcat) && !empty($servidorUser)) {
     //$cad->setCampoTable("nome_grupo_servidor");
 
     //VERIFICANDO SE EXISTE REGISTRO CADASTRADO
-    if ($cad->getDadosDuplicadosUserServer("$nomeUser") >= 1) {
+    if ($cad->getDadosDuplicadosUserServer("$nomeUser","$servidorUser") >= 1) {
         $_SESSION["erroUser"] = "duplicado";
         header("Location: ../../cadastrarUserServidor.php");
     } else {

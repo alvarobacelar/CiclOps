@@ -13,7 +13,7 @@ require_once 'MysqlConn_MYSLQ.php';
  */
 class ManipulateData extends MysqlConn {
 
-    private $sql, $table, $camposBanco, $dados, $status, $campoTable, $valueId, $fieldId, $orderTable = "", $campoBancoSelect = "*",$estado;
+    private $sql, $table, $camposBanco, $dados, $status, $campoTable, $valueId, $fieldId, $orderTable = "", $campoBancoSelect = "*",$estado, $insertID;
 
     //ENVIA O NOME DA TABELA A SER USADA NA CLASSE
     public function setTable($t) {
@@ -61,12 +61,16 @@ class ManipulateData extends MysqlConn {
     public function getStatus() {
         return $this->status;
     }
+    public function getInsertID(){
+        return $this->insertID;
+    }
 
     //METODO QUE EFETUA CADASTROS DE DADOS NO BANCO
     public function insert() {
         $this->sql = "INSERT INTO $this->table($this->camposBanco)VALUES($this->dados)";
         if (self::execSql($this->sql)) {
             $this->status = "Cadastrado";
+            $this->insertID = mysql_insert_id();
         }
     }
 
@@ -156,59 +160,6 @@ class ManipulateData extends MysqlConn {
                     AND usuarios_servidor.id_servidor = servidor.id_servidor ORDER BY sistema.nome_sistema";
         $this->execSQL($this->sql);
     }
-//
-//    public function selectPipeiroContrato() {
-//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                                AND $this->fieldId = '$this->valueId'";
-//        $this->execSQL($this->sql);
-//    }
-//
-//    public function selectPipeiroTodos() {
-//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                                ORDER BY $this->orderTable";
-//
-//        $this->execSQL($this->sql);
-//    }
-//
-//    public function selectPipeiroAtivo() {
-//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                                AND pipeiro.id_cidade_atuante != '10'
-//                                                ORDER BY $this->orderTable";
-//        $this->execSQL($this->sql);
-//    }
-
-//    public function selectPipeiroDesativado() {
-//        $this->sql = "SELECT * FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                                AND pipeiro.id_cidade_atuante = '10'
-//                                                ORDER BY $this->orderTable";
-//        $this->execSQL($this->sql);
-//    }
-//
-//    public function CountPipeiroAtivo() {
-//        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                                AND pipeiro.id_cidade_atuante != 10
-//                                                ORDER BY nome_pipeiro";
-//        $this->execSQL($this->sql);
-//        $total = $this->fetch_object();
-//        $cont = $total->total;
-//        return $cont;
-//    }
-//
-//    public function CountPipeiroDesativado() {
-//        $this->sql = "SELECT count(*) as total FROM $this->table WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante 
-//                                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                                AND pipeiro.id_cidade_atuante = 10
-//                                                ORDER BY nome_pipeiro";
-//        $this->execSQL($this->sql);
-//        $total = $this->fetch_object();
-//        $cont = $total->total;
-//        return $cont;
-//    }
 
     /**
      * Metodo para contar o total de registro de uma query
@@ -223,23 +174,6 @@ class ManipulateData extends MysqlConn {
         $cont = $total->total;
         return $cont;
     }
-
-//    /**
-//     * Metodo para selecionar cidade e ver quais pipeiros estão trabalhando nesta
-//     * @access public
-//     * @param setDados
-//     * @return string
-//     * @ParamType setDados
-//     * @ReturnType string
-//     */
-//    public function selectCidadeAtuacao() {
-//        $this->sql = "SELECT * FROM pipeiro, cidade_atuante, veiculo 
-//                                WHERE pipeiro.id_cidade_atuante = cidade_atuante.id_cidade_atuante
-//                                AND pipeiro.id_veiculo = veiculo.id_veiculo
-//                                AND $this->camposBanco = '$this->dados'
-//                                ORDER BY pipeiro.nome_pipeiro";
-//        $this->execSQL($this->sql);
-//    }
 
     public function selectAlterar() {
         $this->sql = "SELECT $this->campoBancoSelect FROM $this->table WHERE $this->fieldId = '$this->valueId' $this->orderTable";
@@ -272,9 +206,9 @@ class ManipulateData extends MysqlConn {
     }
     
     //METODO QUE VERIFICA SE EXISTEM VALORES DUPLICADOS, RETORNA 1 EXISTE - RETORNA 0 NAO EXISTE
-    public function getDadosDuplicadosUserServer($valorPesquisado) {
+    public function getDadosDuplicadosUserServer($valorPesquisado,$serv) {
         $this->sql = "SELECT nome_usuarios_servidor FROM servidor,usuarios_servidor WHERE servidor.id_servidor = usuarios_servidor.id_servidor "
-                . "AND nome_usuarios_servidor = '$valorPesquisado'";
+                . "AND servidor.id_servidor = '$serv' AND  nome_usuarios_servidor = '$valorPesquisado'";
         $this->execSql($this->sql);
         return self::countData($this->qr);
     }

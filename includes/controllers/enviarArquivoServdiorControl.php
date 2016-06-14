@@ -94,16 +94,14 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 
     if (!empty($fileWar)) {
 
-        $cadastraOM = new ManipulateData();
-        $cadastraOM->setTable("file_deploy");
-        $cadastraOM->select();
-
-        $cadastraOM->setCamposBanco("id_usuario_file_deploy,id_sistema,id_usuarios_servidor,id_servidor,nome_file_deploy,data_file_deploy,status_file_deploy,obs_file_deploy");
-        $cadastraOM->setDados("'$idUsuario','$sistema','$userSistema','$servidor','$fileWar','$data','$status','$obs'");
-        $cadastraOM->insert();
-
+        $cadastraFile = new ManipulateData();
+        $cadastraFile->setTable("file_deploy");
+        $cadastraFile->setCamposBanco("id_usuario_file_deploy,id_sistema,id_usuarios_servidor,id_servidor,nome_file_deploy,data_file_deploy,status_file_deploy,obs_file_deploy");
+        $cadastraFile->setDados("'$idUsuario','$sistema','$userSistema','$servidor','$fileWar','$data','$status','$obs'");
+        $cadastraFile->insert();
+        
         $_SESSION["erroFile"] = "cadastrado";
-        header("Location: ../../iniciarDeploy.php");
+        header("Location: ../../iniciarDeploy.php?idFile=".$cadastraFile->getInsertID());
     } else {
         header("Location: ../../erro.php");
     }

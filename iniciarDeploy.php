@@ -15,7 +15,15 @@ if ($estaLogado == "SIM"){
     
     if ($nivel == "admin" || $nivel == "dev"){
         
+        $idFile = addslashes($_GET["idFile"]);
         
+        $buscaFile = new ManipulateData();
+        $buscaFile->setTable("file_deploy");
+        $buscaFile->setFieldId("id_file_deploy");
+        $buscaFile->setValueId("$idFile");
+        $buscaFile->selectAlterar();
+        $filAr = $buscaFile->fetch_object();
+        $smarty_>assign("file",$filAr);
         
         $smarty->assign("conteudo", "paginas/iniciarDeploy.tpl");
         $smarty->display("HTML.tpl");
