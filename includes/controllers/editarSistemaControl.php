@@ -19,7 +19,7 @@ if ($_SESSION["nivel"] == "admin") {
 
         $editaServidor = new ManipulateData();
         $editaServidor->setTable("sistema");
-        $editaServidor->setCamposBanco("id_usuarios_servidor='$userServidor',id_servidor='$servidor',nome_sistema='$nomeSistema',path_sistema='$pathUser',status_sistema='$status'");
+        $editaServidor->setCamposBanco("id_usuarios_servidor='$userServidor', id_servidor='$servidor', nome_sistema='$nomeSistema', path_sistema='$pathUser', status_sistema='$status'");
         $editaServidor->setFieldId("id_sistema");
         $editaServidor->setValueId("$idSistema");
         $editaServidor->update();

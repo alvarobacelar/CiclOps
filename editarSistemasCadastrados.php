@@ -52,6 +52,24 @@ if ($estaLogado == "SIM") {
             while ($resultadoUserServidores[] = $buscaUserServer->fetch_object()) {
                 $smarty->assign("servidorR", $resultadoUserServidores);
             }
+            
+            // buscando servidores cadastrados para realização de alteração do sistema. 
+            $buscaUsern = new ManipulateData();
+            $buscaUsern->setTable("usuarios_servidor");
+            $buscaUsern->setEstado("status_usuario_servidor");
+            $buscaUsern->selectAtivo();            
+            while ($resuUsr[] = $buscaUsern->fetch_object()){
+                $smarty->assign("usr", $resuUsr);
+            }
+            
+//            // buscando servidores cadastrados para realização de alteração do sistema. 
+//            $buscaServidorn = new ManipulateData();
+//            $buscaServidorn->setTable("servidor");
+//            $buscaServidorn->setEstado("status_servidor");
+//            $buscaServidorn->selectAtivo();            
+//            while ($resuServ[] = $buscaServidorn->fetch_object()){
+//                $smarty->assign("serv", $resuServ);
+//            }
 
             $smarty->assign("conteudo", "paginas/editarSistemasCadastrados.tpl");
             $smarty->display("HTML.tpl");

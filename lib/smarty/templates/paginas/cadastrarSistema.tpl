@@ -27,8 +27,8 @@
                 <div class="col-sm-3">
                     <select class="form-control" id="selectServidor" name="selectServidor" required="">
                         <option value="" selected="">Escolha o servidor</option>                        
-                        {foreach $servidorR as $g}
-                            <option value="{$g->id_servidor}">{$g->nome_servidor}</option>
+                        {foreach $serv as $g}
+                            <option value="{$g->id_servidor}">{$g->nome_servidor} ({$g->ip_servidor})</option>
                         {/foreach}
                     </select>
                 </div>
@@ -38,8 +38,8 @@
                 <div class="col-sm-3">
                     <select class="form-control" id="selectUserServidor" name="selectUserServidor" required="">
                         <option value="" selected="">Escolha o usuário do servidor</option>                        
-                        {foreach $servidorR as $g}
-                            <option value="{$g->id_usuarios_servidor}">{$g->nome_usuarios_servidor}</option>
+                        {foreach $usr as $g}
+                            <option value="{$g->id_usuarios_servidor}">{$g->nome_usuarios_servidor} ({$g->id_usuarios_servidor})</option>
                         {/foreach}
                     </select>
                 </div>
