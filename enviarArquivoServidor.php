@@ -46,7 +46,7 @@ if ($estaLogado == "SIM") {
             $smarty->assign("conteudo", "paginas/enviarArquivoServidor.tpl");
             $smarty->display("HTML.tpl");
         } else {
-            
+            header("Location: realizarDeploy.php");
         }
     } else {
         header("Localtion: accessDenied.php");
