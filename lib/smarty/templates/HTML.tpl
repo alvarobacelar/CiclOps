@@ -54,16 +54,14 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Deploy <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">                                   
                                 <li><a href="realizarDeploy.php"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Realizar Deploy</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reverter Deploy</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Opção 2</a></li>                          
-
+                                <li><a href=""><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reverter Deploy</a></li>
+                                <li><a href=""><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Historico de Deploy</a></li>
                                 <li class="divider"></li>
-
-                                <li role="presentation" class="dropdown-header">Opção 2 </li>
-                                <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Opção 2</a></li>
+                                <li role="presentation" class="dropdown-header">Tomcat </li>
+                                <li><a href="reiniciarTomcat.php"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reiniciar Tomcat</a></li>
                                 <!--<li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Ficha Cadastro</a></li>-->
                                 <!--<li><a href="gerarEntradaPipeiros.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Rel. entrada de pipeiros</a></li>-->                                    
-                                <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Opção 2</a></li>
+                                
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -98,8 +96,8 @@
                             </ul>
                         </li>                    
 
+                        {*
                         <li><a href="cadastrarOM.php">Opção 2</a></li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opção 2 <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu"> 
@@ -115,7 +113,8 @@
                                 <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Iprimir</a></li>
 
                             </ul>
-                        </li>                       
+                        </li>     
+                        *}
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
