@@ -79,7 +79,7 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
             if (move_uploaded_file($_FILES['fileWar'] ['tmp_name'], $_UP['pasta'] . $nome_final)) {
 // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo
 //echo '<br /><a href="' . $_UP['pasta'] . $nome_final . '">Clique aqui para acessar o arquivo</a>;
-                $fileWar = "arquivos/" . $nome_final;
+                $fileWar = $nome_final;
                 
             } else {
                 $_SESSION["erroFile"] = "erroUpload";
@@ -96,8 +96,8 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 
         $cadastraFile = new ManipulateData();
         $cadastraFile->setTable("file_deploy");
-        $cadastraFile->setCamposBanco("id_usuario_file_deploy,id_sistema,id_usuarios_servidor,id_servidor,nome_file_deploy,data_file_deploy,status_file_deploy,obs_file_deploy");
-        $cadastraFile->setDados("'$idUsuario','$sistema','$userSistema','$servidor','$fileWar','$data','$status','$obs'");
+        $cadastraFile->setCamposBanco("id_usuario_file_deploy,id_sistema,id_usuarios_servidor,id_servidor,nome_file_deploy,data_file_deploy,status_file_deploy,obs_file_deploy,nome_original_file");
+        $cadastraFile->setDados("'$idUsuario','$sistema','$userSistema','$servidor','$fileWar','$data','$status','$obs','$arquivo'");
         $cadastraFile->insert();
         
         $_SESSION["erroFile"] = "cadastrado";

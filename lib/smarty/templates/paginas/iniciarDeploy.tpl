@@ -3,9 +3,23 @@
         <h2 class="panel-title">Escolha Servidor para Deploy</h2>
     </div>
 
+    {literal}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("a").click(function (event) {
+                    var acao = $(this).attr("value");
+                    $("#conteudo").load('execShell.php',{fileOk:acao});
+                });
+            });
+            function aviso() {
+                alert('O conteúdo será carregado agora!');
+            }
+        </script>
+    {/literal}
+
     <div class="table-responsive table-bordered">
         <table class="table">
-            
+
             <nav class="text-center">
                 <ul class="pagination">
                     <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">1º Escolher Servidor</span></a></li>
@@ -18,22 +32,28 @@
                 </ul>
             </nav>
 
+            {if !empty($file)}
+                <th><center>Sistema</center></th>             
+                <th><center>Usuario</center></th>
+                <th><center>Servidor</center></th>
+                <th><center>Arquivo</center></th>
+                <th><center>Ação</center></th>
+                <tr class="text-center">                       
+                    <td class="active">{$file->nome_sistema}</td>                        
+                    <td class="active">{$file->nome_usuarios_servidor}</td>
+                    <td class="active">{$file->nome_servidor}<br><small>(IP - {$file->ip_servidor})</small></td>
+                    <td class="active">{$file->nome_file_deploy}</td>
+                    <td class="active">
+                        <a type="button" value='{$file->id_file_deploy}' title="O arquivo será enviado para o servidor {$file->ip_servidor} e depois será feito o deploy"  class="btn btn-success"> <span class="glyphicon glyphicon-share"></span> Iniciar Deploy</a>
+                    </td>
+                </tr>
 
-            {if isset($servidoresGrupo)}                
-                <th><center>Servidor</center></th>             
-                <th><center>IP</center></th>
-                <th><center>Opção</center></th>
-                    {foreach $servidoresGrupo as $u}
-                    <tr class="text-center">                       
-                        <td class="active">{$u->nome_servidor}</td>                        
-                        <td class="active">{$u->ip_servidor}</td>
-                        <td class="active">
-                            <a href="realizarDeploy.php?servidor={$u->id_servidor}" class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-search"></span> Escolher servidor</a>
-                        </td>
-                    </tr>
-                {/foreach}
+                <tr>
+                    <td colspan="5"><div id="conteudo"></div></td>
+                </tr>
+
             {else}
-                <tr class="text-center"><td><h3>Nenhum servidor cadastrado</h3></td></tr>
+                <tr class="text-center"><td><h3>Nenhum arquivo enviado</h3></td></tr>
                         {/if}
         </table>
     </div>

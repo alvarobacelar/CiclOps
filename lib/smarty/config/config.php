@@ -8,6 +8,7 @@
 //die($root);
 // hack para rodar em linux e windows
 session_start();
+define('PATH_ARQUIVOS', str_replace("\\", "/", getcwd()) . '/arquivos/');
 define('SMARTY_DIR', str_replace("\\", "/", getcwd()) . '/lib/smarty/lib/');
 define("TEMPLATE", "");
 require_once(SMARTY_DIR . 'Smarty.class.php');

@@ -13,7 +13,7 @@ require_once 'MysqlConn_MYSLQ.php';
  */
 class ManipulateData extends MysqlConn {
 
-    private $sql, $table, $camposBanco, $dados, $status, $campoTable, $valueId, $fieldId, $orderTable = "", $campoBancoSelect = "*",$estado, $insertID;
+    private $sql, $table, $camposBanco, $dados, $status, $campoTable, $valueId, $fieldId, $orderTable = "", $campoBancoSelect = "*", $estado, $insertID;
 
     //ENVIA O NOME DA TABELA A SER USADA NA CLASSE
     public function setTable($t) {
@@ -34,7 +34,7 @@ class ManipulateData extends MysqlConn {
     public function setDados($d) {
         $this->dados = $d;
     }
-    
+
     public function setEstado($e) {
         $this->estado = $e;
     }
@@ -61,7 +61,8 @@ class ManipulateData extends MysqlConn {
     public function getStatus() {
         return $this->status;
     }
-    public function getInsertID(){
+
+    public function getInsertID() {
         return $this->insertID;
     }
 
@@ -120,7 +121,7 @@ class ManipulateData extends MysqlConn {
         $this->sql = "SELECT * FROM $this->table WHERE acesso_usuario.usuario_id_usuario = usuario.id_usuario ORDER BY $this->orderTable";
         $this->execSQL($this->sql);
     }
-    
+
     /**
      * Metodo para selecionar todos os servidores com grupos
      * @access public
@@ -146,7 +147,7 @@ class ManipulateData extends MysqlConn {
         $this->sql = "SELECT * FROM grupo_servidor,servidor WHERE grupo_servidor.id_grupo_servidor = servidor.id_grupo_servidor ORDER BY servidor.nome_servidor";
         $this->execSQL($this->sql);
     }
-    
+
     /**
      * Metodo para selecionar todos os sistemas com os usuários
      * @access public
@@ -180,6 +181,14 @@ class ManipulateData extends MysqlConn {
         $this->execSQL($this->sql);
     }
 
+    public function selectFileDeploy() {
+        $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema 
+                        AND sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
+                        AND usuarios_servidor.id_servidor = servidor.id_servidor AND
+                        $this->fieldId = '$this->valueId' $this->orderTable";
+        $this->execSQL($this->sql);
+    }
+
     public function selectNome() {
         $this->sql = "SELECT * FROM $this->table WHERE $this->fieldId like '%$this->valueId%'";
         $this->execSQL($this->sql);
@@ -204,15 +213,15 @@ class ManipulateData extends MysqlConn {
         $this->execSql($this->sql);
         return self::countData($this->qr);
     }
-    
+
     //METODO QUE VERIFICA SE EXISTEM VALORES DUPLICADOS, RETORNA 1 EXISTE - RETORNA 0 NAO EXISTE
-    public function getDadosDuplicadosUserServer($valorPesquisado,$serv) {
+    public function getDadosDuplicadosUserServer($valorPesquisado, $serv) {
         $this->sql = "SELECT nome_usuarios_servidor FROM servidor,usuarios_servidor WHERE servidor.id_servidor = usuarios_servidor.id_servidor "
                 . "AND servidor.id_servidor = '$serv' AND  nome_usuarios_servidor = '$valorPesquisado'";
         $this->execSql($this->sql);
         return self::countData($this->qr);
     }
-    
+
     //METODO QUE VERIFICA SE EXISTEM VALORES DUPLICADOS, RETORNA 1 EXISTE - RETORNA 0 NAO EXISTE
     public function getDadosDuplicadosUserSistema($valorPesquisado) {
         $this->sql = "SELECT nome_sistema FROM sistema,usuarios_servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor "
@@ -220,9 +229,9 @@ class ManipulateData extends MysqlConn {
         $this->execSql($this->sql);
         return self::countData($this->qr);
     }
-    
+
     //METODO QUE VERIFICA SE EXISTEM VALORES DUPLICADOS, RETORNA 1 EXISTE - RETORNA 0 NAO EXISTE
-    public function getDadosDuplicados2($campoBanco ,$valorPesquisado) {
+    public function getDadosDuplicados2($campoBanco, $valorPesquisado) {
         $this->sql = "SELECT $campoBanco FROM $this->table WHERE $campoBanco = '$valorPesquisado'";
         $this->execSql($this->sql);
         return self::countData($this->qr);
