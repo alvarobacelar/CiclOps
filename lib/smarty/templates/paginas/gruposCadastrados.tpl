@@ -4,8 +4,8 @@
 
         <h2 class="panel-title">Grupos Cadastrados <a href="cadastrarGrupo.php" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Cadastrar Novo</a></h2>
     </div>
-
-    {$excluirGrupo}
+    <br>
+    {$erroCadastro}
     <div class="table-responsive table-bordered">
         <table class="table">
 
@@ -23,7 +23,7 @@
                         <td class="active">{$u->descricao_grupo_servidor}</td>
                         <td class="active">{if $u->status_grupo_servidor == 1}<button type="button" class="btn btn-xs btn-success" disabled="disabled"> Ativo </button>{else if $u->status_grupo_servidor == 0}<button type="button" class="btn btn-xs btn-default" disabled="disabled"> Desativado</button> {else}<button type="button" class="btn btn-xs btn-warning" disabled="disabled"> Status desconhecido</button> {/if}</td>
                         <td class="active">
-                            <a href="editarUsuario.php?id={$u->id_grupo_servidor}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
+                            <a href="editarGrupo.php?idGrup={$u->id_grupo_servidor}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>
                             <button type="button" onclick="excluirUsuario({$u->id_grupo_servidor})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-warning-sign"></span> Desativar</button>
                         </td>
                     </tr>
