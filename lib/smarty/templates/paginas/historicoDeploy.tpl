@@ -49,6 +49,7 @@
                             <td class="alert-info">{$u->data_file_deploy|date_format:"%d/%m/%Y"}</td>
                             <td class="alert-info">
                                 <a href="iniciarDeploy.php?idFile={$u->id_file_deploy}" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-upload"></span> Realizar Deploy</a>
+                                <a href="{$u->id_file_deploy}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> Excluir arquivo</a>
                             </td>
                         </tr>    
                     {/if}

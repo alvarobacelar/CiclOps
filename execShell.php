@@ -62,11 +62,14 @@ if ($estaLogado == "SIM") {
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
          */
         $dat = date("Y-m-d");
+        $fileSistema = $filAr->path_sistema . date("Ymd");
         $altFile = new ManipulateData();
         $altFile->setTable("file_deploy");
-        $altFile->setCamposBanco("status_file_deploy='0',data_file_deploy='$dat'");
+        $altFile->setCamposBanco("status_file_deploy='0',data_file_deploy='$dat',backup_sistema='$fileSistema'"); // quando o status_reverter_deploy for igual a 1 significa que o deploy foi realizado e está habilitado pra fazer undeploy
         $altFile->setFieldId("id_file_deploy");
         $altFile->setValueId("$idFile");
         $altFile->update();
+    } else {
+        header("Location: realizarDeploy.php");
     }
 }

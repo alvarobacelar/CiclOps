@@ -52,5 +52,7 @@ if ($estaLogado == "SIM") {
         $altFile->setFieldId("id_sistema");
         $altFile->setValueId("$sistemaTomcat");
         $altFile->update();
+    } else {
+        header("Location: reiniciarTomcat.php");
     }
 }

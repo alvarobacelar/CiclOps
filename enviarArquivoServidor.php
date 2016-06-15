@@ -24,7 +24,9 @@ if ($estaLogado == "SIM") {
                      $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Tanho do arquivo é superior que o permitido</div>");
                 } else if ($_SESSION["erroFile"] == "erroUpload"){
                     $smarty->assign("erroCadastro", "<div class='alert alert-danger' role='alert'>Ocorreu algum erro ao enviar o arquivo para o servidor</div>");
-                }                
+                } else {
+                    $smarty->assign("erroCadastro", "");
+                }             
             } else {
                 $smarty->assign("erroCadastro", "");
             }
