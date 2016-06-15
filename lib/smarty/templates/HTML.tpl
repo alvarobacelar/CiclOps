@@ -54,7 +54,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Deploy <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">                                   
                                 <li><a href="realizarDeploy.php"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Realizar Deploy</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reverter Deploy</a></li>
+                                <li><a href="reverterDeploy.php"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reverter Deploy</a></li>
                                 <li><a href="historicoDeploy.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Historico de Deploy</a></li>
                                 <li class="divider"></li>
                                 <li role="presentation" class="dropdown-header">Tomcat </li>
