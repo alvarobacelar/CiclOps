@@ -10,9 +10,9 @@ require_once './includes/funcoes/verifica.php';
 require_once './includes/models/ManipulateData.php';
 
 if ($estaLogado == "SIM") {
-    
+
     if ($nivel == "admin") {
-        
+
         // verificação de erro de senhas ou de duplicação de usuário no cadastro (feedback para o usuário)
         if (isset($_SESSION["erro"])) {
             if ($_SESSION["erro"] == "ERRO") {
@@ -38,5 +38,7 @@ if ($estaLogado == "SIM") {
 
         $smarty->assign("conteudo", "paginas/cadastrarUsuario.tpl");
         $smarty->display("HTML.tpl");
+    } else {
+        header("Location: accessDenied.php");
     }
 }
