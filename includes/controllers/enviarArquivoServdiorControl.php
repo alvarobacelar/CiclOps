@@ -13,7 +13,7 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
     $idUsuario = addslashes($_SESSION["usuarioID"]);
     $obs = addslashes($_POST["textObsFile"]);
     $data = date("Y-m-d");
-    $status = "1";
+    $status = "1"; // AQUI QUANDO O STATUS FOR IGUAL A 1 SIGNIFICA QUE O DEPLOY AINDA NÃO FOI FEITO, QUANDO FOR 0 É QUE O DEPLOY DO ARQUIVO JÁ FOI REALIZADO
 
 ########################################################################
 ################ FAZENDO O UPLOAD DE ARQUIVO WAR ######################

@@ -188,6 +188,15 @@ class ManipulateData extends MysqlConn {
                         $this->fieldId = '$this->valueId' $this->orderTable";
         $this->execSQL($this->sql);
     }
+    
+    public function selectFileDeployTodos() {
+        $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema 
+                        AND sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
+                        AND usuarios_servidor.id_servidor = servidor.id_servidor 
+                        AND file_deploy.id_usuario_file_deploy = usuario.id_usuario
+                        $this->orderTable";
+        $this->execSQL($this->sql);
+    }
 
     public function selectNome() {
         $this->sql = "SELECT * FROM $this->table WHERE $this->fieldId like '%$this->valueId%'";

@@ -58,5 +58,15 @@ if ($estaLogado == "SIM") {
         displaysecinfo("Removendo os arquivos do diretório Work do tomcat: ", myshellexec( $reiTomcat1 ));
         displaysecinfo("Iniciando o tomcat", myshellexec( $reiTomcat2 ));
         
+        /*
+         * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
+         */
+        $dat = date("Y-m-d");
+        $altFile = new ManipulateData();
+        $altFile->setTable("file_deploy");
+        $altFile->setCamposBanco("status_file_deploy='0',data_file_deploy='$dat'");
+        $altFile->setFieldId("id_file_deploy");
+        $altFile->setValueId("$idFile");
+        $altFile->update();
     }
 }

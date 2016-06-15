@@ -40,6 +40,11 @@ if ($estaLogado == "SIM") {
             $buscaSistema->selectAlterar();
             $resultSist = $buscaSistema->fetch_object();
             $smarty->assign("resSistema",$resultSist);
+            
+            if (empty($resultSist)){ // caso não exista retorno da query acima, será redirecionado para o unicio do deploy
+                header("Location: realizarDeploy.php");
+                exit();
+            }
 
             $smarty->assign("sistema",$sistema);
             $smarty->assign("servidor", $servidor);
