@@ -56,7 +56,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-10">
-                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Cadastrar</button>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</button>
                     </div>
                 </div>
             </form>
