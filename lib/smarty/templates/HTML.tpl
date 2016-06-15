@@ -23,7 +23,7 @@
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="js/IE/ie-emulation-modes-warning.js"></script>
         
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -55,7 +55,7 @@
                             <ul class="dropdown-menu" role="menu">                                   
                                 <li><a href="realizarDeploy.php"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Realizar Deploy</a></li>
                                 <li><a href=""><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reverter Deploy</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Historico de Deploy</a></li>
+                                <li><a href="historicoDeploy.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Historico de Deploy</a></li>
                                 <li class="divider"></li>
                                 <li role="presentation" class="dropdown-header">Tomcat </li>
                                 <li><a href="reiniciarTomcat.php"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reiniciar Tomcat</a></li>
