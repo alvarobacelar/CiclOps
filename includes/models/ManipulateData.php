@@ -189,6 +189,12 @@ class ManipulateData extends MysqlConn {
         $this->execSQL($this->sql);
     }
     
+    public function selectSistemaReinicar() {
+        $this->sql = "SELECT * FROM $this->table WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor AND
+                        $this->fieldId = '$this->valueId' $this->orderTable";
+        $this->execSQL($this->sql);
+    }
+    
     public function selectFileDeployTodos() {
         $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema 
                         AND sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor

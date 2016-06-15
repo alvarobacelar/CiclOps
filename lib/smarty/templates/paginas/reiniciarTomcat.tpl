@@ -1,6 +1,6 @@
-<div class="panel panel-primary">
+<div class="panel panel-warning">
     <div class="panel-heading">
-        <h2 class="panel-title">Escolha Servidor para Deploy</h2>
+        <h2 class="panel-title">Escolha Servidor para reiniciar Tomcat</h2>
     </div>
 
     <div class="table-responsive table-bordered">
@@ -11,10 +11,7 @@
                     <li class="active"><a >1º Escolher Servidor <span class="sr-only">(current)</span></a></li>
                     <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
                     <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">2º Escolher Sistema</span></a></li>
-                    <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
-                    <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">3º Enviar arquivo</span></a></li>
-                    <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
-                    <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">4º Iniciar Deploy</span></a></li>
+
                 </ul>
             </nav>
 
@@ -30,7 +27,7 @@
                         <td class="active" width="400">{$u->obs_servidor}</td>                        
                         <td class="active">{$u->ip_servidor}</td>
                         <td class="active">
-                            <a href="realizarDeploy.php?servidor={$u->id_servidor}" class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-search"></span> Escolher servidor</a>
+                            <a href="reiniciarTomcat.php?servidor={$u->id_servidor}" class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-ok-sign"></span> Escolher servidro</a>
                         </td>
                     </tr>
                 {/foreach}

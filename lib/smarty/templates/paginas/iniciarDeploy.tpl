@@ -11,9 +11,7 @@
                     $("#conteudo").load('execShell.php',{fileOk:acao});
                 });
             });
-            function aviso() {
-                alert('O conteúdo será carregado agora!');
-            }
+            
         </script>
     {/literal}
 
