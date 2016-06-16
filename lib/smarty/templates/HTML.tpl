@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="img/infra.ico">
-        <title>SisDeploy - Sistema de Gerenciamento de Deploy</title>
+        <title>CiclOps - Ciclo de Operações Infoway</title>
         <!-- Bootstrap core CSS -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,9 +22,11 @@
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
         <script src="js/IE/ie-emulation-modes-warning.js"></script>
-        
+
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="js/jquery.blockUI.js" type="text/javascript"></script>
+        <script src="js/jQuery/jquery.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -45,7 +47,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./"><strong><span class="glyphicon glyphicon-console" aria-hidden="true"></span> SisDeploy</strong></a>
+                    <a class="navbar-brand" href="./"><strong><span class="glyphicon glyphicon-console" aria-hidden="true"></span> CiclOps</strong></a>
                 </div>
                 <div class="navbar-collapse collapse">
 
@@ -62,60 +64,60 @@
                                 <li><a href="reiniciarTomcat.php"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reiniciar Tomcat</a></li>
                                 <!--<li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Ficha Cadastro</a></li>-->
                                 <!--<li><a href="gerarEntradaPipeiros.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Rel. entrada de pipeiros</a></li>-->                                    
-                                
+
                             </ul>
                         </li>
                         {if $nivel == "admin"}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li role="presentation" class="dropdown-header">Servidores</li>
-                                <li><a href="cadastrarServidor.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Servidor Novo</a></li>
-                                <li><a href="servidoresCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>                                
-                                <li class="divider"></li>
-                                <li role="presentation" class="dropdown-header">Usuários de servidores</li>
-                                <li><a href="cadastrarUserServidor.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuário Novo</a></li>
-                                <li><a href="userServidorCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
-                                <li class="divider"></li>
-                                <li role="presentation" class="dropdown-header">Sistemas</li>
-                                <li><a href="cadastrarSistema.php"><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Sistema Novo</a></li>
-                                <li><a href="sistemasCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
-                            </ul>
-                        </li> 
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li role="presentation" class="dropdown-header">Servidores</li>
+                                    <li><a href="cadastrarServidor.php"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Servidor Novo</a></li>
+                                    <li><a href="servidoresCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>                                
+                                    <li class="divider"></li>
+                                    <li role="presentation" class="dropdown-header">Usuários de servidores</li>
+                                    <li><a href="cadastrarUserServidor.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuário Novo</a></li>
+                                    <li><a href="userServidorCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation" class="dropdown-header">Sistemas</li>
+                                    <li><a href="cadastrarSistema.php"><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Sistema Novo</a></li>
+                                    <li><a href="sistemasCadastrados.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Cadastrados</a></li>
+                                </ul>
+                            </li> 
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">                               
-                                <li role="presentation" class="dropdown-header">Grupos</li>
-                                <li><a href="cadastrarGrupo.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Grupo</a></li>
-                                <li><a href="gruposCadastrados.php"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Grupos Cadastrados</a></li>
-                                <li class="divider"></li>
-                                <li role="presentation" class="dropdown-header">Usuários</li>
-                                <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Usuários</a></li>
-                                <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuários Cadastrados</a></li>                                
-                                <li class="divider"></li>
-                                <li><a href="logAcesso.php"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Log de Acessos</a></li>                                
-                            </ul>
-                        </li>               
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">                               
+                                    <li role="presentation" class="dropdown-header">Grupos</li>
+                                    <li><a href="cadastrarGrupo.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Grupo</a></li>
+                                    <li><a href="gruposCadastrados.php"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Grupos Cadastrados</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation" class="dropdown-header">Usuários</li>
+                                    <li><a href="cadastrarUsuario.php"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Cadastrar Usuários</a></li>
+                                    <li><a href="usuariosCadastrados.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuários Cadastrados</a></li>                                
+                                    <li class="divider"></li>
+                                    <li><a href="logAcesso.php"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Log de Acessos</a></li>                                
+                                </ul>
+                            </li>               
                         {/if}
 
                         {*
                         <li><a href="cadastrarOM.php">Opção 2</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opção 2 <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu"> 
-                                <li><a href=""><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Opção 2</a></li>
-                                <li class="divider"></li>
-                                <li role="presentation" class="dropdown-header">Opção 2</li>
-                                <li><a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Opção 2</a></li>
-                                <li><a href=""><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Opção 2</a></li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opção 2 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu"> 
+                        <li><a href=""><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span> Opção 2</a></li>
+                        <li class="divider"></li>
+                        <li role="presentation" class="dropdown-header">Opção 2</li>
+                        <li><a href=""><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Opção 2</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Opção 2</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Opção 2</a></li>
 
-                                <li class="divider"></li>
-                                <li role="presentation" class="dropdown-header">Gerar ...</li>
-                                <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Iprimir</a></li>
+                        <li class="divider"></li>
+                        <li role="presentation" class="dropdown-header">Gerar ...</li>
+                        <li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Iprimir</a></li>
 
-                            </ul>
+                        </ul>
                         </li>     
                         *}
                     </ul>
@@ -145,7 +147,7 @@
         </div> <!-- /container -->
 
         <p class="text-center rodape">
-            ©2016 - Sistema de Gerenciamento de Deploy<br />
+            ©2016 - Ciclo de Operações Infoway - Infraestrutura<br />
             Desenvolvido por <strong>Álvaro Bacelar</strong><br />
             Versão {$versao}
         </p>
@@ -153,9 +155,8 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        
-        <script src="js/jQuery/jquery.min.js"></script>
-        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="lib/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
         <script src="js/jQuery/jquery.maskedinput.min.js"></script>

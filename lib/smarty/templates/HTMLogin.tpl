@@ -8,7 +8,7 @@
         <meta name="author" content="">
         <link rel="icon" href="img/infra.ico">
 
-        <title>SisDeploy - Sistema de Deploy</title>
+        <title>CiclOps - Ciclo de Operações Infoway</title>
 
         <!-- Bootstrap core CSS -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +35,8 @@
         <div class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><strong><span class="glyphicon glyphicon-console" aria-hidden="true"></span> SisDeploy</strong></a>
-                    <p class="navbar-text">Sistema de Gerenciamento de Deploy</p>   
+                    <a class="navbar-brand" href="#"><strong><span class="glyphicon glyphicon-console" aria-hidden="true"></span> CiclOps</strong></a>
+                    <p class="navbar-text">Ciclo de Operações Infoway</p>   
                 </div>
 
             </div><!--/.nav-collapse -->
@@ -78,7 +78,7 @@
         </div>
 
         <p class="text-center rodape">
-            ©2016 - Sistema de Gerenciamento de Deploys<br />
+            ©2016 - Ciclo de Operações Infoway - Infraestrutura<br />
             Desenvolvido por <strong>Álvaro Bacelar</strong><br />
             Versão {$versao}
         </p>

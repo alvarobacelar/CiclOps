@@ -1,5 +1,5 @@
 
-<h2 class="text-center"><strong>Sistema de Gerenciamento de Deploy</strong></h2>
+<h2 class="text-center"><strong>Ciclo de Operações Infoway</strong></h2>
 <div class="row">
     <div class="col-md-pull-9">
         <div class="alert alert-success" role="alert">
