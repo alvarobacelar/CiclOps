@@ -24,7 +24,7 @@ if ($estaLogado == "SIM") {
         $buscaFile->setValueId("$idSistema");
         $buscaFile->selectFileDeploy();
         $filAr = $buscaFile->fetch_object();
-
+ 
         /*
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */

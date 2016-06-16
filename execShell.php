@@ -40,16 +40,20 @@ if ($estaLogado == "SIM") {
         // matando os processos existentes do java
         $killJava = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
         // reiniciando o tomcat passo 1
-        $reiTomcat1 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rvf " . $filAr->path_usuarios_servidor . "/work/* '";
+        $reiTomcat1 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rf " . $filAr->path_usuarios_servidor . "/work/* '";
         // reiniciando tomcat passo 2
         $reiTomcat2 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
+        
+        $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
                 
         /*
          * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
          */
 //        echo $rmOld . "<br>" . $mvArquivos . "<br>" . $mkdir . "<br>" . $scp . "<br>" . $unzip . "<br>". $killJava . "<br>" . $reiTomcat1 . "<br>" . $reiTomcat2 ;
 //        die();
-        displaysecinfo("Removendo o arquivo mais antigo: ", myshellexec( $rmOld ));
+        echo "<strong>Removendo arquivos mais antigos do servidor </strong><br> ";
+        myshellexec( $rmOld );
+        echo "<strong>Realizando o procedimento do deploy </strong><br> ";
         myshellexec( $mvArquivos );
         myshellexec( $mkdir );
         myshellexec(  $scp );
@@ -57,6 +61,9 @@ if ($estaLogado == "SIM") {
         displaysecinfo("Matando o processo Java esistente: ", myshellexec(  $killJava ));
         displaysecinfo("Removendo os arquivos do diretório Work do tomcat: ", myshellexec( $reiTomcat1 ));
         displaysecinfo("Iniciando o tomcat", myshellexec( $reiTomcat2 ));
+        
+        echo "<strong>Removendo arquivo do servidor local</strong> <br>";
+        myshellexec($rmFileLocal);
         
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)

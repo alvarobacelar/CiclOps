@@ -60,35 +60,17 @@ function excluirRPS(id) {
     }
 }
 
-function desativarCidade(id) {
-
-    var excluir = confirm("TEM CERTEZA QUE DESEJA DESATIVAR ESTA CIDADE?");
-
-    if (excluir) {
-        location.href = "includes/controllers/desativarCidade.php?idDesativarCidade=" + id;
-    }
-}
-
-function ativarCidade(id) {
-
-    var excluir = confirm("DESEJA REALMENTE ATIVAR ESTA CIDADE?");
-
-    if (excluir) {
-        location.href = "includes/controllers/ativarCidade.php?idAtivarCidade=" + id;
-    }
-}
-
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
 $('#exemplo').popover(options);
 
-function imprimeRPS() {
+function excluiFileD(id) {
 
-    var excluir = confirm("Tem certeza que deseja Imprimir essa RPS? <br>Caso queira excluir, fale com o Oficial da prestação de conta.");
+    var excluir = confirm("Tem certeza que deseja excluir o arquivo para deploy?");
 
-    if (!excluir) {
-        
+    if (excluir) {
+        location.href = "includes/controllers/excluirFileD.php?id=" + id;
     }
 }

@@ -10,6 +10,17 @@ require_once './includes/funcoes/verifica.php';
 require_once './includes/models/ManipulateData.php';
 
 if ($estaLogado == "SIM") {
+    
+    if (isset($_SESSION["erroFile"])){
+        if ($_SESSION["erroFile"] == "exclui" ){
+            $smarty->assign("erroFile", "<div class='alert alert-success' role='alert'>Arquivo excluido com sucesso! </div>");
+        } else {
+            $smarty->assign("erroFile", "<div class='alert alert-danger' role='alert'>Erro ao excluir arquivo</div>");
+        }
+    } else {
+        $smarty->assign("erroFile");
+    }
+    unset($_SESSION["erroFile"]);
 
     // realizando a busca no banco de dados de todos os deploys realizados com os usuários que executaram
     $buscaFile = new ManipulateData();
