@@ -24,6 +24,9 @@ if ($estaLogado == "SIM") {
         $buscaFile->selectFileDeploy();
         $filAr = $buscaFile->fetch_object();
         
+//        sleep(4);
+//        echo "teste";
+//        die();
         /*
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */

@@ -10,6 +10,7 @@
                 if (reload) {
                     $(document).ready(function () {
                         var acao = id;
+                        $("#load").blockUI({ message: '<img src="img/loader.gif"' });
                         $("#conteudo").load('execShellReload.php', {tomcatSistema: acao});
                     });
                 }
@@ -49,6 +50,7 @@
              {/if}
         </table>
         <br>
+        <div id="load"></div>
         <div class="alert alert-success" id="conteudo" role="alert"></div>
     </div>
     <br />

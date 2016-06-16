@@ -6,12 +6,14 @@
     {literal}
         <script type="text/javascript">
             $(document).ready(function () {
-                $("a").click(function (event) {
+                $("a").click(function () {
                     var acao = $(this).attr("value");
-                    $("#conteudo").load('execShell.php',{fileOk:acao});
+                    $("#load").blockUI({ message: '<img src="img/loader.gif"' });
+                    $("#conteudo").load('execShell.php', {fileOk: acao});
+                    $("#load").unblockUI;
                 });
             });
-            
+
         </script>
     {/literal}
 
@@ -45,15 +47,12 @@
                         <a type="button" value='{$file->id_file_deploy}' title="O arquivo será enviado para o servidor {$file->ip_servidor} e depois será feito o deploy"  class="btn btn-success"> <span class="glyphicon glyphicon-share"></span> Iniciar Deploy</a>
                     </td>
                 </tr>
-
-                <tr>
-                    <td colspan="5"><div id="conteudo"></div></td>
-                </tr>
-
             {else}
                 <tr class="text-center"><td><h3>Nenhum arquivo enviado</h3></td></tr>
                         {/if}
         </table>
+        <div id="load"></div>
+        <div class="alert alert-success" id="conteudo" role="alert"></div>
     </div>
     <br />
 </div>
