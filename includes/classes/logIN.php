@@ -66,7 +66,7 @@ class LoginIn {
             exit;
         } else {
 
-            $this->logAcesso(1, 1, "Tentativa de acesso com o usuário: <strong>$login</strong> e Senha: <strong>$senha</strong>");
+            $this->logAcesso(2, 1, "Tentativa de acesso com o usuário: <strong>$login</strong> e Senha: <strong>$senha</strong>");
 
             $_SESSION["erro"] = "erro";
             header("location: ./");

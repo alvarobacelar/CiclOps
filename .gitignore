@@ -7,3 +7,5 @@ lib/smarty/cache/*
 nbproject/*
 Release.key
 arquivos/*
+includes/models/MysqlConn_MYSLQ.php
+includes/classes/logIN.php

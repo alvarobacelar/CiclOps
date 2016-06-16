@@ -27,7 +27,7 @@ abstract class MysqlConn {
 
         $this->host = "localhost";
         $this->usuario = "root";
-        $this->senha = "258276";
+        $this->senha = "root!@#1nf0";
         $this->db = "deploy";
         self::conectar();
     }
