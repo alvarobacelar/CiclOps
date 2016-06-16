@@ -10,7 +10,20 @@
                 if (reload) {
                     $(document).ready(function () {
                         var acao = id;
-                        $("#conteudo").load('execShellReverterDepl.php', {reverterSistema: acao});
+                        $.ajax({
+                            url: "execShellReverterDepl.php", // pagina que irá aparecer
+                            type: 'POST', // metodo de recebimento: GET ou POST 
+                            data: { reverterSistema: acao },
+                            success: function (data) {
+                                $("#conteudo").html(data);
+                            },
+                            error: function () { // se der erro mostrará uma mensagem
+                                $("#conteudo").html("Erro ao executar os comandos");
+                            },
+                            beforeSend: function () { // antes de mostrar a requisição mostra uma mensagem
+                                $("#conteudo").html("<center><img src='img/hourglass.gif' width='80'></center>");
+                            }
+                        });                       
                     });
                 }
             }

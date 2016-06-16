@@ -8,9 +8,20 @@
             $(document).ready(function () {
                 $("a").click(function () {
                     var acao = $(this).attr("value");
-                    $("#load").blockUI({ message: '<img src="img/loader.gif"' });
-                    $("#conteudo").load('execShell.php', {fileOk: acao});
-                    $("#load").unblockUI;
+                    $.ajax({
+                        url: "execShell.php", // pagina que irá aparecer
+                        type: 'POST', // metodo de recebimento: GET ou POST 
+                        data: {fileOk: acao},
+                        success: function (data) {
+                            $("#conteudo").html(data);
+                        },
+                        error: function () { // se der erro mostrará uma mensagem
+                            $("#conteudo").html("Erro ao executar os comandos");
+                        },
+                        beforeSend: function () { // antes de mostrar a requisição mostra uma mensagem
+                            $("#conteudo").html("<center><img src='img/hourglass.gif' width='70'></center>");
+                        }
+                    });
                 });
             });
 
@@ -52,6 +63,7 @@
                         {/if}
         </table>
         <div id="load"></div>
+        <br>
         <div class="alert alert-success" id="conteudo" role="alert"></div>
     </div>
     <br />

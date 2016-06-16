@@ -5,13 +5,27 @@
 
     {literal}       
         <script type="text/javascript">
+
             function reloadTomcat(id) {
                 var reload = confirm("Deseja realmente reiniciar o sistema ?");
                 if (reload) {
                     $(document).ready(function () {
                         var acao = id;
-                        $("#load").blockUI({ message: '<img src="img/loader.gif"' });
-                        $("#conteudo").load('execShellReload.php', {tomcatSistema: acao});
+
+                        $.ajax({
+                            url: "execShellReload.php", // pagina que irá aparecer
+                            type: 'POST', // metodo de recebimento: GET ou POST 
+                            data: { tomcatSistema: acao },
+                            success: function (data) {
+                                $("#conteudo").html(data);
+                            },
+                            error: function () { // se der erro mostrará uma mensagem
+                                $("#conteudo").html("Erro ao executar os comandos");
+                            },
+                            beforeSend: function () { // antes de mostrar a requisição mostra uma mensagem
+                                $("#conteudo").html("<center><img src='img/hourglass.gif' width='70'></center>");
+                            }
+                        });
                     });
                 }
             }
@@ -47,11 +61,12 @@
                 {/foreach}
             {else}
                 <tr class="text-center"><td><h3>Nenhum sistema cadastrado nesse servidor</h3></td></tr>
-             {/if}
+                        {/if}
         </table>
         <br>
-        <div id="load"></div>
+
         <div class="alert alert-success" id="conteudo" role="alert"></div>
+
     </div>
     <br />
 </div>

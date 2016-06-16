@@ -5,20 +5,8 @@
 
     <div class="table-responsive table-bordered">
         <table class="table">
-
-            {*
-            <nav class="text-center">
-            <ul class="pagination">
-            <li class="active"><a >1º Escolher Servidor <span class="sr-only">(current)</span></a></li>
-            <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
-            <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">2º Escolher Sistema</span></a></li>
-            <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
-            <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">3º Enviar arquivo</span></a></li>
-            <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
-            <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">4º Iniciar Deploy</span></a></li>
-            </ul>
-            </nav>
-            *}
+            
+            {$erroFile}
 
             {if isset($filH)}                
                 <th><center>Servidor</center></th>             
@@ -49,7 +37,7 @@
                             <td class="alert-info">{$u->data_file_deploy|date_format:"%d/%m/%Y"}</td>
                             <td class="alert-info">
                                 <a href="iniciarDeploy.php?idFile={$u->id_file_deploy}" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-upload"></span> Realizar Deploy</a>
-                                <a href="{$u->id_file_deploy}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> Excluir arquivo</a>
+                                <a onclick="excluiFileD({$u->id_file_deploy})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> Excluir arquivo</a>
                             </td>
                         </tr>    
                     {/if}

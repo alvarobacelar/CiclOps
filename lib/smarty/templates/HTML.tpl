@@ -65,6 +65,7 @@
                                 
                             </ul>
                         </li>
+                        {if $nivel == "admin"}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -95,7 +96,8 @@
                                 <li class="divider"></li>
                                 <li><a href="logAcesso.php"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Log de Acessos</a></li>                                
                             </ul>
-                        </li>                    
+                        </li>               
+                        {/if}
 
                         {*
                         <li><a href="cadastrarOM.php">Opção 2</a></li>
