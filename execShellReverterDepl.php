@@ -29,15 +29,15 @@ if ($estaLogado == "SIM") {
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */
         // renomeando a pasta atual
-        $mvBugado = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd") . "-bugado'";
+        $mvBugado = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd") . "-bugado'";
         
-        $mvRever = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->backup_sistema . " " . $filAr->path_sistema . "'";
+        $mvRever = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->backup_sistema . " " . $filAr->path_sistema . "'";
         // matando os processos existentes do java
-        $killJava = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
+        $killJava = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
         // reiniciando o tomcat passo 1
-        $reiTomcat1 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rvf " . $filAr->path_usuarios_servidor . "/work/* '";
+        $reiTomcat1 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rvf " . $filAr->path_usuarios_servidor . "/work/* '";
         // reiniciando tomcat passo 2
-        $reiTomcat2 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
+        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
 
         /*
          * EXECUÇÃO DOS COMANDOS ACIMA SETADOS

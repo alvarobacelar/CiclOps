@@ -9,6 +9,7 @@ require_once '../models/ManipulateData.php';
 $servidor = addslashes($_POST["inputServidor"]);
 $ipServidor = addslashes($_POST["inputIP"]);
 $idGrupo = addslashes($_POST["selectGrupo"]);
+$porta = addslashes($_POST["inputPorta"]);
 $obsServidor = addslashes($_POST["textObsServer"]);
 $data = date("Y-m-d");
 $status = 1; // STATUS IGUAL A 1 SIGINIFICA QUE ESTÁ ATIVO (0 = DESATIVADO)
@@ -28,8 +29,8 @@ if ($_SESSION["nivel"] == "admin") {
             $_SESSION["erroServidor"] = "duplicadoIP";
             header("Location: ../../cadastrarServidor.php");
         } else {
-            $cad->setCamposBanco("id_grupo_servidor, nome_servidor, ip_servidor,obs_servidor,data_cadastro_servidor,status_servidor"); //CAMPOS DO BANCO DE DADOS
-            $cad->setDados("'$idGrupo', '$servidor','$ipServidor','$obsServidor','$data','$status'"); //DADOS DO FORMULARIOS
+            $cad->setCamposBanco("id_grupo_servidor, nome_servidor, ip_servidor,obs_servidor,data_cadastro_servidor,status_servidor,porta_servidor"); //CAMPOS DO BANCO DE DADOS
+            $cad->setDados("'$idGrupo', '$servidor','$ipServidor','$obsServidor','$data','$status','$porta'"); //DADOS DO FORMULARIOS
             $cad->insert(); //EFETUANDO CADASTRO
             $_SESSION["erroServidor"] = "Cadastrado";
             header("location: ../../cadastrarServidor.php");

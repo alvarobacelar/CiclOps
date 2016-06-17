@@ -8,6 +8,7 @@ session_start();
 $idServidor = addslashes($_POST["hiddenIdServidor"]);
 $servidor = addslashes($_POST["inputServidor"]);
 $ipServidor = addslashes($_POST["inputIP"]);
+$porta = addslashes($_POST["inputPorta"]);
 $idGrupo = addslashes($_POST["selectGrupo"]);
 $obsServidor = addslashes($_POST["textObsServer"]);
 $data = date("Y-m-d");
@@ -19,7 +20,7 @@ if ($_SESSION["nivel"] == "admin") {
 
         $editaServidor = new ManipulateData();
         $editaServidor->setTable("servidor");
-        $editaServidor->setCamposBanco("id_grupo_servidor='$idGrupo',nome_servidor='$servidor',ip_servidor='$ipServidor',obs_servidor='$obsServidor',status_servidor='$status'");
+        $editaServidor->setCamposBanco("id_grupo_servidor='$idGrupo',nome_servidor='$servidor',ip_servidor='$ipServidor',obs_servidor='$obsServidor',status_servidor='$status',porta_servidor='$porta'");
         $editaServidor->setFieldId("id_servidor");
         $editaServidor->setValueId("$idServidor");
         $editaServidor->update();

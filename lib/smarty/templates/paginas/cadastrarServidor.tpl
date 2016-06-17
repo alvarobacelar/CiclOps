@@ -23,6 +23,14 @@
 
                 </div>                
             </div>
+            
+            <div class="row form-group">
+                <label class="col-sm-3 control-label" for="inputPorta">Porta ssh </label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" id="inputPorta" name="inputPorta" required="" placeholder="EX: 22">
+
+                </div>                
+            </div>
              
             <div class="form-group ">
                 <label class="col-sm-3 control-label" for="selectGrupo">Grupo de servidores</label>

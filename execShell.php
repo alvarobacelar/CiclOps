@@ -28,21 +28,21 @@ if ($estaLogado == "SIM") {
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */
         // comando para remover a pasta mais antiga do servidor 
-        $rmOld = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'rm -rf " . $filAr->path_sistema . "2*'";
+        $rmOld = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'rm -rf " . $filAr->path_sistema . "2*'";
         // renomeando a pasta atual
-        $mvArquivos = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd") . "'";
+        $mvArquivos = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd") . "'";
         // criando a pasta nova para por novos arquivos
-        $mkdir = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mkdir -p " . $filAr->path_sistema . "' ";
+        $mkdir = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mkdir -p " . $filAr->path_sistema . "' ";
         // comando para envio de arquivo para o servidor
-        $scp = "scp " . PATH_ARQUIVOS . $filAr->nome_file_deploy . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . ":" . $filAr->path_sistema . "/";
+        $scp = "scp -P " . $filAr->porta_servidor . " " . PATH_ARQUIVOS . $filAr->nome_file_deploy . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . ":" . $filAr->path_sistema . "/";
         // descompactando arquivo
-        $unzip = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/'";
+        $unzip = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/'";
         // matando os processos existentes do java
-        $killJava = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
+        $killJava = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
         // reiniciando o tomcat passo 1
-        $reiTomcat1 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rf " . $filAr->path_usuarios_servidor . "/work/* '";
+        $reiTomcat1 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rf " . $filAr->path_usuarios_servidor . "/work/* '";
         // reiniciando tomcat passo 2
-        $reiTomcat2 = "ssh " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
+        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
         
         $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
                 

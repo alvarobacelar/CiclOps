@@ -11,6 +11,7 @@
             {if isset($servidorR)}                
                 <th><center>Nome</center></th>             
                 <th><center>IP</center></th>
+        <th><center>Porta SSH</center></th>
                 <th><center>Grupo</center></th>
                 <th><center>Observações</center></th>
                 <th><center>Data cadastro</center></th>
@@ -20,6 +21,7 @@
                         <tr class="text-center">                       
                             <td class="active">{$u->nome_servidor}</td>                        
                             <td class="active">{$u->ip_servidor}</td>
+                            <td class="active">{$u->porta_servidor}</td>
                             <td class="info"> {$u->nome_grupo_servidor} </td>
                             <td class="active"> {$u->obs_servidor} </td>
                             <td class="active"> {$u->data_cadastro_servidor|date_format:"%d/%m/%Y"} </td>
