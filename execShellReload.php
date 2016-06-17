@@ -38,10 +38,10 @@ if ($estaLogado == "SIM") {
 //         */
 
         echo "<strong>Matando o processo java existente </strong><br>";
-        myshellexec($killJava);
+        shell_exec($killJava);
         echo "<strong>Limpando o diretório work </strong><br>";
-        myshellexec($reiTomcat1);
-        displaysecinfo("Iniciando o tomcat <br> ", myshellexec($reiTomcat2));
+        shell_exec($reiTomcat1);
+        displaysecinfo("Iniciando o tomcat <br> ", shell_exec($reiTomcat2));
 
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
