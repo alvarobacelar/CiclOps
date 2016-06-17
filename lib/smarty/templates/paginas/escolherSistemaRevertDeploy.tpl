@@ -62,7 +62,7 @@
 
                 {/foreach}
             {else}
-                <tr class="text-center"><td><h3>Nenhum sistema cadastrado nesse servidor</h3></td></tr>
+                <tr class="text-center"><td><h3>Ainda não foi realizado deploy. </h3></td></tr>
                         {/if}
         </table>
         <br>
