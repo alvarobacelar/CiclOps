@@ -21,7 +21,7 @@ if ($estaLogado == "SIM") {
         $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor");
         $buscaFile->setFieldId("sistema.id_sistema");
         $buscaFile->setValueId("$sistemaTomcat");
-        $buscaFile->selectFileDeploy();
+        $buscaFile->selectReiniciar();
         $filAr = $buscaFile->fetch_object();
 
         /*
