@@ -1,4 +1,3 @@
-
 <div class="row">
 
     <div class="panel panel-primary">
@@ -14,9 +13,23 @@
             <div class="col-md-8 col-md-offset-3">
                 <img src="imagens/user-militar.jpg" alt="usuario" width="100" align="left" class="img-circle"><br>
                 <p><strong>Nome:</strong> <small>{$usuario->nome_usuario}</small></p>
-                <p><strong>Posto/Grad:</strong> <small>{$usuario->posto_grad_usuario}</small></p>
-                <p><strong>CPF:</strong> <small>{$usuario->cpf_usuario}</small></p>
-                <p><strong>Função:</strong> <small>{$usuario->funcao_usuario}</small></p>
+                <p>
+                    <strong>Função:</strong> <small>
+                        {if $usuario->funcao_usuario == "DD"}
+                            Desenvolvedor Dolphin
+                        {else if $usuario->funcao_usuario == "DI"}
+                            Desenvolvedor Ihealth
+                        {else if $usuario->funcao_usuario == "DS"}
+                            Desenvolvedor Sense
+                        {else if $usuario->funcao_usuario == "Infra"}
+                            Infraestrutura
+                        {else if $usuario->funcao_usuario == "SD"}
+                            Suporte Dolphin
+                        {else if $usuario->funcao_usuario == "SI"}
+                            Suporte Ihealth
+                        {/if}
+                    </small>
+                </p>
                 <p><strong>Login:</strong> <small>{$usuario->login_usuario}</small></p>
                 <p><strong>Mudar Senha</strong></p>
                 <form action="includes/controllers/mudarSenha.php" method="post" name="cadastrar" class="form-horizontal" role="form" onSubmit="return verificaSenha()">
