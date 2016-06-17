@@ -36,7 +36,7 @@ if ($estaLogado == "SIM") {
 //        /*
 //         * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
 //         */
-
+        
         echo "<strong>Matando o processo java existente </strong><br>";
         shell_exec($killJava);
         echo "<strong>Limpando o diretório work </strong><br>";
