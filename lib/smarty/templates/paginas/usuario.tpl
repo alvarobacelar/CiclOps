@@ -11,7 +11,7 @@
 
             {$erroSenha}
             <div class="col-md-8 col-md-offset-3">
-                <img src="imagens/user-militar.jpg" alt="usuario" width="100" align="left" class="img-circle"><br>
+                <img src="img/user.png" alt="usuario" width="100" class="img-circle"><br>
                 <p><strong>Nome:</strong> <small>{$usuario->nome_usuario}</small></p>
                 <p>
                     <strong>Função:</strong> <small>
