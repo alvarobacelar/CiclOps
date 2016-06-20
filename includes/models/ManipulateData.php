@@ -116,9 +116,10 @@ class ManipulateData extends MysqlConn {
 //        $this->sql = "SELECT * FROM $this->table WHERE id_cidade_atuante = '10' ORDER BY $this->orderTable";
 //        $this->execSQL($this->sql);
 //    }
-
+    
+    // função para buscar os logs de acesso
     public function selectLogAcesso() {
-        $this->sql = "SELECT * FROM $this->table WHERE log_usuario.id_usuario_log = usuario.id_usuario ORDER BY $this->orderTable";
+        $this->sql = "SELECT * FROM $this->table WHERE log_usuario.id_usuario_log = usuario.id_usuario ORDER BY $this->orderTable"; 
         $this->execSQL($this->sql);
     }
 
