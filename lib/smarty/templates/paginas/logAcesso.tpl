@@ -21,7 +21,21 @@
                         <td>{$l->id_log_usuario}</td>
                         <td>{$l->nome_usuario}</td>
                         <td>{$l->login_usuario}</td>
-                        <td>{$l->funcao_usuario}</td>
+                        <td>
+                            {if $l->funcao_usuario == "DD"}
+                                Desenvolvedor Dolphin
+                            {else if $l->funcao_usuario == "DI"}
+                                Desenvolvedor Ihealth
+                            {else if $l->funcao_usuario == "DS"}
+                                Desenvolvedor Sense
+                            {else if $l->funcao_usuario == "Infra"}
+                                Infraestrutura
+                            {else if $l->funcao_usuario == "SD"}
+                                Suporte Dolphin
+                            {else if $l->funcao_usuario == "SI"}
+                                Suporte Ihealth
+                            {/if}
+                        </td>
                         <td>{$l->ip_acesso_log}</td>
                         <td>{$l->data|date_format:"%d/%m/%Y"}</td>
                         <td>{$l->obs_log_usuario}</td>
@@ -36,7 +50,7 @@
 
         </table>
     </div>
-   
+
 </div>
-            <center>{$paginacao}</center><br />
-    <center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center> 
+<center>{$paginacao}</center><br />
+<center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center> 
