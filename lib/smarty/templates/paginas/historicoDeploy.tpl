@@ -23,7 +23,7 @@
                             <td class="alert-success">{$u->nome_sistema}</td>
                             <td class="alert-success">{$u->nome_original_file}</td>
                             <td class="alert-success">{$u->nome_usuario}</td>
-                            <td class="alert-success">{$u->data_file_deploy|date_format:"%d/%m/%Y"}</td>
+                            <td class="alert-success">{$u->data_file_deploy|date_format:"%d/%m/%Y"}<br>{$u->hora_deploy}</td>
                             <td class="alert-success">
                                 <button class="btn btn-success btn-xs disabled"> <span class="glyphicon glyphicon-ok-sign"></span> Deploy Realizado</button>
                             </td>
@@ -34,7 +34,7 @@
                             <td class="alert-info">{$u->nome_sistema}</td>
                             <td class="alert-info">{$u->nome_original_file}</td>
                             <td class="alert-info">{$u->nome_usuario}</td>
-                            <td class="alert-info">{$u->data_file_deploy|date_format:"%d/%m/%Y"}</td>
+                            <td class="alert-info">{$u->data_file_deploy|date_format:"%d/%m/%Y"}<br>{$u->hora_deploy}</td>
                             <td class="alert-info">
                                 <a href="iniciarDeploy.php?idFile={$u->id_file_deploy}" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-upload"></span> Realizar Deploy</a>
                                 <a onclick="excluiFileD({$u->id_file_deploy})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> Excluir arquivo</a>
