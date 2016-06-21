@@ -7,7 +7,7 @@
             <div class="alert alert-success" role="alert">
                 <center>
                     <p>
-                        Deploy's realizado em <strong>{$smarty.now|date_format:"%d/%m/%Y"} <span class="label label-default">{$cont}</span></strong>
+                        Deploy's realizado em <strong>{$smarty.now|date_format:"%d/%m/%Y"} <span class="label label-default">{$cont}</span></strong><br><small>Contagem por usuário</small>
                     </p>
                 </center>
             </div>
@@ -18,7 +18,7 @@
             {foreach $usrDep as $d}
                 <div class="col-md-6">
                     <div class="alert alert-warning alert-dismissible" role="alert">
-                        <span style='font-size: 13px;'> Deploy realizado por <strong>{$d->nome_usuario} </strong></span> <span class="label label-default">{$d->total}</span>
+                        <span style='font-size: 13px;'> Deploy realizado por <strong>{$d->nome_usuario} </strong></span> <span class="label label-default">{$d->total}</span> 
                     </div>
                 </div>
             {/foreach}

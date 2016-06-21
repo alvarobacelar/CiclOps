@@ -179,7 +179,7 @@ class ManipulateData extends MysqlConn {
     
     public function countTotalDepl() {
         $this->sql = "SELECT nome_usuario, count(*) AS total FROM file_deploy,usuario WHERE file_deploy.id_usuario_file_deploy = usuario.id_usuario 
-                       AND data_file_deploy = '$this->camposBanco' GROUP BY id_usuario_file_deploy";
+                       AND status_file_deploy = '1' AND data_file_deploy = '$this->camposBanco' GROUP BY id_usuario_file_deploy";
         $this->execSQL($this->sql);       
     }
 
