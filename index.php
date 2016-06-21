@@ -9,6 +9,19 @@ require_once './includes/funcoes/exeCmdShel.php';
 
 if ($estaLogado == "SIM") {
 
+    $dataHoje = "2016-06-16";//date("Y-m-d");
+    $contaDeploy = new ManipulateData();
+    $contaDeploy->setTable("file_deploy");
+    $contaDeploy->setOrderTable("WHERE data_file_deploy = '$dataHoje'");
+    $contagem = $contaDeploy->countTotal();
+    $smarty->assign("cont", $contagem);
+    
+    $contaUserDepl = new ManipulateData();
+    $contaUserDepl->setCamposBanco("$dataHoje");
+    $contaUserDepl->countTotalDepl();
+    while ($depUser[] = $contaUserDepl->fetch_object()){
+        $smarty->assign("usrDep", $depUser);
+    }
     
     $smarty->assign("conteudo", "paginas/home.tpl");
     $smarty->display("HTML.tpl");
