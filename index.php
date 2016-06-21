@@ -9,7 +9,7 @@ require_once './includes/funcoes/exeCmdShel.php';
 
 if ($estaLogado == "SIM") {
 
-    $dataHoje = "2016-06-16";//date("Y-m-d");
+    $dataHoje = date("Y-m-d");
     $contaDeploy = new ManipulateData();
     $contaDeploy->setTable("file_deploy");
     $contaDeploy->setOrderTable("WHERE data_file_deploy = '$dataHoje'");
