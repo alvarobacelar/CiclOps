@@ -24,7 +24,7 @@
             </div> 
             <div class="row form-group">
                 <label class="col-sm-3 control-label" for="inputMonitorSistema">Link Monitoramento</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <input class="form-control" type="text" id="inputMonitorSistema" name="inputMonitorSistema" required="" placeholder="EX: http://monitoramento.infoway-pi.com.br/dashboard/snapshot/bPmOOCms6cZt8sQZJ3RBV32c3zvKPEID">
 
                 </div>                
