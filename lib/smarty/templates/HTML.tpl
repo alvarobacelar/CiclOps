@@ -66,6 +66,7 @@
                             </ul>
                         </li>
                         {/if}
+                        <li><a href="monitoramento.php"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Monitoramento</a></li>
                         
                         {if $nivel == "suporte" }
                             <li><a href="historicoDeploy.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Historico de Deploy</a></li>

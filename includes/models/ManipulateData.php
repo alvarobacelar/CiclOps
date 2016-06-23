@@ -163,6 +163,14 @@ class ManipulateData extends MysqlConn {
         $this->execSQL($this->sql);
     }
 
+    public function selectSistemaMonitor() {
+        $this->sql = "SELECT * FROM sistema,usuarios_servidor,servidor,grupo_servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
+                    AND usuarios_servidor.id_servidor = servidor.id_servidor 
+                    AND servidor.id_grupo_servidor = grupo_servidor.id_grupo_servidor 
+                    AND $this->fieldId = '$this->valueId'";
+        $this->execSQL($this->sql);
+    }
+    
     /**
      * Metodo para contar o total de registro de uma query
      * @access public 
