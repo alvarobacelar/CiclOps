@@ -9,6 +9,7 @@ require_once '../models/ManipulateData.php';
 $nomeSistema = addslashes($_POST["inputNomeSistema"]);
 $pathUser = addslashes($_POST["inputPathSistema"]);
 $servidor = addslashes($_POST["selectServidor"]);
+$linkMonitor = addslashes($_POST["inputMonitorSistema"]);
 $userServidor = addslashes($_POST["selectUserServidor"]);
 $data = date("Y-m-d");
 $status = 1; // STATUS IGUAL A 1 SIGINIFICA QUE ESTÁ ATIVO (0 = DESATIVADO)
@@ -24,8 +25,8 @@ if (!empty($nomeSistema) && !empty($pathUser) && !empty($servidor) && !empty($us
         $_SESSION["erroSistema"] = "duplicado";
         header("Location: ../../cadastrarSistema.php");
     } else {
-        $cad->setCamposBanco("id_usuarios_servidor,id_servidor,nome_sistema,path_sistema,data_cadastro_sistema,status_sistema"); //CAMPOS DO BANCO DE DADOS
-        $cad->setDados("'$userServidor','$servidor','$nomeSistema','$pathUser','$data','$status'"); //DADOS DO FORMULARIOS
+        $cad->setCamposBanco("id_usuarios_servidor,id_servidor,nome_sistema,path_sistema,data_cadastro_sistema,status_sistema, link_monitoramento"); //CAMPOS DO BANCO DE DADOS
+        $cad->setDados("'$userServidor','$servidor','$nomeSistema','$pathUser','$data','$status', '$linkMonitor'"); //DADOS DO FORMULARIOS
         $cad->insert(); //EFETUANDO CADASTRO
         $_SESSION["erroSistema"] = "Cadastrado";
         header("location: ../../cadastrarSistema.php");
