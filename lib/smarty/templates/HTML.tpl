@@ -52,6 +52,7 @@
                 <div class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav">
+                        {if $nivel != "suporte"}
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Deploy <span class="caret"></span></a>
@@ -61,12 +62,15 @@
                                 <li><a href="historicoDeploy.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Historico de Deploy</a></li>
                                 <li class="divider"></li>
                                 <li role="presentation" class="dropdown-header">Tomcat </li>
-                                <li><a href="reiniciarTomcat.php"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reiniciar Tomcat</a></li>
-                                <!--<li><a href=""><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Ficha Cadastro</a></li>-->
-                                <!--<li><a href="gerarEntradaPipeiros.php"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Rel. entrada de pipeiros</a></li>-->                                    
-
+                                <li><a href="reiniciarTomcat.php"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reiniciar Tomcat</a></li>                               
                             </ul>
                         </li>
+                        {/if}
+                        
+                        {if $nivel == "suporte" }
+                            <li><a href="historicoDeploy.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Historico de Deploy</a></li>
+                        {/if}
+                        
                         {if $nivel == "admin"}
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servidores<span class="caret"></span></a>

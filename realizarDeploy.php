@@ -51,5 +51,7 @@ if ($estaLogado == "SIM") {
         } else {
             header("Location: erro.php");
         }
+    } else {
+        header("Location: accessDenied.php");
     }
 }

@@ -53,7 +53,9 @@ if ($estaLogado == "SIM") {
             $smarty->assign("conteudo", "paginas/escolherSistemaTomcat.tpl");
             $smarty->display("HTML.tpl");
         } else {
-            header("Location: accessDenied.php");
+            header("Location: erro.php");
         }
+    } else {
+        header("Location: accessDenied.php");
     }
 }

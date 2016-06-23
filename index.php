@@ -12,7 +12,7 @@ if ($estaLogado == "SIM") {
     $dataHoje = date("Y-m-d");
     $contaDeploy = new ManipulateData();
     $contaDeploy->setTable("file_deploy");
-    $contaDeploy->setOrderTable("WHERE data_file_deploy = '$dataHoje'");
+    $contaDeploy->setOrderTable("WHERE data_file_deploy = '$dataHoje' AND status_file_deploy = '0'");
     $contagem = $contaDeploy->countTotal();
     $smarty->assign("cont", $contagem);
     
