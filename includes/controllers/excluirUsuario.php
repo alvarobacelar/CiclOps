@@ -17,8 +17,8 @@ if ($_SESSION["nivel"] == "admin" ) {
 
         // excluindo os acessos desse usuario
         $deleteAcesso = new ManipulateData();
-        $deleteAcesso->setTable("acesso_usuario");
-        $deleteAcesso->setCampoTable("usuario_id_usuario");
+        $deleteAcesso->setTable("log_usuario");
+        $deleteAcesso->setCampoTable("id_usuario_log");
         $deleteAcesso->setValueId("$idExcluirUsuario");
         $deleteAcesso->delete();
         
