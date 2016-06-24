@@ -25,7 +25,7 @@ if ($estaLogado == "SIM") {
     // realizando a busca no banco de dados de todos os deploys realizados com os usuários que executaram
     $buscaFile = new ManipulateData();
     $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor,usuario");
-    $buscaFile->setOrderTable("AND usuario.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy DESC");
+    $buscaFile->setOrderTable("AND servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy DESC");
     $buscaFile->selectFileDeployTodos();
     while ($filAr[] = $buscaFile->fetch_object()){
         $smarty->assign("filH",$filAr);
