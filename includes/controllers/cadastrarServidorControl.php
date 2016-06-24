@@ -24,10 +24,7 @@ if ($_SESSION["nivel"] == "admin") {
         //VERIFICANDO SE EXISTE REGISTRO CADASTRADO
         if ($cad->getDadosDuplicados("$servidor") >= 1) {
             $_SESSION["erroServidor"] = "duplicado";
-            header("Location: ../../cadastrarServidor.php");
-        } else if ($cad->getDadosDuplicados2("ip_servidor","$ipServidor") >= 1) {
-            $_SESSION["erroServidor"] = "duplicadoIP";
-            header("Location: ../../cadastrarServidor.php");
+            header("Location: ../../cadastrarServidor.php");        
         } else {
             $cad->setCamposBanco("id_grupo_servidor, nome_servidor, ip_servidor,obs_servidor,data_cadastro_servidor,status_servidor,porta_servidor"); //CAMPOS DO BANCO DE DADOS
             $cad->setDados("'$idGrupo', '$servidor','$ipServidor','$obsServidor','$data','$status','$porta'"); //DADOS DO FORMULARIOS
