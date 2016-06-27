@@ -19,6 +19,7 @@ if ($estaLogado == "SIM") {
         $buscaGrupoServerAdmin = new ManipulateData();
         $buscaGrupoServerAdmin->setTable("sistema");
         $buscaGrupoServerAdmin->setEstado("status_servidor");
+        $buscaGrupoServerAdmin->setOrderTable("WHERE sistema.link_monitoramento != ''");
         $buscaGrupoServerAdmin->select();
         while ($resulServerAdmin[] = $buscaGrupoServerAdmin->fetch_object()) {
             $smarty->assign("servidoresGrupo", $resulServerAdmin);
