@@ -46,6 +46,7 @@
                 <tr class="text-center"><td><h3>Não há histórico de deploys realizado</h3></td></tr>
                         {/if}
         </table>
+        {$paginacao}
     </div>
     <br />
 </div>
