@@ -19,16 +19,16 @@ if (!empty($nomeUser) && !empty($pathTomcat) && !empty($servidorUser)) {
     //$cad->setCampoTable("nome_grupo_servidor");
 
     //VERIFICANDO SE EXISTE REGISTRO CADASTRADO
-//    if ($cad->getDadosDuplicadosUserServer("$nomeUser","$servidorUser") >= 1) {
-//        $_SESSION["erroUser"] = "duplicado";
-//        header("Location: ../../cadastrarUserServidor.php");
-//    } else {
+    if ($cad->getDadosDuplicadosUserServer("$nomeUser","$servidorUser") >= 1) {
+        $_SESSION["erroUser"] = "duplicado";
+        header("Location: ../../cadastrarUserServidor.php");
+    } else {
         $cad->setCamposBanco("id_servidor,nome_usuarios_servidor,path_usuarios_servidor,data_usuarios_servidor,status_usuario_servidor"); //CAMPOS DO BANCO DE DADOS
         $cad->setDados("'$servidorUser','$nomeUser', '$pathTomcat', '$data', '$status'"); //DADOS DO FORMULARIOS
         $cad->insert(); //EFETUANDO CADASTRO
         $_SESSION["erroUser"] = "Cadastrado";
         header("location: ../../cadastrarUserServidor.php");
-//    }
+    }
 } else {
     $_SESSION["erroUser"] = "vazio";
     header("Location: ../../cadastrarUserServidor.php");
