@@ -13,7 +13,7 @@ require_once './includes/funcoes/exeCmdShel.php';
 if ($estaLogado == "SIM") {
 
     if (isset($_POST["fileOk"])) {
-        
+
         $idFile = addslashes($_POST["fileOk"]);
 
         // realizando a busca no servidor do arquivo enviado
@@ -23,11 +23,11 @@ if ($estaLogado == "SIM") {
         $buscaFile->setValueId("$idFile");
         $buscaFile->selectFileDeploy();
         $filAr = $buscaFile->fetch_object();
-        
+
         /*
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */
-        // comando para remover a pasta mais antiga do servidor 
+        // comando para remover a pasta mais antiga do servidor
         $rmOld = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'rm -rf " . $filAr->path_sistema . "2*'";
         // renomeando a pasta atual
         $mvArquivos = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd") . "'";
@@ -43,28 +43,28 @@ if ($estaLogado == "SIM") {
         $reiTomcat1 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rf " . $filAr->path_usuarios_servidor . "/work/* '";
         // reiniciando tomcat passo 2
         $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
-        
+
         $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
-                
+
         /*
          * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
          */
 //        echo $rmOld . "<br>" . $mvArquivos . "<br>" . $mkdir . "<br>" . $scp . "<br>" . $unzip . "<br>". $killJava . "<br>" . $reiTomcat1 . "<br>" . $reiTomcat2 ;
 //        die();
+        myshellexec(  $scp );
         echo "<strong>Removendo arquivos mais antigos do servidor </strong><br> ";
         myshellexec( $rmOld );
         echo "<strong>Realizando o procedimento do deploy </strong><br> ";
         myshellexec( $mvArquivos );
         myshellexec( $mkdir );
-        myshellexec(  $scp );
         displaysecinfo("Descompactando o arquivo: ", myshellexec( $unzip));
         displaysecinfo("Matando o processo Java esistente: ", myshellexec(  $killJava ));
         displaysecinfo("Removendo os arquivos do diretório Work do tomcat: ", myshellexec( $reiTomcat1 ));
         displaysecinfo("Iniciando o tomcat", myshellexec( $reiTomcat2 ));
-        
+
         echo "<strong>Removendo arquivo do servidor local</strong> <br>";
         myshellexec($rmFileLocal);
-        
+
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
          */
