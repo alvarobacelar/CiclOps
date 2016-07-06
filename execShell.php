@@ -51,12 +51,13 @@ if ($estaLogado == "SIM") {
          */
 //        echo $rmOld . "<br>" . $mvArquivos . "<br>" . $mkdir . "<br>" . $scp . "<br>" . $unzip . "<br>". $killJava . "<br>" . $reiTomcat1 . "<br>" . $reiTomcat2 ;
 //        die();
-        myshellexec(  $scp );
+        
         echo "<strong>Removendo arquivos mais antigos do servidor </strong><br> ";
         myshellexec( $rmOld );
         echo "<strong>Realizando o procedimento do deploy </strong><br> ";
         myshellexec( $mvArquivos );
         myshellexec( $mkdir );
+        myshellexec(  $scp );
         displaysecinfo("Descompactando o arquivo: ", myshellexec( $unzip));
         displaysecinfo("Matando o processo Java esistente: ", myshellexec(  $killJava ));
         displaysecinfo("Removendo os arquivos do diretório Work do tomcat: ", myshellexec( $reiTomcat1 ));
