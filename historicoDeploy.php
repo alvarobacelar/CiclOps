@@ -38,11 +38,11 @@ if ($estaLogado == "SIM") {
 
     if ($nivel != "admin") {
 
-
         // realizando a busca no banco de dados de todos os deploys realizados com os usuários que executaram
         $buscaFile = new ManipulateData();
         $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor,usuario");
         $buscaFile->setOrderTable("AND servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy DESC LIMIT $inicio, $quantLog");
+        $paginacao->setOrderTable(" AND servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy");
         $pagina = new Pagination($pg, $quantLog, $paginacao->countTotal());
         
         $buscaFile->selectFileDeployTodos();
@@ -53,7 +53,7 @@ if ($estaLogado == "SIM") {
         // realizando a busca no banco de dados de todos os deploys realizados com os usuários que executaram
         $buscaFile = new ManipulateData();
         $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor,usuario");
-        $buscaFile->setOrderTable(" ORDER BY id_file_deploy DESC LIMIT $inicio, $quantLog");
+        $buscaFile->setOrderTable(" ORDER BY id_file_deploy DESC LIMIT $inicio, $quantLog");        
         $pagina = new Pagination($pg, $quantLog, $paginacao->countTotal());
         $buscaFile->selectFileDeployTodos();
         while ($filAr[] = $buscaFile->fetch_object()) {
