@@ -42,7 +42,7 @@ if ($estaLogado == "SIM") {
         $buscaFile = new ManipulateData();
         $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor,usuario");
         $buscaFile->setOrderTable("AND servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy DESC LIMIT $inicio, $quantLog");
-        $paginacao->setOrderTable(" AND servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy");
+        $paginacao->setOrderTable(" WHERE servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy");
         $pagina = new Pagination($pg, $quantLog, $paginacao->countTotal());
         
         $buscaFile->selectFileDeployTodos();
