@@ -2,19 +2,7 @@
 
 class ExecSSH {
 
-    private $serverHost, $serverUser, $serverPass, $arquivoLocal, $arquivoRemoto, $serverPort, $erro, $ssh;
-
-    function setServerHost($s) {
-        $this->serverHost = $s;
-    }
-
-    function setServerUser($u) {
-        $this->serverUser = $u;
-    }
-
-    function setServerPass($p) {
-        $this->serverPass = $p;
-    }
+    private $arquivoLocal, $arquivoRemoto, $erro, $ssh;
 
     function setArquivoLocal($al) {
         $this->arquivoLocal = $al;
@@ -22,10 +10,6 @@ class ExecSSH {
 
     function setArquivoRemoto($ar) {
         $this->arquivoRemoto = $ar;
-    }
-
-    function setServerPort($po) {
-        $this->serverPort = $po;
     }
 
     function getErro() {
@@ -36,7 +20,7 @@ class ExecSSH {
      * Função para realizar autenticação no servidor
      */
 
-    function __construct($host,$user,$pass,$port) {
+    function __construct($host, $user, $pass, $port) {
         /* Faz a conexão com o servidor remoto */
         if (!$this->ssh = ssh2_connect($host, $port)) {
             $this->erro = "Erro ao se conectar com o servidor...\n";
@@ -48,11 +32,12 @@ class ExecSSH {
             return false;
         }
     }
-    
+
     /*
      * Função para criar diretório
      */
-    function criarDiretorio(){
+
+    function criarDiretorio() {
         /* Cria um diretório de backup se não existir */
         if (!ssh2_sftp_mkdir($ssh, '/home/dolphin/backups')) {
             $this->erro = "Diretório já existe...\n";
@@ -65,8 +50,9 @@ class ExecSSH {
     /*
      * Função para enviar o aquivo de backup
      */
+
     function enviaArquivo() {
-        
+
         if (!ssh2_scp_send($this->ssh, $this->arquivoLocal, $this->arquivoRemoto, 0644)) {
             $this->erro = "Erro ao enviar o arquivo para o servidor ...\n";
             return false;
@@ -74,4 +60,12 @@ class ExecSSH {
             return true;
         }
     }
+
+    function executaCMD($cmd) {
+        if (!ssh2_exec($this->ssh, $cmd)){
+            $this->erro = "Erro ao executar o comando";
+            return false;
+        }
+    }
+
 }
