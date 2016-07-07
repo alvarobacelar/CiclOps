@@ -15,13 +15,13 @@
                             type: 'POST', // metodo de recebimento: GET ou POST 
                             data: { reverterSistema: acao },
                             success: function (data) {
-                                $("#conteudo").html(data);
+                                $("#conteudoD").html(data);
                             },
                             error: function () { // se der erro mostrará uma mensagem
-                                $("#conteudo").html("Erro ao executar os comandos");
+                                $("#conteudoD").html("Erro ao executar os comandos");
                             },
                             beforeSend: function () { // antes de mostrar a requisição mostra uma mensagem
-                                $("#conteudo").html("<center><img src='img/hourglass.gif' width='80'></center>");
+                                $("#conteudoD").html("<center><img src='img/hourglass.gif' width='80'></center>");
                             }
                         });                       
                     });
@@ -66,7 +66,7 @@
                         {/if}
         </table>
         <br>
-        <div class="alert alert-success" id="conteudo" role="alert"></div>
+        <div class="alert alert-success" id="conteudoD" role="alert"></div>
     </div>
     <br />
 </div>

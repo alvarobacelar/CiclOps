@@ -47,7 +47,11 @@ if ($estaLogado == "SIM") {
                 header("Location: realizarDeploy.php");
                 exit();
             }
+            
+            // adicionando arquivos extras (js) na opção de upload 
+            $jsFile = ["js/jquery.form.js", "js/upload.js"];
 
+            $smarty->assign("jsFile", $jsFile);
             $smarty->assign("sistema",$sistema);
             $smarty->assign("servidor", $servidor);
             $smarty->assign("conteudo", "paginas/enviarArquivoServidor.tpl");

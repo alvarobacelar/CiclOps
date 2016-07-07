@@ -24,9 +24,9 @@
         </div>
 
         {$erroCadastro}
-        <form enctype="multipart/form-data" action="includes/controllers/enviarArquivoServdiorControl.php" method="post" name="formEnvia"  class="form-horizontal" role="form">
+        <form enctype="multipart/form-data" {*action="includes/controllers/enviarArquivoServdiorControl.php"*} method="post" id="formEnviaWar" name="formEnviaWar"  class="form-horizontal" role="form">
             <fieldset>
-                <legend>Dados do arquivo</legend>
+                <legend>Envio de arquivo para o servidor local</legend>
                 <input type="hidden" id="servidor" name="servidor" value="{$servidor}">
                 <input type="hidden" id="sistema" name="sistema" value="{$sistema}">
                 <input type="hidden" id="userSistema" name="userSistema" value="{$resSistema->id_usuarios_servidor}">
@@ -44,16 +44,19 @@
                     </div> 
                 </div>
 
-                <div class="row form-group">
-                    <label class="col-sm-3 control-label" for="textObsFile"> Observações</label>
-                    <div class="col-sm-4">
-                        <textarea class="form-control" id="textObsFile" name="textObsFile" placeholder="Observações do arquivo (opcional)" rows="3"></textarea>
-                    </div>                
-                </div> 
+                {*<div class="row form-group">
+                <label class="col-sm-3 control-label" for="textObsFile"> Observações</label>
+                <div class="col-sm-4">
+                <textarea class="form-control" id="textObsFile" name="textObsFile" placeholder="Observações do arquivo (opcional)" rows="3"></textarea>
+                </div>                
+                </div> *}
+                <progress class="progress" value="0" max="100"></progress><span id="porcentagem"></span>
+                <br>
 
+                <div id="resposta"></div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
-                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
+                        <input type="button" id="btnEnviar" class="btn btn-success" value="Enviar arquivo">
                     </div>
                 </div>
             </fieldset>

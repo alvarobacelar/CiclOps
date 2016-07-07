@@ -11,10 +11,9 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
     $versao = addslashes($_POST["versaoArquivo"]);
     $userSistema = addslashes($_POST["userSistema"]);
     $idUsuario = addslashes($_SESSION["usuarioID"]);
-    $obs = addslashes($_POST["textObsFile"]);
+//    $obs = addslashes($_POST["textObsFile"]);
     $data = date("Y-m-d");
     $status = "1"; // AQUI QUANDO O STATUS FOR IGUAL A 1 SIGNIFICA QUE O DEPLOY AINDA NÃO FOI FEITO, QUANDO FOR 0 É QUE O DEPLOY DO ARQUIVO JÁ FOI REALIZADO
-
 ########################################################################
 ################ FAZENDO O UPLOAD DE ARQUIVO WAR ######################
 ########################################################################
@@ -24,6 +23,8 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
     if (!empty($file)) {
 // Pasta onde o arquivo vai ser salvo
         $_UP['pasta'] = '../../arquivos/';
+
+        //$data['sucesso'] = false;
 
 // Tamanho máximo do arquivo (em Bytes)
         $_UP['tamanho'] = 1024 * 1024 * 200; // 2Mb
@@ -39,7 +40,7 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
         $_UP['erros'][2] = 'O arquivo ultrapassa o limite de tamanho especifiado no HTML';
         $_UP['erros'][3] = 'O upload do arquivo foi feito parcialmente';
         $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
-   
+
 
         // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
         if ($_FILES['fileWar']['error'] != 0) {
@@ -56,6 +57,7 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 
         if (array_search($extensao, $_UP['extensoes']) === false) {
             //echo "Por favor, envie arquivos com as seguintes extensões: jpg ou JPEG";
+            return FALSE;
             $_SESSION["erroFile"] = "extensao";
             header("location: ../../enviarArquivoServidor.php?servidor=" . $servidor . "&sistema=" . $sistema);
             exit();
@@ -80,9 +82,10 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo
 //echo '<br /><a href="' . $_UP['pasta'] . $nome_final . '">Clique aqui para acessar o arquivo</a>;
                 $fileWar = $nome_final;
-                
+                //$data['sucesso'] = true;
             } else {
                 $_SESSION["erroFile"] = "erroUpload";
+                $data['msg'] = $enviar['erro'];
                 header("location: ../../enviarArquivoServidor.php?servidor=" . $servidor . "&sistema=" . $sistema);
                 exit();
             }
@@ -96,13 +99,17 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 
         $cadastraFile = new ManipulateData();
         $cadastraFile->setTable("file_deploy");
-        $cadastraFile->setCamposBanco("id_usuario_file_deploy,id_sistema,id_usuarios_servidor,id_servidor,nome_file_deploy,data_file_deploy,status_file_deploy,obs_file_deploy,nome_original_file");
-        $cadastraFile->setDados("'$idUsuario','$sistema','$userSistema','$servidor','$fileWar','$data','$status','$obs','$arquivo'");
+        $cadastraFile->setCamposBanco("id_usuario_file_deploy,id_sistema,id_usuarios_servidor,id_servidor,nome_file_deploy,data_file_deploy,status_file_deploy,nome_original_file");
+        $cadastraFile->setDados("'$idUsuario','$sistema','$userSistema','$servidor','$fileWar','$data','$status','$arquivo'");
         $cadastraFile->insert();
-        
+
         $_SESSION["erroFile"] = "cadastrado";
-        header("Location: ../../iniciarDeploy.php?idFile=".$cadastraFile->getInsertID());
+        echo json_decode($cadastraFile->getInsertID());
+        die();
+        
+        exit;
     } else {
+        return false;
         header("Location: ../../erro.php");
     }
 } else {
