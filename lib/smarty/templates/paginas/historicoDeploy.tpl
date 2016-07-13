@@ -5,7 +5,7 @@
 
     <div class="table-responsive table-bordered">
         <table class="table">
-            
+
             {$erroFile}
 
             {if isset($filH)}                
@@ -26,6 +26,18 @@
                             <td class="alert-success">{$u->data_file_deploy|date_format:"%d/%m/%Y"}<br>{$u->hora_deploy}</td>
                             <td class="alert-success">
                                 <button class="btn btn-success btn-xs disabled"> <span class="glyphicon glyphicon-ok-sign"></span> Deploy Realizado</button>
+                            </td>
+                        </tr>
+                    {else if $u->status_file_deploy == "1"}
+                        <tr class="text-center">                       
+                            <td class="alert-info">{$u->nome_servidor}<br><small>({$u->ip_servidor})</small></td>                        
+                            <td class="alert-info">{$u->nome_sistema}</td>
+                            <td class="alert-info">{$u->nome_original_file}</td>
+                            <td class="alert-info">{$u->nome_usuario}</td>
+                            <td class="alert-info">{$u->data_file_deploy|date_format:"%d/%m/%Y"}<br>{$u->hora_deploy}</td>
+                            <td class="alert-info">
+                                <a href="sendFile.php?idFile={$u->id_file_deploy}" title="Enviar o arquivo do servidor do ciclops para o servidor de destino" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-upload"></span> Enviar arquivo</a>
+                                <a onclick="excluiFileD({$u->id_file_deploy})" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-trash"></span> Excluir arquivo</a>
                             </td>
                         </tr>
                     {else}

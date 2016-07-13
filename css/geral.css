@@ -57,7 +57,7 @@ body{
 /* Progress Bar */
 .progress {
   position: relative;
-  height: 10px;
+  height: 16px;
   display: block;
   width: 100%;
   background-color: #acece6;
