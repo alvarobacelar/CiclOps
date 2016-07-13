@@ -11,6 +11,7 @@ $pathUser = addslashes($_POST["inputPathSistema"]);
 $linkMonitor = addslashes($_POST["inputMonitorSistema"]);
 $servidor = addslashes($_POST["selectServidor"]);
 $userServidor = addslashes($_POST["selectUserServidor"]);
+$pathHome = addslashes($_POST["inputPathHome"]);
 $data = date("Y-m-d");
 $status = addslashes($_POST["radioStatus"]); // STATUS IGUAL A 1 SIGINIFICA QUE ESTÁ ATIVO (0 = DESATIVADO);
 
@@ -20,7 +21,7 @@ if ($_SESSION["nivel"] == "admin") {
 
         $editaServidor = new ManipulateData();
         $editaServidor->setTable("sistema");
-        $editaServidor->setCamposBanco("id_usuarios_servidor='$userServidor', id_servidor='$servidor', nome_sistema='$nomeSistema', path_sistema='$pathUser', status_sistema='$status',link_monitoramento='$linkMonitor'");
+        $editaServidor->setCamposBanco("id_usuarios_servidor='$userServidor', id_servidor='$servidor', nome_sistema='$nomeSistema', path_sistema='$pathUser', status_sistema='$status',link_monitoramento='$linkMonitor', path_home_sistema='$pathHome'");
         $editaServidor->setFieldId("id_sistema");
         $editaServidor->setValueId("$idSistema");
         $editaServidor->update();
