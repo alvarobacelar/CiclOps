@@ -35,7 +35,8 @@ if ($estaLogado == "SIM") {
         $mvArquivos = "mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd"); // MOVENDO O PATH ATUAL DO SISTEMA
         $mkdir = "mkdir -p " . $filAr->path_sistema; // CRIANDO UMA NOVA PASTA DO SISTEMA PARA POR O ARQUIVO WAR
         $mvFileDepl = "mv " . $filAr->path_home_sistema . "/" . $filAr->nome_file_deploy . " " . $filAr->path_sistema . "/"; // MOVENDO O ARQUIVO WAR ENVIADO ANTERIORMENTE PARA A REALIZAÇÃO DO DEPLOY
-        $unzip = "unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/"; // descompactando arquivo        
+        //$unzip = "unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/"; // descompactando arquivo        
+        $unzip = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/'";
         $killJava = "killall -9 java"; // matando os processos existentes do java
         $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";        
         $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";// reiniciando tomcat passo 2
@@ -65,11 +66,13 @@ if ($estaLogado == "SIM") {
         } else {
             echo "Erro ao remover os arquivos antigos";
         }
-        if ($servExec->executaCMD($unzip)){
-            echo "5 - Descompactado o arquivo War<br>";
-        } else {
-            echo "Erro ao remover os arquivos antigos";
-        }
+//        if ($servExec->executaCMD($unzip)){
+//            echo "5 - Descompactado o arquivo War<br>";
+//        } else {
+//            echo "Erro ao remover os arquivos antigos";
+//        }
+        displaysecinfo("5 - Descompactando o arquivo: ", shell_exec($unzip));
+        
         if ($servExec->executaCMD($killJava)){
             echo "6 - Sistema parado<br>";
         } else {

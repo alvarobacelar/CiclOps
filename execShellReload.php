@@ -31,11 +31,9 @@ if ($estaLogado == "SIM") {
         /*
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */
-        $killJava = "killall -9 java";
-        // reiniciando o tomcat passo 1
-        $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";
-        // reiniciando tomcat passo 2
-        $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";//    
+        $killJava = "killall -9 java"; // matando os processos existentes do java
+        $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";        
+        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
         /*
          * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
          */
@@ -49,11 +47,7 @@ if ($estaLogado == "SIM") {
         } else {
             echo "Erro ao limpar o diretório work";
         }
-        if ($servExec->executaCMD($reiTomcat2)) {
-            echo "3 - <strong>Tomcat iniciado</strong><br>";
-        } else {
-            echo "Erro ao levantar o sistema";
-        }
+        displaysecinfo("3 - Iniciando o tomcat <br> ", shell_exec($reiTomcat2));
 
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
