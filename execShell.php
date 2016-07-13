@@ -39,7 +39,8 @@ if ($estaLogado == "SIM") {
         $unzip = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/'";
         $killJava = "killall -9 java"; // matando os processos existentes do java
         $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";        
-        $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";// reiniciando tomcat passo 2
+        //$reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";// reiniciando tomcat passo 2
+        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
         
         $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
         
@@ -83,11 +84,7 @@ if ($estaLogado == "SIM") {
         } else {
             echo "Erro ao limpar o diretório work";
         }
-        if ($servExec->executaCMD($reiTomcat2)){
-            echo "8 - Tomcat iniciado<br>";
-        } else {
-            echo "Erro ao levantar o sistema";
-        }
+       displaysecinfo("3 - Iniciando o tomcat <br> ", shell_exec($reiTomcat2));
         
         $servExec->executaCMD($rmFileLocal);
         
