@@ -36,8 +36,6 @@ if ($estaLogado == "SIM") {
         $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";
         // reiniciando tomcat passo 2
         $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";//    
-        echo "$killJava <br> $reiTomcat1 <br> $reiTomcat2";
-        die();
         /*
          * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
          */
