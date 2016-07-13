@@ -15,7 +15,14 @@
                     <div class="col-sm-3">
                         <input class="form-control" type="text" id="inputNomeUser" name="inputNomeUser" required="" value="{$s->nome_usuarios_servidor}" placeholder="Nome do Usuário de servidor">
                     </div>
-                </div>            
+                </div>   
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="inputSenhaUser">Senha do usuário servidor</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="inputSenhaUser" name="inputSenhaUser" value="{$s->senha_usuario_servidor}" required="" placeholder="Senha do Usuário de servidor">
+                    </div>
+                </div>
 
                 <div class="row form-group">
                     <label class="col-sm-3 control-label" for="inputPathTomcat">Path tomcat do usuário</label>
