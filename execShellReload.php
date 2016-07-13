@@ -31,11 +31,13 @@ if ($estaLogado == "SIM") {
         /*
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */
-        $killJava = "'killall -9 java";
+        $killJava = "killall -9 java";
         // reiniciando o tomcat passo 1
         $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";
         // reiniciando tomcat passo 2
-        $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";//                
+        $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";//    
+        echo "$killJava <br> $reiTomcat1 <br> $reiTomcat2";
+        die();
         /*
          * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
          */
