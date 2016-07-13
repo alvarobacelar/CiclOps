@@ -9,6 +9,7 @@ require_once './lib/smarty/config/config.php';
 require_once './includes/funcoes/verifica.php';
 require_once './includes/models/ManipulateData.php';
 require_once './includes/funcoes/exeCmdShel.php';
+require_once './includes/classes/execSSH.php';
 
 if ($estaLogado == "SIM") {
 
@@ -24,24 +25,35 @@ if ($estaLogado == "SIM") {
         $buscaFile->selectReiniciar();
         $filAr = $buscaFile->fetch_object();
 
+        // realizando conexão com o servidor via ssh2
+        $servExec = new ExecSSH($filAr->ip_servidor, $filAr->nome_usuarios_servidor, $filAr->senha_usuario_servidor, $filAr->porta_servidor);
+
         /*
          * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
          */
-        $killJava = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
+        $killJava = "'killall -9 java";
         // reiniciando o tomcat passo 1
-        $reiTomcat1 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'rm -rf " . $filAr->path_usuarios_servidor . "/work/* '";
+        $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";
         // reiniciando tomcat passo 2
-        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
-//                
-//        /*
-//         * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
-//         */
-        
-        echo "<strong>Matando o processo java existente </strong><br>";
-        shell_exec($killJava);
-        echo "<strong>Limpando o diretório work </strong><br>";
-        shell_exec($reiTomcat1);
-        displaysecinfo("Iniciando o tomcat <br> ", shell_exec($reiTomcat2));
+        $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";//                
+        /*
+         * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
+         */
+        if ($servExec->executaCMD($killJava)) {
+            echo "1 - Sistema parado<br>";
+        } else {
+            echo "Erro ao parar o processo do sistema java";
+        }
+        if ($servExec->executaCMD($reiTomcat1)) {
+            echo "2 - Diretorio work limpado<br>";
+        } else {
+            echo "Erro ao limpar o diretório work";
+        }
+        if ($servExec->executaCMD($reiTomcat2)) {
+            echo "3 - <strong>Tomcat iniciado</strong><br>";
+        } else {
+            echo "Erro ao levantar o sistema";
+        }
 
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
