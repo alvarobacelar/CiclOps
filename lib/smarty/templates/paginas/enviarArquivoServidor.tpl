@@ -19,7 +19,7 @@
 
         <div class="alert alert-info text-center" role="alert">
             <p>
-                Enviar arquivo <i><strong>*.war</strong></i> para o sistema<strong> {$resSistema->nome_sistema}</strong>
+                Enviar arquivo <i><strong>*.war</strong></i> para o servidor local do ciclops <small><i> ({$resSistema->nome_sistema})</i></small>
             </p>
         </div>
 
@@ -50,7 +50,9 @@
                 <textarea class="form-control" id="textObsFile" name="textObsFile" placeholder="Observações do arquivo (opcional)" rows="3"></textarea>
                 </div>                
                 </div> *}
+                <h4 class="text-info"><small>Progresso de envio do arquivo para o servidor local</small></h4>
                 <progress class="progress" value="0" max="100"></progress><span id="porcentagem"></span>
+                <h4 class="text-info"><small>(Apos enviar para o servidor local do CiclOps o sistema enviará automaticamente para o servidor do {$resSistema->nome_sistema})</small></h4>
                 <br>
 
                 <div id="resposta"></div>

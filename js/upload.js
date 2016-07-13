@@ -7,7 +7,7 @@ $(document).ready(function(){
             },        
             success: function(data) {
                 $('progress').attr('value','100');
-                urlRed = "./iniciarDeploy.php?idFile=" + data;
+                urlRed = "./sendFile.php?idFile=" + data;
                 $( location ).attr("href", urlRed);                             
             },
             error : function(){

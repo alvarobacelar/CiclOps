@@ -42,8 +42,6 @@ class ExecSSH {
         if (!ssh2_sftp_mkdir($ssh, '/home/dolphin/backups')) {
             $this->erro = "Diretório já existe...\n";
             return false;
-        } else {
-            return true;
         }
     }
 
@@ -52,18 +50,17 @@ class ExecSSH {
      */
 
     function enviaArquivo() {
-
-        if (!ssh2_scp_send($this->ssh, $this->arquivoLocal, $this->arquivoRemoto, 0644)) {
-            $this->erro = "Erro ao enviar o arquivo para o servidor ...\n";
-            return false;
-        } else {
-            return true;
-        }
+        return ssh2_scp_send($this->ssh, $this->arquivoLocal, $this->arquivoRemoto, 0644);
     }
 
     function executaCMD($cmd) {
-        if (!ssh2_exec($this->ssh, $cmd)){
-            $this->erro = "Erro ao executar o comando";
+        return ssh2_exec($this->ssh, $cmd);
+    }
+
+    function shell($sh) {
+        if (ssh2_shell($this->ssh, $sh)) {
+            return true;
+        } else {
             return false;
         }
     }

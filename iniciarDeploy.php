@@ -23,24 +23,11 @@ if ($estaLogado == "SIM") {
             $buscaFile->setValueId("$idFile");
             $buscaFile->selectFileDeploy();
             $filAr = $buscaFile->fetch_object();
-            $smarty->assign("file", $filAr);
+            $smarty->assign("file", $filAr);        
 
             $smarty->assign("conteudo", "paginas/iniciarDeploy.tpl");
             $smarty->display("HTML.tpl");
-        } else {
-//        else if (isset($_GET["fileOk"])) {
-//            $idFile = addslashes($_GET["fileOk"]);
-//            
-//            $buscaFile = new ManipulateData();
-//            $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor");
-//            $buscaFile->setFieldId("id_file_deploy");
-//            $buscaFile->setValueId("$idFile");
-//            $buscaFile->selectFileDeploy();
-//            $filAr = $buscaFile->fetch_object();
-//            $smarty->assign("file", $filAr);
-//
-//           
-//        } 
+        } else { 
             header("Location: realizarDeploy.php");
         }
     } else {

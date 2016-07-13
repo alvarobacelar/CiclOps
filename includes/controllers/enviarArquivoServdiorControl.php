@@ -13,7 +13,7 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
     $idUsuario = addslashes($_SESSION["usuarioID"]);
 //    $obs = addslashes($_POST["textObsFile"]);
     $data = date("Y-m-d");
-    $status = "1"; // AQUI QUANDO O STATUS FOR IGUAL A 1 SIGNIFICA QUE O DEPLOY AINDA NÃO FOI FEITO, QUANDO FOR 0 É QUE O DEPLOY DO ARQUIVO JÁ FOI REALIZADO
+    $status = "1"; // AQUI QUANDO O STATUS FOR IGUAL A 1 SIGNIFICA QUE O DEPLOY AINDA NÃO FOI FEITO, QUANDO FOR 0 É QUE O DEPLOY DO ARQUIVO JÁ FOI REALIZADO E 2 QUANDO O ARQUIVO FOI ENVIADO PARA O SERVIDOR DE DESTINO E ESTÁ ESPERANDO PARA FAZER DEPLOY
 ########################################################################
 ################ FAZENDO O UPLOAD DE ARQUIVO WAR ######################
 ########################################################################
@@ -96,6 +96,8 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
     }
 
     if (!empty($fileWar)) {
+        
+        $status = "2"; // SIGNIFICA QUE O ARQUIVO JÁ ESTÁ NO SERVIDOR MAS QUE AINDA NÃO FOI FEITO O DEPLOY
 
         $cadastraFile = new ManipulateData();
         $cadastraFile->setTable("file_deploy");

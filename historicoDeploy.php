@@ -16,7 +16,7 @@ if ($estaLogado == "SIM") {
         if ($_SESSION["erroFile"] == "exclui") {
             $smarty->assign("erroFile", "<div class='alert alert-success' role='alert'>Arquivo excluido com sucesso! </div>");
         } else {
-            $smarty->assign("erroFile", "<div class='alert alert-danger' role='alert'>Erro ao excluir arquivo</div>");
+            $smarty->assign("erroFile", "");
         }
     } else {
         $smarty->assign("erroFile");

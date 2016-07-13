@@ -9,6 +9,7 @@ require_once './lib/smarty/config/config.php';
 require_once './includes/funcoes/verifica.php';
 require_once './includes/models/ManipulateData.php';
 require_once './includes/funcoes/exeCmdShel.php';
+require_once './includes/classes/execSSH.php';
 
 if ($estaLogado == "SIM") {
 
@@ -23,49 +24,70 @@ if ($estaLogado == "SIM") {
         $buscaFile->setValueId("$idFile");
         $buscaFile->selectFileDeploy();
         $filAr = $buscaFile->fetch_object();
-
-        /*
-         * DEFININDO AS VARIÁVEIS COM OS COMANDOS DE ENVIO DE ARQUIVO E EXECUÇÃO DO DEPLOY
-         */
-        // comando para remover a pasta mais antiga do servidor
-        $rmOld = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'rm -rf " . $filAr->path_sistema . "2*'";
-        // renomeando a pasta atual
-        $mvArquivos = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd") . "'";
-        // criando a pasta nova para por novos arquivos
-        $mkdir = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'mkdir -p " . $filAr->path_sistema . "' ";
-        // comando para envio de arquivo para o servidor
-        $scp = "scp -P " . $filAr->porta_servidor . " " . PATH_ARQUIVOS . $filAr->nome_file_deploy . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . ":" . $filAr->path_sistema . "/";
-        // descompactando arquivo
-        $unzip = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/'";
-        // matando os processos existentes do java
-        $killJava = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'killall -9 java'";
-        // reiniciando o tomcat passo 1
-        $reiTomcat1 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'rm -rf " . $filAr->path_usuarios_servidor . "/work/* '";
-        // reiniciando tomcat passo 2
-        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor. " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
-
-        $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
-
-        /*
-         * EXECUÇÃO DOS COMANDOS ACIMA SETADOS
-         */
-//        echo $rmOld . "<br>" . $mvArquivos . "<br>" . $mkdir . "<br>" . $scp . "<br>" . $unzip . "<br>". $killJava . "<br>" . $reiTomcat1 . "<br>" . $reiTomcat2 ;
-//        die();
         
-        echo "<strong>Removendo arquivos mais antigos do servidor </strong><br> ";
-        myshellexec( $rmOld );
-        echo "<strong>Realizando o procedimento do deploy </strong><br> ";
-        myshellexec( $mvArquivos );
-        myshellexec( $mkdir );
-        myshellexec(  $scp );
-        displaysecinfo("Descompactando o arquivo: ", myshellexec( $unzip));
-        displaysecinfo("Matando o processo Java esistente: ", myshellexec(  $killJava ));
-        displaysecinfo("Removendo os arquivos do diretório Work do tomcat: ", myshellexec( $reiTomcat1 ));
-        displaysecinfo("Iniciando o tomcat", myshellexec( $reiTomcat2 ));
-
-        echo "<strong>Removendo arquivo do servidor local</strong> <br>";
-        myshellexec($rmFileLocal);
-
+        // realizando conexão com o servidor via ssh2
+        $servExec = new ExecSSH($filAr->ip_servidor, $filAr->nome_usuarios_servidor, $filAr->senha_usuario_servidor, $filAr->porta_servidor);        
+        
+        /*
+         * DEFININDO AS VARIÁVEIS COM OS COMANDOS  DE EXECUÇÃO DO DEPLOY
+         */
+        $rmOld = "rm -rf " . $filAr->path_sistema . "2*"; // REMOVENDO OS ARQIVOS ANTIGOS DO SISTEMA
+        $mvArquivos = "mv " . $filAr->path_sistema . " " . $filAr->path_sistema . date("Ymd"); // MOVENDO O PATH ATUAL DO SISTEMA
+        $mkdir = "mkdir -p " . $filAr->path_sistema; // CRIANDO UMA NOVA PASTA DO SISTEMA PARA POR O ARQUIVO WAR
+        $mvFileDepl = "mv " . $filAr->path_home_sistema . "/" . $filAr->nome_file_deploy . " " . $filAr->path_sistema . "/"; // MOVENDO O ARQUIVO WAR ENVIADO ANTERIORMENTE PARA A REALIZAÇÃO DO DEPLOY
+        $unzip = "unzip ". $filAr->path_sistema . "/" . $filAr->nome_file_deploy . " -d " . $filAr->path_sistema . "/"; // descompactando arquivo        
+        $killJava = "killall -9 java"; // matando os processos existentes do java
+        $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";        
+        $reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";// reiniciando tomcat passo 2
+        
+        $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
+        
+        /*
+         * Chamando o metodo para execução de comando no servidor remoto
+         */
+        if ($servExec->executaCMD($rmOld)){
+            echo "1 - Removido os arquivos mais antigos do servidor<br>";
+        } else {
+            echo "Erro ao remover os arquivos antigos";
+        }
+        if ($servExec->executaCMD($mvArquivos)){
+            echo "2 - Pasta antiga movida<br>";
+        } else {
+            echo "Erro ao realizar backup da pasta antiga do sistema";
+        }
+        if ($servExec->executaCMD($mkdir)){
+            echo "3 - Criado uma nova pasta para por o arquivo war<br>";
+        } else {
+            echo "Erro ao criar a pasta";
+        }
+        if ($servExec->executaCMD($mvFileDepl)){
+            echo "4 - Movido  o arquivo war para a pasta criada<br>";
+        } else {
+            echo "Erro ao remover os arquivos antigos";
+        }
+        if ($servExec->executaCMD($unzip)){
+            echo "5 - Descompactado o arquivo War<br>";
+        } else {
+            echo "Erro ao remover os arquivos antigos";
+        }
+        if ($servExec->executaCMD($killJava)){
+            echo "6 - Sistema parado<br>";
+        } else {
+            echo "Erro ao parar o processo do sistema java";
+        }
+        if ($servExec->executaCMD($reiTomcat1)){
+            echo "7 - Limpado o diretorio work<br>";
+        } else {
+            echo "Erro ao limpar o diretório work";
+        }
+        if ($servExec->executaCMD($reiTomcat2)){
+            echo "8 - Tomcat iniciado<br>";
+        } else {
+            echo "Erro ao levantar o sistema";
+        }
+        
+        $servExec->executaCMD($rmFileLocal);
+        
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)
          */
