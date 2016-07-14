@@ -27,32 +27,20 @@ if ($estaLogado == "SIM") {
 
         // realizando conexão com o servidor via ssh2
         $servExec = new ExecSSH($filAr->ip_servidor, $filAr->nome_usuarios_servidor, $filAr->senha_usuario_servidor, $filAr->porta_servidor);
-        // setando o parâmetro de arquivo local
-        $servExec->setArquivoLocal(PATH_ARQUIVOS . $filAr->nome_file_deploy);
-        // setando o parâmetro de arquivo remoto
-        $servExec->setArquivoRemoto($filAr->path_home_sistema . "/" . $filAr->nome_file_deploy);
-        // função de enviar o aquivo .war para o servidor 
-        $fileSend = $servExec->enviaArquivo();
+//        // setando o parâmetro de arquivo local
+//        $servExec->setArquivoLocal(PATH_ARQUIVOS . $filAr->nome_file_deploy);
+//        // setando o parâmetro de arquivo remoto
+//        $servExec->setArquivoRemoto($filAr->path_home_sistema . "/" . $filAr->nome_file_deploy);
+//        // função de enviar o aquivo .war para o servidor 
+//        $fileSend = $servExec->enviaArquivo();               
 
-        if ($fileSend) {
-            $mensagemExec = "Arquivo enviado para o servidor <strong>$filAr->ip_servidor</strong>, direcionando para a página de deploy ...";
-            $smarty->assign("mensage", $mensagemExec);
-            //sleep(5);            
-            header("Location: iniciarDeploy.php?idFile=" . $idFile);
-            exit();
-        } else {
-            $mensagemExec = "Falha ao realizar o deploy do sistema. <br> Erro ao enviar o arquivo para o servidor remoto, verifique com o administrador do sistema";
-            $smarty->assign("mensage", $mensagemExec);
-            header("Location: realizarDeploy.php");
-            exit();
-        }
-        
-        //        $smarty->assign("sistema", $sistema);
-        $smarty->assign("link", "iniciarDeploy.php?idFile=" . $idFile);
-        $smarty->assign("sistema", $filAr);
-        $smarty->assign("conteudo", "paginas/sendFile.tpl");
-        $smarty->display("HTML.tpl");
-        
+        $scp = "scp -P " . $filAr->porta_servidor . " " . PATH_ARQUIVOS . $filAr->nome_file_deploy . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . ":" . $filAr->path_home_sistema . "/";
+
+
+        $mensagemExec = "Arquivo enviado para o servidor <strong>$filAr->ip_servidor</strong>, direcionando para a página de deploy ...";
+        $smarty->assign("mensage", $mensagemExec);
+        //sleep(5);            
+        header("Location: iniciarDeploy.php?idFile=" . $idFile);
     } else {
         header("Location: realizarDeploy.php");
     }
