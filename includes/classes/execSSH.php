@@ -22,15 +22,10 @@ class ExecSSH {
 
     function __construct($host, $user, $pass, $port) {
         /* Faz a conexão com o servidor remoto */
-        if (!$this->ssh = ssh2_connect($host, $port)) {
-            $this->erro = "Erro ao se conectar com o servidor...\n";
-            return false;
-        }
+        $this->ssh = ssh2_connect($host, $port);
+
         /* Faz a autenticação no servidor remoto */
-        if (!ssh2_auth_password($this->ssh, $user, $pass)) {
-            $this->erro = "Erro ao efetuar autenticação no servidor remoto...\n";
-            return false;
-        }
+        ssh2_auth_password($this->ssh, $user, $pass);
     }
 
     /*
@@ -50,7 +45,7 @@ class ExecSSH {
      */
 
     function enviaArquivo() {
-        return ssh2_scp_send($this->ssh, $this->arquivoLocal, $this->arquivoRemoto, 0644);
+        return ssh2_scp_send($this->ssh, "$this->arquivoLocal", "$this->arquivoRemoto", 0777);
     }
 
     function executaCMD($cmd) {
