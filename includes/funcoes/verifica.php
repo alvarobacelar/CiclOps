@@ -14,7 +14,7 @@
  * }
  * }
  */
-$versaoSist = "1.0.1";
+$versaoSist = "1.2";
 if (! isset ( $_SESSION )) {
 	session_start ();
 }
