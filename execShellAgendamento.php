@@ -7,7 +7,7 @@
  * @date 18/07/2016
  */
 
-$localRoot = "/home/infoway/www/SisDeploy/"; // mudar esse diretório quando for para o servidor de produção 
+$localRoot = "/var/www/html/ciclops-old/"; // mudar esse diretório quando for para o servidor de produção 
 
 require_once $localRoot . "includes/models/ManipulateData.php";
 require_once $localRoot . "includes/funcoes/exeCmdShel.php";
