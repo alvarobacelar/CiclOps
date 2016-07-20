@@ -14,13 +14,15 @@
                 <th><center>ID</center></th>
                 <th><center>Grupo</center></th>
                 <th><center>Observação</center></th>
-                <th><center>Observação</center></th>
+                <th><center>Email</center></th>
+                <th><center>Status</center></th>
                 <th><center>Opção</center></th>
                     {foreach $grupoR as $u}
                     <tr class="text-center">                                               
                         <td class="active">{$u->id_grupo_servidor}</td>
                         <td class="active"> {$u->nome_grupo_servidor} </td>
                         <td class="active">{$u->descricao_grupo_servidor}</td>
+                        <td class="active">{$u->email_grupo_servidor}</td>
                         <td class="active">{if $u->status_grupo_servidor == 1}<button type="button" class="btn btn-xs btn-success" disabled="disabled"> Ativo </button>{else if $u->status_grupo_servidor == 0}<button type="button" class="btn btn-xs btn-default" disabled="disabled"> Desativado</button> {else}<button type="button" class="btn btn-xs btn-warning" disabled="disabled"> Status desconhecido</button> {/if}</td>
                         <td class="active">
                             <a href="editarGrupo.php?idGrup={$u->id_grupo_servidor}" class="btn btn-warning btn-xs"> <span class="glyphicon glyphicon-edit"></span> Editar</a>

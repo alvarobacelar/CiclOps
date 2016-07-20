@@ -31,9 +31,9 @@ if ($estaLogado == "SIM") {
             $agendaDeploy = new ManipulateData();
             $dataTimeAgendamento = $agendaDeploy->soNumero($dataTime);
 
-            $cmdAtAgendamento = "at -f " . PATH_SISTEMA . "execShellAgendamento.php -t " . $dataTimeAgendamento;
+            //$cmdAtAgendamento = "at -f " . PATH_SISTEMA . "execShellAgendamento.php -t " . $dataTimeAgendamento;
 
-            shell_exec($cmdAtAgendamento);
+            //shell_exec($cmdAtAgendamento);
 
             $fileSistema = $filAr->path_sistema . date("Ymd");
             $altFile = new ManipulateData();

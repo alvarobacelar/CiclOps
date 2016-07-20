@@ -53,6 +53,7 @@ if ($estaLogado == "SIM") {
         
         $buscaFile->selectFileDeployTodos();
         while ($filAr[] = $buscaFile->fetch_object()) {
+            
             $smarty->assign("filH", $filAr);
         }
     } else {
@@ -61,8 +62,9 @@ if ($estaLogado == "SIM") {
         $buscaFile->setTable("file_deploy,sistema,usuarios_servidor,servidor,usuario");
         $buscaFile->setOrderTable(" ORDER BY id_file_deploy DESC LIMIT $inicio, $quantLog");        
         $pagina = new Pagination($pg, $quantLog, $paginacao->countTotal());
-        $buscaFile->selectFileDeployTodos();
+        $buscaFile->selectFileDeployTodos();        
         while ($filAr[] = $buscaFile->fetch_object()) {
+            
             $smarty->assign("filH", $filAr);
         }
     }

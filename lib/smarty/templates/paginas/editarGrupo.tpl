@@ -14,7 +14,13 @@
                     <div class="col-sm-4">
                         <input class="form-control" type="text" id="inputGrupo" name="inputGrupo" value="{$gr->nome_grupo_servidor}" required="" placeholder="Nome do Grupo">
                     </div>
-                </div>                        
+                </div>       
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="inputEmailGrupo">Email do Grupo</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" id="inputEmailGrupo" name="inputEmailGrupo" value="{$gr->email_grupo_servidor}" required="" placeholder="Email do Grupo">
+                    </div>
+                </div>  
 
                 <div class="row form-group">
                     <label class="col-sm-2 control-label" for="textObservacaoGrupo"> Descrição</label>
