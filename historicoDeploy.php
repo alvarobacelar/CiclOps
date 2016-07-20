@@ -15,6 +15,12 @@ if ($estaLogado == "SIM") {
     if (isset($_SESSION["erroFile"])) {
         if ($_SESSION["erroFile"] == "exclui") {
             $smarty->assign("erroFile", "<div class='alert alert-success' role='alert'>Arquivo excluido com sucesso! </div>");
+        } else if ($_SESSION["erroFile"] == "excluiAgendamento") {
+            $smarty->assign("erroFile", "<div class='alert alert-success' role='alert'>Agendamento cancelado com sucesso! </div>");
+        } else if ($_SESSION["erroFile"] == "naoAgenda") {
+            $smarty->assign("erroFile", "<div class='alert alert-danger' role='alert'>Já existe um agendamento para esse arquivo. </div>");
+        } else if ($_SESSION["erroFile"] == "agenda") {
+            $smarty->assign("erroFile", "<div class='alert alert-success' role='alert'>Agendamento realizado com sucesso! </div>");
         } else {
             $smarty->assign("erroFile", "");
         }

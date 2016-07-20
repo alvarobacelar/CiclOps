@@ -116,10 +116,9 @@ class ManipulateData extends MysqlConn {
 //        $this->sql = "SELECT * FROM $this->table WHERE id_cidade_atuante = '10' ORDER BY $this->orderTable";
 //        $this->execSQL($this->sql);
 //    }
-    
     // função para buscar os logs de acesso
     public function selectLogAcesso() {
-        $this->sql = "SELECT * FROM $this->table WHERE log_usuario.id_usuario_log = usuario.id_usuario ORDER BY $this->orderTable"; 
+        $this->sql = "SELECT * FROM $this->table WHERE log_usuario.id_usuario_log = usuario.id_usuario ORDER BY $this->orderTable";
         $this->execSQL($this->sql);
     }
 
@@ -170,7 +169,7 @@ class ManipulateData extends MysqlConn {
                     AND $this->fieldId = '$this->valueId'";
         $this->execSQL($this->sql);
     }
-    
+
     /**
      * Metodo para contar o total de registro de uma query
      * @access public 
@@ -184,11 +183,11 @@ class ManipulateData extends MysqlConn {
         $cont = $total->total;
         return $cont;
     }
-    
+
     public function countTotalDepl() {
         $this->sql = "SELECT nome_usuario, count(*) AS total FROM file_deploy,usuario WHERE file_deploy.id_usuario_file_deploy = usuario.id_usuario 
                        AND status_file_deploy = '0' AND data_file_deploy = '$this->camposBanco' GROUP BY id_usuario_file_deploy";
-        $this->execSQL($this->sql);       
+        $this->execSQL($this->sql);
     }
 
     public function selectAlterar() {
@@ -203,27 +202,27 @@ class ManipulateData extends MysqlConn {
                         $this->fieldId = '$this->valueId' $this->orderTable";
         $this->execSQL($this->sql);
     }
-    
+
     public function selectReiniciar() {
         $this->sql = "SELECT * FROM $this->table WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
                         AND usuarios_servidor.id_servidor = servidor.id_servidor AND
                         $this->fieldId = '$this->valueId' $this->orderTable";
         $this->execSQL($this->sql);
     }
-    
+
     public function selectSistemaReinicar() {
         $this->sql = "SELECT * FROM $this->table WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor AND
                         $this->fieldId = '$this->valueId' $this->orderTable";
         $this->execSQL($this->sql);
     }
-    
+
     public function selectSistemaReverter() {
         $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema AND
                         sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor AND
                         $this->fieldId = '$this->valueId' $this->orderTable";
         $this->execSQL($this->sql);
     }
-    
+
     public function selectFileDeployTodos() {
         $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema 
                         AND sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
@@ -413,6 +412,10 @@ class ManipulateData extends MysqlConn {
         );
 
         return $mes_extenso["$mes"];
+    }
+
+    function soNumero($str) {
+        return preg_replace("/[^0-9]/", "", $str);
     }
 
 }
