@@ -40,9 +40,7 @@ if ($estaLogado == "SIM") {
         $killJava = "killall -9 java"; // matando os processos existentes do java
         $reiTomcat1 = "rm -rf " . $filAr->path_usuarios_servidor . "/work/* ";        
         //$reiTomcat2 = "sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh";// reiniciando tomcat passo 2
-        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";
-        
-        $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
+        $reiTomcat2 = "ssh -p " . $filAr->porta_servidor . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . " 'sh " . $filAr->path_usuarios_servidor . "/bin/startup.sh'";               
         
         /*
          * Chamando o metodo para execução de comando no servidor remoto
@@ -86,7 +84,7 @@ if ($estaLogado == "SIM") {
         }
        displaysecinfo("3 - Iniciando o tomcat <br> ", shell_exec($reiTomcat2));
         
-        $servExec->executaCMD($rmFileLocal);
+        //$servExec->executaCMD($rmFileLocal);
         
         /*
          * Realizando alteração no banco do file_deploy (informando que o arquivo já foi feito o deploy)

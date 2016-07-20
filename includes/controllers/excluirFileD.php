@@ -14,7 +14,6 @@ session_start();
 if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
 
     if (isset($_GET["id"])) { // SE EXITIR A VARIÁVEL EXECUTA OS COMANDOS ABAIXO
-
         $idExcluir = addslashes($_GET["id"]);
 
         // CRIANDO O OBJETO PARA EXCLUSÃO DO ARQUIVO (TANTO DO SERVIDOR LOCAL QUANTO NO BANCO DE DADOS)
@@ -28,12 +27,21 @@ if ($_SESSION["nivel"] == "admin" || $_SESSION["nivel"] == "dev") {
         $rmF = $del->fetch_object();
         //SETANDO O COMANDO PARA EXCLUSÃO DO ARQUIVO
         $rmFile = "rm -rf " . PATH_ARQUIVOS . $rmF->nome_file_deploy;
-        
+
         // EXECUTANDO O COMANDO PARA EXCLUIR ARQUIVO DO SERVIDOR LOCAL
-        myshellexec($rmFile);
+        shell_exec($rmFile);
+
+        // excluindo agendamento
+        $delAgenda = new ManipulateData();
+        $delAgenda->setTable("agendamento");
+        $delAgenda->setCampoTable("id_file_deploy");
+        $delAgenda->setValueId($rmF->id_file_deploy);
+        $delAgenda->delete();
+
         // EXCLUINDO DADO DO BANCO
         $del->delete();
-        
+
+
         $_SESSION["erroFile"] = "exclui";
         header("Location: ../../historicoDeploy.php");
     } else {

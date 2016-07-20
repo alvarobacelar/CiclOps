@@ -34,9 +34,11 @@ if ($estaLogado == "SIM") {
 //        // função de enviar o aquivo .war para o servidor 
 //        $fileSend = $servExec->enviaArquivo();
 
-        $scp = "scp -P " . $filAr->porta_servidor . " " . PATH_ARQUIVOS . $filAr->nome_file_deploy . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . ":" . $filAr->path_home_sistema . "/";
-      
+        $scp = "scp -P " . $filAr->porta_servidor . " " . PATH_ARQUIVOS . $filAr->nome_file_deploy . " " . $filAr->nome_usuarios_servidor . "@" . $filAr->ip_servidor . ":" . $filAr->path_home_sistema . "/";     
+        $rmFileLocal = "rm -rf " . PATH_ARQUIVOS . $filAr->nome_file_deploy;
+        
         shell_exec($scp);
+        shell_exec($rmFileLocal);
 
         $mensagemExec = "Arquivo enviado para o servidor <strong>$filAr->ip_servidor</strong>, direcionando para a página de deploy ...";
         $smarty->assign("mensage", $mensagemExec);

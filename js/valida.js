@@ -80,6 +80,6 @@ function excluiAgendamento(id) {
     var excluir = confirm("Tem certeza que deseja cancelar o agendamento para esse arquivo?");
 
     if (excluir) {
-        location.href = "includes/controllers/excluirFileD.php?id=" + id;
+        location.href = "includes/controllers/excluirAgendamento.php?id=" + id;
     }
 }
