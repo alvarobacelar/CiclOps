@@ -85,7 +85,6 @@ if ($buscaFileAgenda->registros_retornados() >= 1) {
         $upAgendamento->setValueId("$idFile");
         $upAgendamento->setCamposBanco("status_agendamento='0'");
         $upAgendamento->update();
-        shell_exec("echo 'Deploy realizado' > ~/logExecucao.log");
 
         // enviando um email para o grupo de usuário do deploy
         $idGrupo = $filAr->id_grupo_servidor;
@@ -99,58 +98,59 @@ if ($buscaFileAgenda->registros_retornados() >= 1) {
         $emailEnviar = $valor->email_grupo_servidor;
 
         // Compo E-mail
-        $arquivo = "
-                    <style type='text/css'>
-                    body {
-
-                      margin:0px;
-                      font-family:Verdane;
-                      font-size:12px;
-                      color: #333;
-                    }
-                    a{
-                      color: #666666;
-                      text-decoration: none;
-                    }
-                    a:hover {
-                      color: #FF0000;
-                      text-decoration: none;
-                    }
-                    table{
-                      background-color: #CCA;
-                    }
-                    </style>
-                    <html lang='pt-br'>                   
-                    <table width='100%' border='1' cellpadding='1' cellspacing='1'>
-                      <tr>
-                        <td>
-                          <tr>
-                            <td width='320'><center><strong>Execução de agendamento de deploy</strong></center></td>
-                          </tr>
-                          <tr>
-                            <td width='320'>Deploy do sistema " . $filAr->nome_sistema . " realizado.</td>
-                          </tr>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Este e-mail foi enviado em " . $grupoEmail->mostrarData() . "</b></td>
-                      </tr>
-                    </table>
-                    </body>
-                    </html>
-                    ";
-
-        // emails para quem será enviado o formulário        
-        $destino = $emailEnviar;
-        $assunto = "CiclOps - Agendamento de deploy [OK]";
-
-        // É necessário indicar que o formato do e-mail é html
-        $headers = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= 'From: CiclOps <infraestrutura@infoway-pi.com.br>';
-        //$headers .= "Bcc: $EmailPadrao\r\n";
-
-        mail($destino, $assunto, $arquivo, $headers);
+//        $arquivo = "
+//                    <style type='text/css'>
+//                    body {
+//
+//                      margin:0px;
+//                      font-family:Verdane;
+//                      font-size:12px;
+//                      color: #333;
+//                    }
+//                    a{
+//                      color: #666666;
+//                      text-decoration: none;
+//                    }
+//                    a:hover {
+//                      color: #FF0000;
+//                      text-decoration: none;
+//                    }
+//                    table{
+//                      background-color: #CCA;
+//                    }
+//                    </style>
+//                    <html lang='pt-br'>                   
+//                    <table width='100%' border='1' cellpadding='1' cellspacing='1'>
+//                      <tr>
+//                        <td>
+//                          <tr>
+//                            <td width='320'><center><strong>Execução de agendamento de deploy</strong></center></td>
+//                          </tr>
+//                          <tr>
+//                            <td width='320'>Deploy do sistema " . $filAr->nome_sistema . " realizado.</td>
+//                          </tr>
+//                        </td>
+//                      </tr>
+//                      <tr>
+//                        <td>Este e-mail foi enviado em " . $grupoEmail->mostrarData() . "</b></td>
+//                      </tr>
+//                    </table>
+//                    </body>
+//                    </html>
+//                    ";
+//
+//        // emails para quem será enviado o formulário        
+//        $destino = $emailEnviar;
+//        $assunto = "CiclOps - Agendamento de deploy [OK]";
+//
+//        // É necessário indicar que o formato do e-mail é html
+//        $headers = 'MIME-Version: 1.0' . "\r\n";
+//        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+//        $headers .= 'From: CiclOps <infraestrutura@infoway-pi.com.br>';
+//        //$headers .= "Bcc: $EmailPadrao\r\n";
+//
+//        mail($destino, $assunto, $arquivo, $headers);
+        shell_exec("echo 'agendamento realizado\n' > ~/logExecucao.log");
     }
 } else {
     echo "Não existe nenhum agendamento\n";
