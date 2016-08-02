@@ -57,7 +57,7 @@ if ($estaLogado == "SIM") {
         $dat = date("Y-m-d");
         $altFile = new ManipulateData();
         $altFile->setTable("file_deploy");
-        $altFile->setCamposBanco("status_file_deploy='0',data_file_deploy='$dat',status_reverter_deploy='1'");
+        $altFile->setCamposBanco("status_file_deploy='0',status_reverter_deploy='1'");
         $altFile->setFieldId("id_sistema");
         $altFile->setValueId("$idSistema");
         $altFile->update();

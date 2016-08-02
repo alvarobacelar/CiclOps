@@ -51,7 +51,7 @@ if ($estaLogado == "SIM") {
         //$paginacao->setOrderTable(" WHERE servidor.id_grupo_servidor = '$grupo' ORDER BY id_file_deploy");
         $pagina = new Pagination($pg, $quantLog, $paginacao->countTotal());
         
-        $buscaFile->selectFileDeployTodos();
+        $buscaFile->selectFileDeployTodos();        
         while ($filAr[] = $buscaFile->fetch_object()) {
             
             $smarty->assign("filH", $filAr);
