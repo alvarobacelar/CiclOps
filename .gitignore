@@ -5,6 +5,8 @@ lib/smarty/cache/*
 .project/*
 .project
 nbproject/*
+backups/Dolphin/*
+backups/iHealth/*
 Release.key
 arquivos/*
 includes/models/MysqlConn_MYSLQ.php
