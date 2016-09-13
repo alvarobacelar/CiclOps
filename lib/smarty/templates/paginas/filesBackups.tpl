@@ -12,12 +12,14 @@
                 {foreach $arquivo as $arq}
                     {if $arq != ".."}
                         {if $arq != "."}
-                        <tr>                       
-                            <td class="active">{$arq}</td>                                                                                
-                            <td class="active text-center">
-                                <a href="{$path}{$arq}" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-download-alt"></span> Download</a>
-                            </td>
-                        </tr>
+                            {if $arq != "index.php"}
+                            <tr>                       
+                                <td class="active">{$arq}</td>                                                                                
+                                <td class="active text-center">
+                                    <a href="{$path}{$arq}" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-download-alt"></span> Download</a>
+                                </td>
+                            </tr>
+                        {/if}
                     {/if}
                 {/if}
             {/foreach}            
