@@ -100,11 +100,11 @@ class ManipulateData extends MysqlConn {
     }
 
     /**
-     * Metodo para selecionar por ordem do parâmetro que definir 
+     * Metodo para selecionar por ordem do parâmetro que definir
      * @access public
      * @param ordemTable
      * @return string
-     * @ParamType ordemTable 
+     * @ParamType ordemTable
      * @ReturnType string
      */
     public function selectOrder() {
@@ -127,7 +127,7 @@ class ManipulateData extends MysqlConn {
      * @access public
      * @param ordemTable
      * @return string
-     * @ParamType ordemTable 
+     * @ParamType ordemTable
      * @ReturnType string
      */
     public function selectUserServidor() {
@@ -140,7 +140,7 @@ class ManipulateData extends MysqlConn {
      * @access public
      * @param ordemTable
      * @return string
-     * @ParamType ordemTable 
+     * @ParamType ordemTable
      * @ReturnType string
      */
     public function selectServidor() {
@@ -153,18 +153,24 @@ class ManipulateData extends MysqlConn {
      * @access public
      * @param ordemTable
      * @return string
-     * @ParamType ordemTable 
+     * @ParamType ordemTable
      * @ReturnType string
      */
-    public function selectSistema() {
+    public function selectSistema($grupo = "") {
         $this->sql = "SELECT * FROM sistema,usuarios_servidor,servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
-                    AND usuarios_servidor.id_servidor = servidor.id_servidor ORDER BY sistema.nome_sistema";
+                    AND usuarios_servidor.id_servidor = servidor.id_servidor $grupo ORDER BY sistema.nome_sistema";
+        $this->execSQL($this->sql);
+    }
+
+    public function selectSistemaIndex($grupo = "") {
+        $this->sql = "SELECT * FROM sistema,usuarios_servidor,servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
+                    AND usuarios_servidor.id_servidor = servidor.id_servidor $grupo ORDER BY sistema.nome_sistema";
         $this->execSQL($this->sql);
     }
 
     public function selectSistemaMonitor() {
         $this->sql = "SELECT * FROM sistema,usuarios_servidor,servidor,grupo_servidor WHERE sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
-                    AND usuarios_servidor.id_servidor = servidor.id_servidor 
+                    AND usuarios_servidor.id_servidor = servidor.id_servidor
                     AND servidor.id_grupo_servidor = grupo_servidor.id_grupo_servidor AND sistema.link_monitoramento != ''
                     AND $this->fieldId = '$this->valueId'";
         $this->execSQL($this->sql);
@@ -172,7 +178,7 @@ class ManipulateData extends MysqlConn {
 
     /**
      * Metodo para contar o total de registro de uma query
-     * @access public 
+     * @access public
      * @param type String Tabela do banco de dados
      * @return INT Numeros de registros
      */
@@ -185,7 +191,7 @@ class ManipulateData extends MysqlConn {
     }
 
     public function countTotalDepl() {
-        $this->sql = "SELECT nome_usuario, count(*) AS total FROM file_deploy,usuario WHERE file_deploy.id_usuario_file_deploy = usuario.id_usuario 
+        $this->sql = "SELECT nome_usuario, count(*) AS total FROM file_deploy,usuario WHERE file_deploy.id_usuario_file_deploy = usuario.id_usuario
                        AND status_file_deploy = '0' AND data_file_deploy = '$this->camposBanco' GROUP BY id_usuario_file_deploy";
         $this->execSQL($this->sql);
     }
@@ -196,7 +202,7 @@ class ManipulateData extends MysqlConn {
     }
 
     public function selectFileDeploy() {
-        $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema 
+        $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema
                         AND sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
                         AND usuarios_servidor.id_servidor = servidor.id_servidor AND
                         $this->fieldId = '$this->valueId' $this->orderTable";
@@ -224,9 +230,9 @@ class ManipulateData extends MysqlConn {
     }
 
     public function selectFileDeployTodos() {
-        $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema 
+        $this->sql = "SELECT * FROM $this->table WHERE file_deploy.id_sistema = sistema.id_sistema
                         AND sistema.id_usuarios_servidor = usuarios_servidor.id_usuarios_servidor
-                        AND usuarios_servidor.id_servidor = servidor.id_servidor 
+                        AND usuarios_servidor.id_servidor = servidor.id_servidor
                         AND file_deploy.id_usuario_file_deploy = usuario.id_usuario
                         $this->orderTable";
         $this->execSQL($this->sql);
@@ -310,7 +316,7 @@ class ManipulateData extends MysqlConn {
      * @access public
      * @param aSql
      * @return INT Quantidade de linhas
-     * @ParamType aSql 
+     * @ParamType aSql
      * @ReturnType int
      */
     function registros_retornados() {
@@ -420,4 +426,3 @@ class ManipulateData extends MysqlConn {
 
 }
 ?>
-

@@ -16,15 +16,15 @@
             </nav>
 
 
-            {if isset($servidoresGrupo)}                
-                <th><center>Servidor</center></th>           
-                <th><center>Observação</center></th>             
+            {if isset($servidoresGrupo)}
+                <th><center>Servidor</center></th>
+                <th><center>Observação</center></th>
                 <th><center>IP</center></th>
                 <th><center>Opção</center></th>
                     {foreach $servidoresGrupo as $u}
-                    <tr class="text-center">                       
+                    <tr class="text-center">
                         <td class="active">{$u->nome_servidor}</td>
-                        <td class="active" width="400">{$u->obs_servidor}</td>                        
+                        <td class="active" width="400">{$u->obs_servidor}</td>
                         <td class="active">{$u->ip_servidor}</td>
                         <td class="active">
                             <a href="reiniciarTomcat.php?servidor={$u->id_servidor}" class="btn btn-info btn-xs"> <span class="glyphicon glyphicon-ok-sign"></span> Escolher servidro</a>
@@ -38,4 +38,4 @@
     </div>
     <br />
 </div>
-<center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center> 
+<center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center>

@@ -3,7 +3,7 @@
         <h2 class="panel-title text-capitalize"><strong>Escolha Sistema para reverter deploy</strong></h2>
     </div>
 
-    {literal}       
+    {literal}
         <script type="text/javascript">
             function reloadTomcat(id) {
                 var reload = confirm("Deseja realmente reverter o último deploy ?");
@@ -12,7 +12,7 @@
                         var acao = id;
                         $.ajax({
                             url: "execShellReverterDepl.php", // pagina que irá aparecer
-                            type: 'POST', // metodo de recebimento: GET ou POST 
+                            type: 'POST', // metodo de recebimento: GET ou POST
                             data: { reverterSistema: acao },
                             success: function (data) {
                                 $("#conteudoD").html(data);
@@ -23,7 +23,7 @@
                             beforeSend: function () { // antes de mostrar a requisição mostra uma mensagem
                                 $("#conteudoD").html("<center><img src='img/hourglass.gif' width='80'></center>");
                             }
-                        });                       
+                        });
                     });
                 }
             }
@@ -37,19 +37,19 @@
                 <ul class="pagination">
                     <li class="disabled"><a  aria-label="Previous"><span aria-hidden="true">1º Escolher Servidor</span></a></li>
                     <li class="disabled"><span aria-hidden="true"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span></li>
-                    <li class="active"><a >2º Escolher Sistema <span class="sr-only">(current)</span></a></li>              
+                    <li class="active"><a >2º Escolher Sistema <span class="sr-only">(current)</span></a></li>
             </nav>
 
 
-            {if isset($sistemaDeploy)}                
-                <th><center>Sistema</center></th>             
+            {if isset($sistemaDeploy)}
+                <th><center>Sistema</center></th>
                 <th><center>path sistema</center></th>
                 <th><center>path tomcat</center></th>
                 <th><center>Opção</center></th>
                     {foreach $sistemaDeploy as $u}
-                    <tr class="text-center">                       
-                        <td class="active">{$u->nome_sistema}</td>
-                        <td class="active">{$u->path_sistema}</td>                        
+                    <tr class="text-center">
+                        <td class="active">{if !empty($u->link_acesso_sistema)}<a href="{$u->link_acesso_sistema}" target="_blank" title="Acesso ao sistema {$u->nome_sistema}">{$u->nome_sistema}</a> {else} {$u->nome_sistema} {/if}</td>
+                        <td class="active">{$u->path_sistema}</td>
                         <td class="active">{$u->path_usuarios_servidor}</td>
                         <td class="active">
                             {if $u->status_reverter_deploy != 1}
@@ -70,4 +70,4 @@
     </div>
     <br />
 </div>
-<center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center> 
+<center><a class="btn btn-default" href="javascript:history.back()"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a></center>

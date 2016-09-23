@@ -9,6 +9,11 @@ $idSistema = addslashes($_POST["hiddenIdSistema"]);
 $nomeSistema = addslashes($_POST["inputNomeSistema"]);
 $pathUser = addslashes($_POST["inputPathSistema"]);
 $linkMonitor = addslashes($_POST["inputMonitorSistema"]);
+$linkAcesso = addslashes($_POST["inputLinkSistema"]);
+$startup = addslashes($_POST["selectStartup"]);
+$linkLog = addslashes($_POST["linkLog"]);
+$servicoNome = addslashes($_POST["inputServico"]);
+$datasource = addslashes($_POST["inputDatasourceSistema"]);
 $servidor = addslashes($_POST["selectServidor"]);
 $userServidor = addslashes($_POST["selectUserServidor"]);
 $pathHome = addslashes($_POST["inputPathHome"]);
@@ -21,7 +26,7 @@ if ($_SESSION["nivel"] == "admin") {
 
         $editaServidor = new ManipulateData();
         $editaServidor->setTable("sistema");
-        $editaServidor->setCamposBanco("id_usuarios_servidor='$userServidor', id_servidor='$servidor', nome_sistema='$nomeSistema', path_sistema='$pathUser', status_sistema='$status',link_monitoramento='$linkMonitor', path_home_sistema='$pathHome'");
+        $editaServidor->setCamposBanco("id_usuarios_servidor='$userServidor', id_servidor='$servidor', nome_sistema='$nomeSistema', path_sistema='$pathUser', status_sistema='$status',link_monitoramento='$linkMonitor', path_home_sistema='$pathHome', link_acesso_sistema='$linkAcesso', datasource='$datasource', startup='$startup', nome_servico='$servicoNome', link_log='$linkLog'");
         $editaServidor->setFieldId("id_sistema");
         $editaServidor->setValueId("$idSistema");
         $editaServidor->update();

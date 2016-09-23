@@ -1,20 +1,20 @@
 <?php
 
 /*
- * Função que força a conexão HTTPS
- *
- * function ForceHTTPS() {
- * if ($_SERVER['HTTPS'] != "on") {
- *
- * $url = $_SERVER['SERVER_NAME'];
- *
- * $new_url = "https://" . $url . $_SERVER['REQUEST_URI'];
- * header("Location: $new_url");
- * exit;
- * }
- * }
- */
-$versaoSist = "1.2";
+* Função que força a conexão HTTPS
+*
+* function ForceHTTPS() {
+* if ($_SERVER['HTTPS'] != "on") {
+*
+* $url = $_SERVER['SERVER_NAME'];
+*
+* $new_url = "https://" . $url . $_SERVER['REQUEST_URI'];
+* header("Location: $new_url");
+* exit;
+* }
+* }
+*/
+$versaoSist = "1.3";
 if (! isset ( $_SESSION )) {
 	session_start ();
 }
@@ -27,11 +27,11 @@ if (! isset ( $_SESSION ["idSession"] )) {
 	$smarty->assign ( 'nivel', 'NI' );
 	$local = 0;
 } else {
-	// autentica o usuario	
+	// autentica o usuario
 	$nivel = $_SESSION ['nivel'];
 	$funcao = $_SESSION ['funcao'];
-        $grupo = $_SESSION["grupo"];
-        $smarty->assign("grup", $grupo);
+	$grupo = $_SESSION["grupo"];
+	$smarty->assign("grup", $grupo);
 	$smarty->assign ( "nomeUser", $_SESSION ["nome"]);
 	$smarty->assign ( "nivel", $nivel );
 	$smarty->assign ( "funcao", $funcao );
@@ -48,7 +48,7 @@ if ($estaLogado == "NAO") {
 		$smarty->assign ( "erro", "&nbsp;" );
 	}
 	unset ( $_SESSION ["erro"] ); // destroi a session do erro
-	                          // chama a tela de login caso não houver session estartada
+	// chama a tela de login caso não houver session estartada
 	$smarty->assign ( "titulo", " - Login" );
 	$smarty->assign ( "versao", "$versaoSist" );
 	$smarty->assign ( "conteudoLogin", "login/login.tpl" );

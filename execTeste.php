@@ -1,24 +1,28 @@
 <?php
+
 require_once './includes/classes/execSSH.php';
 
-$newServer = new ExecSSH("10.0.0.11", "dolphin", "rootinfoway", "22");
-//$newServer->setArquivoLocal("/home/infoway/logUniplam.log");
-//$newServer->setArquivoRemoto("/home/dolphin/testeEnvioSSH.log");
-$exec = $newServer->executaCMD("mkdir /home/dolphin/testeExecPHP");
+$vLog = "cat /opt/apache-tomcat-5.5.36-ipmt/log/catalina.out"
 
-if ($exec){
-    echo "Pasta criada com sucesso";
-} else {
-    echo "Houve um erro ao criar uma pasta";
-}
+echo '<pre>';
 
+// Mostra todo o resultado do comando do shell "ls", e retorna
+// a última linha da saída em $last_line. Guarda o valor de retorno
+// do comando shell em $retval.
+$last_line = system('tail', $vLog);
+
+// Mostrando informação adicional
+echo '
+</pre>
+<hr />Última linha da saída: '.$last_line.'
+<hr />Valor de Retorno: '.$vLog;
 //if ($newServer->executaCMD("cat /etc/passwd")){
-//    
+//
 //}
 //
 //die();
 //if ($newServer->getErro()){
-//    
+//
 //} else {
 //    echo $newServer->getErro();
 //}

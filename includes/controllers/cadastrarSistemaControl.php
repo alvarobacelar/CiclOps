@@ -3,12 +3,14 @@
 require_once '../models/ManipulateData.php';
 
 /* *********************************************************
- * ** CADASTRO SISTEMA 
+ * ** CADASTRO SISTEMA
  * *********************************************************/
 //CAPTANDO DADOS DO FORMULARIO
 $nomeSistema = addslashes($_POST["inputNomeSistema"]);
 $pathUser = addslashes($_POST["inputPathSistema"]);
 $servidor = addslashes($_POST["selectServidor"]);
+$startup = addslashes($_POST["selectStartup"]);
+$linkLog = addslashes($_POST["linkLog"]);
 $linkMonitor = addslashes($_POST["inputMonitorSistema"]);
 $userServidor = addslashes($_POST["selectUserServidor"]);
 $pathHome = addslashes($_POST["inputPathHome"]);
@@ -26,8 +28,8 @@ if (!empty($nomeSistema) && !empty($pathUser) && !empty($servidor) && !empty($us
         $_SESSION["erroSistema"] = "duplicado";
         header("Location: ../../cadastrarSistema.php");
     } else {
-        $cad->setCamposBanco("id_usuarios_servidor,id_servidor,nome_sistema,path_sistema,data_cadastro_sistema,status_sistema, link_monitoramento,path_home_sistema"); //CAMPOS DO BANCO DE DADOS
-        $cad->setDados("'$userServidor','$servidor','$nomeSistema','$pathUser','$data','$status', '$linkMonitor','$pathHome'"); //DADOS DO FORMULARIOS
+        $cad->setCamposBanco("id_usuarios_servidor,id_servidor,nome_sistema,path_sistema,data_cadastro_sistema,status_sistema, link_monitoramento,path_home_sistema, link_acesso_sistema, datasource, startup, nome_servico, link_log"); //CAMPOS DO BANCO DE DADOS
+        $cad->setDados("'$userServidor','$servidor','$nomeSistema','$pathUser','$data','$status', '$linkMonitor','$pathHome', '$linkAcesso', '$datasource', $startup, '$servicoNome', $linkLog"); //DADOS DO FORMULARIOS
         $cad->insert(); //EFETUANDO CADASTRO
         $_SESSION["erroSistema"] = "Cadastrado";
         header("location: ../../cadastrarSistema.php");
